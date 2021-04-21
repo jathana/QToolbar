@@ -1,0 +1,115 @@
+0000000000000000000000000000000000000000 c092158203599a2a51c141a52e706367b16a42d8 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1475846221 +0300	commit (initial): Add .gitignore and .gitattributes.
+c092158203599a2a51c141a52e706367b16a42d8 7789bb609d783ff68b2066e720bb5e4298e0d00f Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1475846222 +0300	commit: Add project files.
+7789bb609d783ff68b2066e720bb5e4298e0d00f 2133ec6124f98a9594a5eb94d07693132cd39f85 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1476090866 +0300	commit: fix for not existing folders
+2133ec6124f98a9594a5eb94d07693132cd39f85 8a344e61299f70e5ef200e2e1225d8e0f6a7596c Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1477079312 +0300	commit: commit
+8a344e61299f70e5ef200e2e1225d8e0f6a7596c b0e11d9bf80bf5ccbf1357f8a061152a847e0d3d Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1479461023 +0200	commit: commit checkouts
+b0e11d9bf80bf5ccbf1357f8a061152a847e0d3d 9b8db60d94091f2c091a2f4f3f8f82f8e39ac3c9 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1479492426 +0200	commit: commit
+9b8db60d94091f2c091a2f4f3f8f82f8e39ac3c9 153efc130057747226d34eebe7b26d8a0cdafc14 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1482238729 +0200	commit: Commit
+153efc130057747226d34eebe7b26d8a0cdafc14 73196003122923459eeaf194c5ba237db5a3e2be Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1485273330 +0200	commit: next build
+73196003122923459eeaf194c5ba237db5a3e2be 7cc46a8e1b9836cb6efc0a116cf266714946c2e4 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1485336638 +0200	commit: Next build. Fix admin cf view
+7cc46a8e1b9836cb6efc0a116cf266714946c2e4 987fda510e778c28be397bdecf35153e2f4adb8b Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1485336834 +0200	commit: comment
+987fda510e778c28be397bdecf35153e2f4adb8b 02cdac3b30906b601f32ba467a8e83ca7790a92d Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1485444335 +0200	commit: Internal Builds
+02cdac3b30906b601f32ba467a8e83ca7790a92d ac7c2906541bac2450c22ecef9c35d87393001a2 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1485445186 +0200	commit: Manual InternalBuilds
+ac7c2906541bac2450c22ecef9c35d87393001a2 b957ed63ae77d9784965e6b322d692b2c1e0ea6a Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1485446086 +0200	commit: Internal Builds
+b957ed63ae77d9784965e6b322d692b2c1e0ea6a ed7937a95756cdf69614c2684ea9afa8dc9a8562 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1485447024 +0200	commit: UI
+ed7937a95756cdf69614c2684ea9afa8dc9a8562 9dd1ca2b830ef9ac2b7ede665d5dbbfc30609cf8 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1485531268 +0200	commit: Shell Commands
+9dd1ca2b830ef9ac2b7ede665d5dbbfc30609cf8 2b0e8e04c0068603c36ba1039c41600d0163bca7 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1487863985 +0200	commit: next build checkers
+2b0e8e04c0068603c36ba1039c41600d0163bca7 6c7d6508796f5dea4af53d2954a0e3dbc00baac7 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1487865248 +0200	commit: build
+6c7d6508796f5dea4af53d2954a0e3dbc00baac7 63186c8b17fa9671236573f2746ecd619d75dd9a Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1488293079 +0200	commit: ui
+63186c8b17fa9671236573f2746ecd619d75dd9a 72d02a348ed85588ba465e399fcd6a7eb9a3c96f Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1489667875 +0200	commit: database queries
+72d02a348ed85588ba465e399fcd6a7eb9a3c96f 58298ea10b3c2110738b99301217972d2bb11dd5 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1490109959 +0200	commit: SQL Queries, Legal Shortcuts
+58298ea10b3c2110738b99301217972d2bb11dd5 a7b0400fb305ab69af97a0ed736acab98c27c630 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1490774474 +0300	commit: sql queries
+a7b0400fb305ab69af97a0ed736acab98c27c630 8e1ad27bb11ade765b71a68fbcadcf8a3eb1b8c1 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1490879737 +0300	commit: commit
+8e1ad27bb11ade765b71a68fbcadcf8a3eb1b8c1 2f6755807a9d0fd0d7fe1b469cf10d14e45feefd Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1493988169 +0300	commit: dbs filtering, sql query editor in options
+2f6755807a9d0fd0d7fe1b469cf10d14e45feefd 3b199f22ddba01abf112917fd7b489bcc61fd9b7 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1493989508 +0300	commit: commit
+3b199f22ddba01abf112917fd7b489bcc61fd9b7 b2c80efb4eabbec42419acafb962cd7e96239c37 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1494429383 +0300	commit: caching of sql queries db tree
+b2c80efb4eabbec42419acafb962cd7e96239c37 f211d06e31e39b3537017e206cbc6c442e4895de Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1495175844 +0300	commit: Refactoring
+f211d06e31e39b3537017e206cbc6c442e4895de 53c1b62b2d9f899e827a8fa3dd92c4a9bc1b69a6 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1495712142 +0300	commit: local designers
+53c1b62b2d9f899e827a8fa3dd92c4a9bc1b69a6 37fe48a3fa1a5b6aceed0e49f8efb3ff40430f47 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1496838820 +0300	commit: Criteria scripter
+37fe48a3fa1a5b6aceed0e49f8efb3ff40430f47 16f355de02f26d064cb323d2ac34fae30287137a Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1498037748 +0300	commit: criteria
+16f355de02f26d064cb323d2ac34fae30287137a eeacf97f5ce58341e7bfe17a14d3102f57ebb6c4 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1499414476 +0300	commit: optimizations
+eeacf97f5ce58341e7bfe17a14d3102f57ebb6c4 530f64c8225914bb736480ca54edf9710fd76eb3 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1499430008 +0300	commit: optimizations
+530f64c8225914bb736480ca54edf9710fd76eb3 438963f79d44973412bb18ec15874d14a02442f1 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1499434218 +0300	commit: code tiding
+438963f79d44973412bb18ec15874d14a02442f1 0378fada87b0e5ed6bf8b6957c19036cbfb36899 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1499434564 +0300	commit: optimizations
+0378fada87b0e5ed6bf8b6957c19036cbfb36899 5177bd1459184fd05559dea12659824214cddc0a Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1499434714 +0300	commit: optimization
+5177bd1459184fd05559dea12659824214cddc0a 98223eed08def4e3e167f9fa68ce810b1561376b Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1499680572 +0300	commit: optimizations
+98223eed08def4e3e167f9fa68ce810b1561376b 457029cbd66b5126beba47f9ead378a589131dd5 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1499952715 +0300	commit: changes, manual
+457029cbd66b5126beba47f9ead378a589131dd5 0797c0a2f0be6b7f141c2cb4e0b40244eaf9eb2e Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1500377596 +0300	commit: tiding
+0797c0a2f0be6b7f141c2cb4e0b40244eaf9eb2e 37ea5105609c3a86c11c89b7a0ae48b4fa809a8c Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1513180586 +0200	commit: check database scripts for functions not supported by test dbs
+37ea5105609c3a86c11c89b7a0ae48b4fa809a8c 8bed7f15979605ee0cd06c13299bb3dba6192dad Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1513325745 +0200	commit: tsql 2008 compatibility check
+8bed7f15979605ee0cd06c13299bb3dba6192dad 45d2551b22470961170c433aa95285f48186409f Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1516114039 +0200	commit: Environments
+45d2551b22470961170c433aa95285f48186409f 17b38e449ab6bf980ce640862d07657e00abe4bd Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1516118634 +0200	commit: envs
+17b38e449ab6bf980ce640862d07657e00abe4bd 0e3931673a725ac8cab6894eb9e5c4bde4f0b731 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1516265037 +0200	commit: envs
+0e3931673a725ac8cab6894eb9e5c4bde4f0b731 8e36fe2456d11df867fad86902a2c57151049a4a Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1520544485 +0200	commit: CF edit, internal build enhancements
+8e36fe2456d11df867fad86902a2c57151049a4a 679cdb8172c4c0d4865cc4fb87e30e2ae8a60022 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1520544747 +0200	commit: publish
+679cdb8172c4c0d4865cc4fb87e30e2ae8a60022 1fe4e4f71173ca14e2ffa7a107e56d481dc779a1 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1520598240 +0200	commit: CHANGES
+1fe4e4f71173ca14e2ffa7a107e56d481dc779a1 377eaee13050f2a8339dff2723bba2e2e32dfbab Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1520843301 +0200	commit: next build checker now uses old sql parser. New parser gets stuck in large sql files
+377eaee13050f2a8339dff2723bba2e2e32dfbab 9f70d2155fc5af824edfa75b0216bca5743f5616 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1521468114 +0200	commit: clear metadata
+9f70d2155fc5af824edfa75b0216bca5743f5616 2dfa4149a47e38ba41f7bbaaf7020f60850ab3ae Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1522252402 +0300	commit: envs
+2dfa4149a47e38ba41f7bbaaf7020f60850ab3ae da037aee223c5a790fb39ea60552a5841fff396d Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1522322542 +0300	commit: envs
+da037aee223c5a790fb39ea60552a5841fff396d 16b065b12c5b1c04c61f1b8b6055d0e8f5c543c5 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1522423584 +0300	commit: envs
+16b065b12c5b1c04c61f1b8b6055d0e8f5c543c5 b7aee66d2ac98248612fef815d606bd33ead5ccc Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1522424492 +0300	commit: envs
+b7aee66d2ac98248612fef815d606bd33ead5ccc 227b52f70040cd59196994ab3bedd4f0870bd731 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1522681062 +0300	commit: envs plugin
+227b52f70040cd59196994ab3bedd4f0870bd731 ae99413cfcf87cf223456d34bc51ff0cb90ce69a Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1522761408 +0300	commit: envs
+ae99413cfcf87cf223456d34bc51ff0cb90ce69a ca6848d4d6594714f1ab652ba6ab2e7085316277 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1522768850 +0300	commit: envs
+ca6848d4d6594714f1ab652ba6ab2e7085316277 f259caa81692b59db5a95f23ca422b2b3780ba03 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1522771223 +0300	commit: envs
+f259caa81692b59db5a95f23ca422b2b3780ba03 2da0a75df9748139bf69d43f61301bcbe80e9478 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1523434294 +0300	commit: envs plugin
+2da0a75df9748139bf69d43f61301bcbe80e9478 0270e99b207348ec6e24b45d13366607deffa9eb Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1523434446 +0300	commit: env plugin
+0270e99b207348ec6e24b45d13366607deffa9eb 29d8fb71fc498f596c50c15f02e19cef08b5fb6f Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1523458377 +0300	commit: envs plugin
+29d8fb71fc498f596c50c15f02e19cef08b5fb6f ce990c58f8a22db896463f6140cec4d657aa9702 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1523541580 +0300	commit: envs
+ce990c58f8a22db896463f6140cec4d657aa9702 e942c02b8af6543ac5f1f4fd8d86bec851075d88 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1523615477 +0300	commit: envs
+e942c02b8af6543ac5f1f4fd8d86bec851075d88 415f698dec89ba5e0b5e0933c7ff7bc988b258a0 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1523619115 +0300	commit: include cfs in app.config envs plugin
+415f698dec89ba5e0b5e0933c7ff7bc988b258a0 f66c54205cd624fe3ca57634c11b0fc53716c85e Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1525345498 +0300	commit: CFs duplicate keys
+f66c54205cd624fe3ca57634c11b0fc53716c85e c4c3ea5b31b8eea17c2e0d0dceddc123648598ea Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1526656955 +0300	commit: INCLUDE LEGAL WEB SERVICES CFS IN ENVIRONMENTS PLUGINS
+c4c3ea5b31b8eea17c2e0d0dceddc123648598ea 5521d684dccbdc32b0f329bd5b3f94601c4ed612 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1527074088 +0300	commit: enironments plugin
+5521d684dccbdc32b0f329bd5b3f94601c4ed612 74197af79790cb2363929c78c50b8dad93df5a42 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1527780014 +0300	commit: env plugin
+74197af79790cb2363929c78c50b8dad93df5a42 e23b58b088067f399edf1a34ac83e16869881b47 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1528471264 +0300	commit: envs
+e23b58b088067f399edf1a34ac83e16869881b47 c648aeb2e96c60763308198d4c7ad017da497110 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1530695398 +0300	commit: env
+c648aeb2e96c60763308198d4c7ad017da497110 4aedce11c8008ac29dfc006b7aa4846aabca59a8 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1530716457 +0300	commit: refactoring
+4aedce11c8008ac29dfc006b7aa4846aabca59a8 7d73f53fd278a82ec7d6d874bd3d3d9110fdb60f Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1530716710 +0300	commit: cleanup
+7d73f53fd278a82ec7d6d874bd3d3d9110fdb60f 98e0adb0d252f59457fbe9a01b2d53e2e256e72e Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1530716833 +0300	commit: cleanup
+98e0adb0d252f59457fbe9a01b2d53e2e256e72e 59934e8425ccc36d53dd4eb2e703c4805bba029f Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1530773153 +0300	commit: envs
+59934e8425ccc36d53dd4eb2e703c4805bba029f 29d41f65b1c78351b865c4dad5d8d2baefd374e5 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1530774900 +0300	commit: env
+29d41f65b1c78351b865c4dad5d8d2baefd374e5 b521f68119c769877aeb30792ed599b91ab63a36 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1530869830 +0300	commit: env
+b521f68119c769877aeb30792ed599b91ab63a36 ec1674c584fa7755b15d431c39cef1e7b6178cea Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1532616371 +0300	commit: criteria helper
+ec1674c584fa7755b15d431c39cef1e7b6178cea dcce9ddee7868a8b2fa737532449d2489900cb51 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1532701263 +0300	commit: criterio helper
+dcce9ddee7868a8b2fa737532449d2489900cb51 1274f956f1f6c69947712fc9a0502601afff8cd9 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1532957956 +0300	commit: criteria helper
+1274f956f1f6c69947712fc9a0502601afff8cd9 d13eb30d8be35d795b3984e0c99d9665ffe3ca82 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1532959536 +0300	commit: criteria helper
+d13eb30d8be35d795b3984e0c99d9665ffe3ca82 b4685d5f03a67761ab2adfb00cc1cca5788efa50 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1532964294 +0300	commit: criteria helper
+b4685d5f03a67761ab2adfb00cc1cca5788efa50 1e43083d8e672811ce706d597a761ee578245392 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1533823484 +0300	commit: fields helper
+1e43083d8e672811ce706d597a761ee578245392 386d4c067d7be35040c262d4055842206f89fcfc Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1536587059 +0300	commit: criteria helper
+386d4c067d7be35040c262d4055842206f89fcfc a83d1153046f3496461e53408d63bd09a07f2431 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1541498402 +0200	commit: fix
+a83d1153046f3496461e53408d63bd09a07f2431 07a29c0e782d33967992ec806fbab75f6935fae7 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1541671966 +0200	commit: criteria scripting from file
+07a29c0e782d33967992ec806fbab75f6935fae7 2ad556945dc54dceae78b05dfaee78568bfdc9a6 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1542814861 +0200	commit: grid row indicator
+2ad556945dc54dceae78b05dfaee78568bfdc9a6 d3bbc7f86487181ef2fe412b4e12a5f4beff6150 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1545295621 +0200	commit: commit
+d3bbc7f86487181ef2fe412b4e12a5f4beff6150 90eb7e1f871bb399681da437c936e2377319edbc Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1547038494 +0200	commit: commit
+90eb7e1f871bb399681da437c936e2377319edbc 0e4b5b854e3a3e4df0ee4b427c103a91efc8f3e3 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1548946154 +0200	commit: various changes
+0e4b5b854e3a3e4df0ee4b427c103a91efc8f3e3 1b0f9991399226f30d4a3e27d7c80e19255d702a Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1548949282 +0200	commit: commit
+1b0f9991399226f30d4a3e27d7c80e19255d702a 3982b159c7b2bd196670b40bf89b5a31a72a9452 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1549127094 +0200	commit: options
+3982b159c7b2bd196670b40bf89b5a31a72a9452 73c69230c79b3a78dbb9aa7feec6b49012913eef Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1549292028 +0200	commit: criteria
+73c69230c79b3a78dbb9aa7feec6b49012913eef 1951338d723a520663ea7aed33da25ff87f73d35 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1549526596 +0200	commit: criteria
+1951338d723a520663ea7aed33da25ff87f73d35 388711445539caadf5bde3f683d015864a7c4932 Athanasoulopoulos John, Qualco <JAthanasoulopoulos@qualco.eu> 1549544331 +0200	commit: environments
+388711445539caadf5bde3f683d015864a7c4932 3807141eaa67016ec64fc88e9aa79b46d7371276 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1550246376 +0200	commit: commit
+3807141eaa67016ec64fc88e9aa79b46d7371276 ef1017481bd510e8fb2f57c97820b99d8f65c4fe jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1550390481 +0200	commit: env manager
+ef1017481bd510e8fb2f57c97820b99d8f65c4fe 7a3b47bfd5782a384eb3cf6975cf081f90417937 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1550438116 +0200	commit: env manager
+7a3b47bfd5782a384eb3cf6975cf081f90417937 6ecc61b2d1b145f7f88c20fa4372b2cfbd879031 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1550527254 +0200	commit: env manager
+6ecc61b2d1b145f7f88c20fa4372b2cfbd879031 1e28aafee6e32486d66a7c2c2b2164f1163a9646 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1550577272 +0200	commit: env manager
+1e28aafee6e32486d66a7c2c2b2164f1163a9646 1a986b68d4a04662e4af25e9b8027f823c59ebd5 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1551868986 +0200	commit: toolbar
+1a986b68d4a04662e4af25e9b8027f823c59ebd5 232736e8fa851f51c8d99c401ebf5363d7dbf6da jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1557262858 +0300	commit: legal links sub branches environment sub-branches fixes
+232736e8fa851f51c8d99c401ebf5363d7dbf6da 521c0fa29e3c03ca888f1a7b9924821ff83adb60 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1560437308 +0300	commit: fixes
+521c0fa29e3c03ca888f1a7b9924821ff83adb60 107f2937e3a3d1728dcab01deed4d1fd13070a46 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1560843837 +0300	commit: commit
+107f2937e3a3d1728dcab01deed4d1fd13070a46 8c92347b017a31ee6b1e4b6f7c2c70d37533ae40 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1560854989 +0300	commit: criteria
+8c92347b017a31ee6b1e4b6f7c2c70d37533ae40 7be24999c4126b78417ab8d7dfcd84e9e90b6a6c jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1560945724 +0300	commit: criteria
+7be24999c4126b78417ab8d7dfcd84e9e90b6a6c 26d7a7f23e465db292f8e0cb585626c6bfff3821 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1568625949 +0300	commit: clear api metadata
+26d7a7f23e465db292f8e0cb585626c6bfff3821 f1c8a82fe0e48fe346e3a3e20255ad6456db1dc0 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1585163962 +0200	commit: Clipboard Helper
+f1c8a82fe0e48fe346e3a3e20255ad6456db1dc0 623c9edadb2644e2b96ef9c76e858563f185093e jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1585164184 +0200	commit: Clipboard Helper
+623c9edadb2644e2b96ef9c76e858563f185093e 5fb21a6364c90fdd3e444aab654434209869570e jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1585238416 +0200	commit: Clipboard Helper
+5fb21a6364c90fdd3e444aab654434209869570e 38359385398bea94a1788ce41236ac6758f8d2be jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1586463574 +0300	commit: clipboard helper
+38359385398bea94a1788ce41236ac6758f8d2be 02729d8a6310d7e9e02b3bfdc2050d1ba040d8e7 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1587636247 +0300	commit: for current db changes
+02729d8a6310d7e9e02b3bfdc2050d1ba040d8e7 66808502bd13b79898d792e4fc15a3bd21f7125b jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1587723592 +0300	commit: commit publish
+66808502bd13b79898d792e4fc15a3bd21f7125b 6026368f248df70dd868ad69d1d9657badb068c2 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1594198001 +0300	commit: menu options sorting
+6026368f248df70dd868ad69d1d9657badb068c2 3df25c7d28d4ad8c77c3f7064c08f2096fe78c23 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1594207478 +0300	commit: Shrinking menus
+3df25c7d28d4ad8c77c3f7064c08f2096fe78c23 dbd1fe5eea8ec18d9ce61a886b73cea976b4518b jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1594207540 +0300	commit: menus
+dbd1fe5eea8ec18d9ce61a886b73cea976b4518b 354159d3f6ebbf18a75e4b5465dba56091b7c02b jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1594209847 +0300	commit: criteria fixing
+354159d3f6ebbf18a75e4b5465dba56091b7c02b 7ec555b1e9e9c8507b2327ed20b54754b3799c25 jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1594221225 +0300	commit: fix bug in create criteria option of databases tree
+7ec555b1e9e9c8507b2327ed20b54754b3799c25 549446084b558b15518424b879f345a3ca4a5f4e jathanasoulopoulos <jathanasoulopoulos@Q-WKS-JATHANAS> 1618944660 +0300	commit: remove _XXX from cfs in sql queries

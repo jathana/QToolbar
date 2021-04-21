@@ -1,0 +1,161 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="QToolbar.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WindowLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="WindowSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">606, 132</Value>
+    </Setting>
+    <Setting Name="TestingFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X:\Testing</Value>
+    </Setting>
+    <Setting Name="DesignersFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X:\Toolkit Applications\Designers</Value>
+    </Setting>
+    <Setting Name="QCSAdminFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X:\Testing\QCS Admin</Value>
+    </Setting>
+    <Setting Name="QCSAgentFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X:\Testing\QCS Agent</Value>
+    </Setting>
+    <Setting Name="SQLFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">E:\My\Database Scripts</Value>
+    </Setting>
+    <Setting Name="ExecutorConfiguratorFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X:\Toolkit Applications\ExecutorConfiguration</Value>
+    </Setting>
+    <Setting Name="DatabaseScripterFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X:\Toolkit Applications\Script Database</Value>
+    </Setting>
+    <Setting Name="FieldsExplorerFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X:\Toolkit Applications\Field Explorer</Value>
+    </Setting>
+    <Setting Name="Folders" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;c:\&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="EnvironmentsConfigurationFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">X:\Toolkit Applications\Internal Deployment Tool\Configuration</Value>
+    </Setting>
+    <Setting Name="Checkouts" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="InternalBuildsFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\Q-SRV-INTTFSB\InternalBuilds</Value>
+    </Setting>
+    <Setting Name="ShellCommands" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="LegalLinks" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;DocumentElement&gt;
+  &lt;table&gt;
+    &lt;Name&gt;v.6.11&lt;/Name&gt;
+    &lt;Command&gt;http://q-srv-w2k12r2:8804/QCLegalApplicationApp/&lt;/Command&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Name&gt;v.7.2&lt;/Name&gt;
+    &lt;Command&gt;http://q-srv-w2k12r2:8807/QCLegalApplicationApp/&lt;/Command&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Name&gt;v.7.3&lt;/Name&gt;
+    &lt;Command&gt;http://q-srv-w2k12r2:8800/QCLegalApplicationApp/&lt;/Command&gt;
+  &lt;/table&gt;
+&lt;/DocumentElement&gt;</Value>
+    </Setting>
+    <Setting Name="SQLQueries" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;DocumentElement&gt;
+  &lt;table&gt;
+    &lt;Name&gt;Flag 'ENABLE_EOD_MONITOR_AND_ALERTS'&lt;/Name&gt;
+    &lt;SQL&gt;SELECT * FROM AT_SYSTEM_PARAMS WHERE SPRA_TYPE='ENABLE_EOD_MONITOR_AND_ALERTS'&lt;/SQL&gt;
+    &lt;RunImmediate&gt;true&lt;/RunImmediate&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Name&gt;Get Database Versions&lt;/Name&gt;
+    &lt;SQL&gt;SELECT * FROM TLK_DATABASE_VERSIONS ORDER BY 1 DESC&lt;/SQL&gt;
+    &lt;RunImmediate&gt;true&lt;/RunImmediate&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Name&gt;Get Enterprises&lt;/Name&gt;
+    &lt;SQL&gt;select * from enterprises&lt;/SQL&gt;
+    &lt;RunImmediate&gt;true&lt;/RunImmediate&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Name&gt;Get Installations&lt;/Name&gt;
+    &lt;SQL&gt;SELECT * FROM AT_INSTALLATIONS&lt;/SQL&gt;
+    &lt;RunImmediate&gt;true&lt;/RunImmediate&gt;
+  &lt;/table&gt;
+&lt;/DocumentElement&gt;</Value>
+    </Setting>
+    <Setting Name="ClearLegalMetadata" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="QCWebServers" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Q-SRV-SQL2K12</Value>
+    </Setting>
+    <Setting Name="DevSQLInstances" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Q-SRV-DEVEL12,Q-SRV-DEVEL12\MSSQL2K16</Value>
+    </Setting>
+    <Setting Name="MaxMenuItems" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="EnvCFs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;DocumentElement&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;PROTEUS&lt;/Repository&gt;
+    &lt;Path&gt;QC.WebCollection.WebServices\qbc.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;PROTEUS&lt;/Repository&gt;
+    &lt;Path&gt;QCS.BackOffice.WebServices\qbc.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;PROTEUS&lt;/Repository&gt;
+    &lt;Path&gt;SCToolkit2.Designers.Client.WPF\qbc.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;PROTEUS&lt;/Repository&gt;
+    &lt;Path&gt;SCToolkit2.Designers.WebServices\qbc.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;PROTEUS&lt;/Repository&gt;
+    &lt;Path&gt;SCToolkit2.WebServices\qbc.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;QC&lt;/Repository&gt;
+    &lt;Path&gt;VS Projects\CollectionAgentSystem\CollectionAgentSystemClient.BranchUI\qbc.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;QC&lt;/Repository&gt;
+    &lt;Path&gt;VS Projects\CollectionAgentSystem\CollectionAgentSystemClient\qbc.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;QC&lt;/Repository&gt;
+    &lt;Path&gt;VS Projects\QC.DataArchive\QC.DataArchive.Client\QC_DataArchive.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;QC&lt;/Repository&gt;
+    &lt;Path&gt;VS Projects\QCS\MicroQCClient\qbc_admin.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;QC&lt;/Repository&gt;
+    &lt;Path&gt;VS Projects\QCS\QCSClient\qbc_admin.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;QC&lt;/Repository&gt;
+    &lt;Path&gt;VS Projects\QCS\QCSWS\qbc.cf&lt;/Path&gt;
+  &lt;/table&gt;
+  &lt;table&gt;
+    &lt;Repository&gt;QC&lt;/Repository&gt;
+    &lt;Path&gt;VS Projects\SCToolkit\SCToolkitWS\qbc.cf&lt;/Path&gt;
+  &lt;/table&gt;
+&lt;/DocumentElement&gt;</Value>
+    </Setting>
+    <Setting Name="ClearValuesFromCFs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_XXX</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
