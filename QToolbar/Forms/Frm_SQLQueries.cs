@@ -167,12 +167,13 @@ namespace QToolbar
             Dictionary<string, string> dbnames = cfFile.GetSectionPairs("[databasename]");
             if (servers.Count != dbnames.Count)
             {
-               throw new Exception($"[Servers] and [DatabaseName] sections of {file} contain different number of items.");
+               //throw new Exception($"[Servers] and [DatabaseName] sections of {file} contain different number of items.");
             }
             else
             {
                foreach (KeyValuePair<string, string> server in servers)
                {
+                  
                   try
                   {
                      ConnectionInfo info = new ConnectionInfo()
