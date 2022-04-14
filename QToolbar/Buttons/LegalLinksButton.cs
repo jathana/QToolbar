@@ -42,7 +42,7 @@ namespace QToolbar.Buttons
                foreach (string sqlInst in devInstArr)
                {
 
-                  string connectionString = $"Server={sqlInst};Integrated Security=SSPI;";
+                  string connectionString = $"Server={sqlInst};User ID=qbc_user;Password=qbc_user;";
                   using (SqlConnection con = new SqlConnection(connectionString))
                   {
                      try
