@@ -53,6 +53,7 @@ namespace QToolbar
          Properties.Settings.Default.DevSQLInstances = txtDevSQLInstances.Text;
          Properties.Settings.Default.MaxMenuItems = Convert.ToInt32(numMaxMenuItems.Value);
          Properties.Settings.Default.ClearValuesFromCFs = txtClearValuesFromCFs.Text;
+         Properties.Settings.Default.QASQLInstances = txtQASQLInstances.Text;
 
          // save folders
          SaveFolders();
@@ -86,6 +87,7 @@ namespace QToolbar
          txtDevSQLInstances.Text = Properties.Settings.Default.DevSQLInstances;
          numMaxMenuItems.Value = Properties.Settings.Default.MaxMenuItems;
          txtClearValuesFromCFs.Text = Properties.Settings.Default.ClearValuesFromCFs;
+         txtQASQLInstances.Text = Properties.Settings.Default.QASQLInstances;
 
          // custom edit form for sql queries
          gviewSQLQueries.OptionsEditForm.CustomEditFormLayout = new uc_SQLQueriesEdit();

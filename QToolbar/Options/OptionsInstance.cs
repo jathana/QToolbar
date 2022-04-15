@@ -162,6 +162,13 @@ namespace QToolbar.Options
             return Properties.Settings.Default.ClearValuesFromCFs;
          }
       }
+      public static string QASQLInstances
+      {
+         get
+         {
+            return Properties.Settings.Default.QASQLInstances;
+         }
+      }
 
 
    }

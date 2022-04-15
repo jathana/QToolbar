@@ -157,5 +157,8 @@
     <Setting Name="ClearValuesFromCFs" Type="System.String" Scope="User">
       <Value Profile="(Default)">_XXX</Value>
     </Setting>
+    <Setting Name="QASQLInstances" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Q-SRV-DEVFPS,Q-SRV-DEVFPS\QBC</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

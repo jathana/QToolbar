@@ -17,6 +17,21 @@ namespace QToolbar.Buttons
    public class LegalLinksButton : ButtonBase
    {
 
+      private struct LegalLinkData
+      {
+         public string Text;
+         public string Url;
+         public bool NewWebLegal;
+         public string Database;
+
+         public LegalLinkData(string text, string url, bool newWebLegal, string database)
+         {
+            Text = text;
+            Url = url;
+            NewWebLegal = newWebLegal;
+            Database = database;
+         }
+      }
       public LegalLinksButton(BarManager barManager, BarSubItem menu) : base("", barManager, menu)
       {
       }
@@ -29,26 +44,26 @@ namespace QToolbar.Buttons
          // load legal links
          try
          {
-            string devInst = OptionsInstance.DevSQLInstances;
+            string devInst = OptionsInstance.QASQLInstances;
             if (!string.IsNullOrEmpty(devInst))
             {
                List<string> devdbs = new List<string>();
-               SortedList<string, string> menuItems = new SortedList<string, string>();
+               SortedList<string, LegalLinkData> menuItems = new SortedList<string, LegalLinkData>();
 
                string[] devInstArr = devInst.Split(',');
-               Regex reg = new Regex("^QBCollection[_]Plus[_][0-9]+[_][0-9]+[_]*[0-9]*$");
+               Regex reg = new Regex("^QBCollection[_]Plus[_][A-Za-z]+[_][0-9]+[_][0-9]+[_]*[0-9]*$");
                Regex regVer = new Regex("[0-9]+[_][0-9]+[_]*[0-9]*$");
                BarSubItem cutOffMenu = new BarSubItem(_BarManager, "Other", 0);
                foreach (string sqlInst in devInstArr)
                {
 
-                  string connectionString = $"Server={sqlInst};User ID=qbc_user;Password=qbc_user;";
+                  string connectionString = $"Server={sqlInst};Integrated Security=SSPI;";
                   using (SqlConnection con = new SqlConnection(connectionString))
                   {
                      try
                      {
                         con.Open();
-                        using (SqlCommand cmd = new SqlCommand("SELECT name from sys.databases", con))
+                        using (SqlCommand cmd = new SqlCommand("SELECT name FROM sys.databases WHERE name LIKE 'QBCollection_Plus_%'", con))
                         {
                            try
                            {
@@ -69,26 +84,39 @@ namespace QToolbar.Buttons
                         foreach (var db in devdbs)
                         {
                            string legalUrl = "";
-                           object urlObj = null;
+                           string sysPrefLegalUrl = string.Empty;
+                           bool sysPrefNewWebLegal = false;
                            try
                            {
-                              using (SqlCommand cmd = new SqlCommand($"SELECT SPR_VALUE FROM [{db}].[dbo].AT_SYSTEM_PREF WHERE SPR_TYPE='LEGAL_APP_PROCESS_MAPPING_WS_URL'", con))
+                              using (SqlCommand cmd = new SqlCommand($"SELECT SPR_VALUE FROM [{db}].[dbo].AT_SYSTEM_PREF WHERE SPR_TYPE IN ('WEB_UI','LEGAL_APP_PROCESS_MAPPING_WS_URL')", con))
                               {
-
-                                 urlObj = cmd.ExecuteScalar();
-                                 if (urlObj != null)
+                                 using (SqlDataReader dr = cmd.ExecuteReader())
                                  {
-                                    string url = cmd.ExecuteScalar().ToString();
-                                    if (!string.IsNullOrEmpty(url))
+                                    if (dr.Read() && dr[0] != null)
                                     {
-                                       Uri uri = new Uri(url.Trim());
+                                       sysPrefLegalUrl = dr[0].ToString();
+                                    }
+                                    if (dr.Read() && dr[0] != null && dr[0].ToString().Equals("1"))
+                                    {
+                                       sysPrefNewWebLegal = true;
+                                    }
+                                 }
+                                 if (!string.IsNullOrEmpty(sysPrefLegalUrl))
+                                 {
+                                    Uri uri = new Uri(sysPrefLegalUrl.Trim());
+                                    if (sysPrefNewWebLegal)
+                                    {
+                                       legalUrl = $"{uri.Scheme}://{uri.Host}:{uri.Port}/environmentselector/";
+                                    }
+                                    else
+                                    {
                                        legalUrl = $"{uri.Scheme}://{uri.Host}:{uri.Port}/QCLegalApplicationApp/";
                                     }
                                  }
                               }
 
                               string dbVer = "";
-                              if (urlObj != null)
+                              if (legalUrl != null)
                               {
                                  Match verMatchVer = regVer.Match(db);
                                  if (verMatchVer.Success)
@@ -97,10 +125,14 @@ namespace QToolbar.Buttons
                                  }
                               }
 
-                              if (!string.IsNullOrEmpty(dbVer) && !string.IsNullOrEmpty(legalUrl))
+                              if (!string.IsNullOrEmpty(dbVer) && !string.IsNullOrEmpty(legalUrl) && !sysPrefNewWebLegal)  // new legal does have the port in database
                               {
-                                 menuItems.Add(Utils.GetSortName(dbVer, new Char[] { '.' }, '.', ' ', 3, true), legalUrl);
+                                 if (menuItems.Values.AsEnumerable().Where(x => x.Url.Equals(legalUrl)).ToList().Count.Equals(0))
+                                 {                                    
+                                    menuItems.Add(Utils.GetSortName(dbVer, new Char[] { '.' }, '.', ' ', 3, true), new LegalLinkData(dbVer, legalUrl, sysPrefNewWebLegal, db));
+                                 }
                               }
+
                            }
                            catch { }
                         }
@@ -116,11 +148,11 @@ namespace QToolbar.Buttons
                {
                   if (i >= Options.OptionsInstance.MaxMenuItems)
                   {
-                     AddLegalLinksItem(new Tuple<string, string>(item.Key, item.Value), cutOffMenu);
+                     AddLegalLinksItem(item.Value, cutOffMenu);
                   }
                   else
                   {
-                     AddLegalLinksItem(new Tuple<string, string>(item.Key, item.Value), _Menu);
+                     AddLegalLinksItem(item.Value, _Menu);
                   }
                   i++;
                }
@@ -136,12 +168,17 @@ namespace QToolbar.Buttons
          }
       }
 
-      private void AddLegalLinksItem(Tuple<string, string> data, BarSubItem parent)
+      private void AddLegalLinksItem(LegalLinkData data, BarSubItem parent)
       {
-         BarButtonItem legalLinkItem = new BarButtonItem(_BarManager, data.Item1, 3);
+         string newIndicator = data.NewWebLegal ? " (new) " : string.Empty;
+         string inst = data.Database.Replace("QBCollection_Plus_", "");
+         string caption = ClearVersionLeast(data.Text, '.');
+         BarButtonItem legalLinkItem = new BarButtonItem(_BarManager, caption, 3);
          // legal links are shell commands
          legalLinkItem.ItemClick += MenuItemClick;
          legalLinkItem.Tag = data;
+         legalLinkItem.SuperTip = new SuperToolTip();
+         legalLinkItem.SuperTip.Items.Add(data.Database);
          parent.AddItem(legalLinkItem);
       }
 
@@ -149,15 +186,56 @@ namespace QToolbar.Buttons
       {
          try
          {
-            Tuple<string, string> data = (Tuple<string, string>)e.Item.Tag;
+            LegalLinkData data = (LegalLinkData)e.Item.Tag;
 
-            // only IE is suppoerted by LegalApp
-            System.Diagnostics.Process.Start("IEXPLORE.EXE", data.Item2);
+            if (data.NewWebLegal)
+            {
+               System.Diagnostics.Process.Start(data.Url);
+            }
+            else
+            {
+               // only IE supports old legal
+               System.Diagnostics.Process.Start("IEXPLORE.EXE", data.Url);
+            }
          }
          catch (Exception ex)
          {
             XtraMessageBox.Show(ex.Message);
          }
       }
+
+
+      private string ClearVersionLeast(string version, char delimiter)
+      {
+         if(!string.IsNullOrWhiteSpace(version))
+         {
+            var vals = version.Split(new char[] { delimiter });
+            
+
+            if (vals.Length==4)
+            {
+               if(Int32.TryParse(vals[2],out int result2))
+               {
+                 if(result2 > 50)
+                  {
+                     return $"{vals[0]}.{vals[1]}.{vals[2]}";
+                  }
+               }               
+            }
+            if (vals.Length == 3)
+            {
+               if (Int32.TryParse(vals[2], out int result2))
+               {
+                  if (result2 < 50)
+                  {
+                     return $"{vals[0]}.{vals[1]}";
+                  }
+               }
+            }
+         }
+         return version;
+      }
+
+
    }
 }
