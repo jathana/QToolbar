@@ -17,6 +17,7 @@ using DevExpress.XtraTreeList;
 using System.Threading;
 using QToolbar.Tools;
 using QToolbar.Forms;
+using QToolbar.AutoDoc;
 
 namespace QToolbar
 {
@@ -347,6 +348,15 @@ namespace QToolbar
                   e.Menu.Items.Add(mnuItemFieldsHelper);
                }
 
+               // auto doc only for dev dbs
+               if (devDBs.Count > 0 && devDBs.Count(d => d.Database == obj.Data.Database) > 0)
+               {
+                  DevExpress.Utils.Menu.DXMenuItem mnuItemAutoDoc = new DevExpress.Utils.Menu.DXMenuItem("Auto Doc", autoDoc_ItemClick);
+                  mnuItemAutoDoc.Tag = obj.Data;
+                  e.Menu.Items.Add(mnuItemAutoDoc);
+               }
+
+
             }
 
 
@@ -425,6 +435,13 @@ namespace QToolbar
          f.Show(data, _DBs);
       }
 
+      private void autoDoc_ItemClick(object sender, EventArgs e)
+      {
+         TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
+         ConnectionInfo data = obj.Data;
+         Frm_AutoDoc f = new Frm_AutoDoc();
+         f.Show(data, _DBs);
+      }
 
       private void treeDatabases_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
       {

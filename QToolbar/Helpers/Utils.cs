@@ -324,7 +324,7 @@ namespace QToolbar
       #region database
       public static string GetConnectionString(string server, string database)
       {
-         return $"Server={server};Database={database};Integrated Security=SSPI;";
+         return $"Server={server};Database={database};Integrated Security=SSPI;TransparentNetworkIPResolution = False;";
       }
 
 

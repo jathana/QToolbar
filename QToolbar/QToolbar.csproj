@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>\\qsrvdevfs19\QCS Development and Testing\Tools\QToolbar\</InstallUrl>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>179</ApplicationRevision>
+    <ApplicationRevision>180</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -159,6 +159,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppInstance.cs" />
+    <Compile Include="AutoDoc\AutoDocModel.cs">
+      <DependentUpon>AutoDocModel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AutoDoc\AutoDocModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoDocModel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AutoDoc\Frm_AutoDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoDoc\Frm_AutoDoc.Designer.cs">
+      <DependentUpon>Frm_AutoDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Builds\AnalyticsBuildChecker.cs" />
     <Compile Include="Builds\BuildChecker.cs" />
     <Compile Include="Builds\BuildCheckerBase.cs" />
@@ -371,6 +385,9 @@
     <Compile Include="UserControls\uc_TextDiff.Designer.cs">
       <DependentUpon>uc_TextDiff.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AutoDoc\Frm_AutoDoc.resx">
+      <DependentUpon>Frm_AutoDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_TxtDiff.resx">
       <DependentUpon>Frm_TxtDiff.cs</DependentUpon>
     </EmbeddedResource>
@@ -442,6 +459,17 @@
     <EmbeddedResource Include="UserControls\uc_TextDiff.resx">
       <DependentUpon>uc_TextDiff.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AutoDoc\AutoDocModel.xsc">
+      <DependentUpon>AutoDocModel.xsd</DependentUpon>
+    </None>
+    <None Include="AutoDoc\AutoDocModel.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AutoDocModel.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AutoDoc\AutoDocModel.xss">
+      <DependentUpon>AutoDocModel.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

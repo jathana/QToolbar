@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AutoDocModel" targetNamespace="http://tempuri.org/AutoDocModel.xsd" xmlns:mstns="http://tempuri.org/AutoDocModel.xsd" xmlns="http://tempuri.org/AutoDocModel.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AutoDocModel" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AutoDocModel" msprop:Generator_UserDSName="AutoDocModel">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AT_FIELDS" msprop:Generator_TableClassName="AT_FIELDSDataTable" msprop:Generator_TableVarName="tableAT_FIELDS" msprop:Generator_TablePropName="AT_FIELDS" msprop:Generator_RowDeletingName="AT_FIELDSRowDeleting" msprop:Generator_RowChangingName="AT_FIELDSRowChanging" msprop:Generator_RowEvHandlerName="AT_FIELDSRowChangeEventHandler" msprop:Generator_RowDeletedName="AT_FIELDSRowDeleted" msprop:Generator_UserTableName="AT_FIELDS" msprop:Generator_RowChangedName="AT_FIELDSRowChanged" msprop:Generator_RowEvArgName="AT_FIELDSRowChangeEvent" msprop:Generator_RowClassName="AT_FIELDSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FLD_TABLE_NAME" msprop:Generator_ColumnVarNameInTable="columnFLD_TABLE_NAME" msprop:Generator_ColumnPropNameInRow="FLD_TABLE_NAME" msprop:Generator_ColumnPropNameInTable="FLD_TABLE_NAMEColumn" msprop:Generator_UserColumnName="FLD_TABLE_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="FLD_FIELD_NAME" msprop:Generator_ColumnVarNameInTable="columnFLD_FIELD_NAME" msprop:Generator_ColumnPropNameInRow="FLD_FIELD_NAME" msprop:Generator_ColumnPropNameInTable="FLD_FIELD_NAMEColumn" msprop:Generator_UserColumnName="FLD_FIELD_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="FLD_FIELD_CAPTION" msprop:Generator_ColumnVarNameInTable="columnFLD_FIELD_CAPTION" msprop:Generator_ColumnPropNameInRow="FLD_FIELD_CAPTION" msprop:Generator_ColumnPropNameInTable="FLD_FIELD_CAPTIONColumn" msprop:Generator_UserColumnName="FLD_FIELD_CAPTION" type="xs:string" minOccurs="0" />
+              <xs:element name="FLD_DATABASE_REQUIRED" msprop:Generator_ColumnVarNameInTable="columnFLD_DATABASE_REQUIRED" msprop:Generator_ColumnPropNameInRow="FLD_DATABASE_REQUIRED" msprop:Generator_ColumnPropNameInTable="FLD_DATABASE_REQUIREDColumn" msprop:Generator_UserColumnName="FLD_DATABASE_REQUIRED" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FLD_DATASOURCE_REQUIRED" msprop:Generator_ColumnVarNameInTable="columnFLD_DATASOURCE_REQUIRED" msprop:Generator_ColumnPropNameInRow="FLD_DATASOURCE_REQUIRED" msprop:Generator_ColumnPropNameInTable="FLD_DATASOURCE_REQUIREDColumn" msprop:Generator_UserColumnName="FLD_DATASOURCE_REQUIRED" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FLD_NEW_FIELD" msprop:Generator_ColumnVarNameInTable="columnFLD_NEW_FIELD" msprop:Generator_ColumnPropNameInRow="FLD_NEW_FIELD" msprop:Generator_ColumnPropNameInTable="FLD_NEW_FIELDColumn" msprop:Generator_UserColumnName="FLD_NEW_FIELD" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

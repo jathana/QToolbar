@@ -95,13 +95,19 @@
          this.btnApply = new DevExpress.XtraEditors.SimpleButton();
          this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
          this.memTokens = new DevExpress.XtraEditors.MemoEdit();
+         this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+         this.btnOpen = new DevExpress.XtraEditors.SimpleButton();
          this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
          this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
          this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
          this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-         this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
          this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
          this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem35 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
+         this.layoutControlItem36 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
+         this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
          this.layoutControl1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -143,9 +149,13 @@
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem35)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
          this.SuspendLayout();
          // 
          // layoutControl1
@@ -154,12 +164,14 @@
          this.layoutControl1.Controls.Add(this.btnApply);
          this.layoutControl1.Controls.Add(this.btnCancel);
          this.layoutControl1.Controls.Add(this.memTokens);
+         this.layoutControl1.Controls.Add(this.btnSave);
+         this.layoutControl1.Controls.Add(this.btnOpen);
          this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
          this.layoutControl1.Location = new System.Drawing.Point(0, 0);
          this.layoutControl1.Name = "layoutControl1";
-         this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1276, 210, 554, 400);
+         this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(2857, 201, 554, 400);
          this.layoutControl1.Root = this.layoutControlGroup1;
-         this.layoutControl1.Size = new System.Drawing.Size(577, 311);
+         this.layoutControl1.Size = new System.Drawing.Size(586, 368);
          this.layoutControl1.TabIndex = 1;
          this.layoutControl1.Text = "layoutControl1";
          // 
@@ -195,10 +207,10 @@
          this.layoutControl2.Controls.Add(this.btnClip27);
          this.layoutControl2.Controls.Add(this.btnClip28);
          this.layoutControl2.Controls.Add(this.btnClip29);
-         this.layoutControl2.Location = new System.Drawing.Point(281, 12);
+         this.layoutControl2.Location = new System.Drawing.Point(285, 12);
          this.layoutControl2.Name = "layoutControl2";
          this.layoutControl2.Root = this.Root;
-         this.layoutControl2.Size = new System.Drawing.Size(284, 261);
+         this.layoutControl2.Size = new System.Drawing.Size(289, 318);
          this.layoutControl2.TabIndex = 20;
          this.layoutControl2.Text = "layoutControl2";
          // 
@@ -206,7 +218,7 @@
          // 
          this.btnClip04.Location = new System.Drawing.Point(2, 106);
          this.btnClip04.Name = "btnClip04";
-         this.btnClip04.Size = new System.Drawing.Size(263, 22);
+         this.btnClip04.Size = new System.Drawing.Size(268, 22);
          this.btnClip04.StyleController = this.layoutControl2;
          this.btnClip04.TabIndex = 8;
          this.btnClip04.Text = "simpleButton5";
@@ -215,7 +227,7 @@
          // 
          this.btnClip03.Location = new System.Drawing.Point(2, 80);
          this.btnClip03.Name = "btnClip03";
-         this.btnClip03.Size = new System.Drawing.Size(263, 22);
+         this.btnClip03.Size = new System.Drawing.Size(268, 22);
          this.btnClip03.StyleController = this.layoutControl2;
          this.btnClip03.TabIndex = 7;
          this.btnClip03.Text = "simpleButton4";
@@ -224,7 +236,7 @@
          // 
          this.btnClip02.Location = new System.Drawing.Point(2, 54);
          this.btnClip02.Name = "btnClip02";
-         this.btnClip02.Size = new System.Drawing.Size(263, 22);
+         this.btnClip02.Size = new System.Drawing.Size(268, 22);
          this.btnClip02.StyleController = this.layoutControl2;
          this.btnClip02.TabIndex = 6;
          this.btnClip02.Text = "simpleButton3";
@@ -233,7 +245,7 @@
          // 
          this.btnClip01.Location = new System.Drawing.Point(2, 28);
          this.btnClip01.Name = "btnClip01";
-         this.btnClip01.Size = new System.Drawing.Size(263, 22);
+         this.btnClip01.Size = new System.Drawing.Size(268, 22);
          this.btnClip01.StyleController = this.layoutControl2;
          this.btnClip01.TabIndex = 5;
          this.btnClip01.Text = "simpleButton2";
@@ -242,7 +254,7 @@
          // 
          this.btnClip00.Location = new System.Drawing.Point(2, 2);
          this.btnClip00.Name = "btnClip00";
-         this.btnClip00.Size = new System.Drawing.Size(263, 22);
+         this.btnClip00.Size = new System.Drawing.Size(268, 22);
          this.btnClip00.StyleController = this.layoutControl2;
          this.btnClip00.TabIndex = 4;
          this.btnClip00.Text = "simpleButton1";
@@ -251,7 +263,7 @@
          // 
          this.btnClip05.Location = new System.Drawing.Point(2, 132);
          this.btnClip05.Name = "btnClip05";
-         this.btnClip05.Size = new System.Drawing.Size(263, 22);
+         this.btnClip05.Size = new System.Drawing.Size(268, 22);
          this.btnClip05.StyleController = this.layoutControl2;
          this.btnClip05.TabIndex = 9;
          this.btnClip05.Text = "simpleButton6";
@@ -260,7 +272,7 @@
          // 
          this.btnClip06.Location = new System.Drawing.Point(2, 158);
          this.btnClip06.Name = "btnClip06";
-         this.btnClip06.Size = new System.Drawing.Size(263, 22);
+         this.btnClip06.Size = new System.Drawing.Size(268, 22);
          this.btnClip06.StyleController = this.layoutControl2;
          this.btnClip06.TabIndex = 10;
          this.btnClip06.Text = "simpleButton7";
@@ -269,7 +281,7 @@
          // 
          this.btnClip07.Location = new System.Drawing.Point(2, 184);
          this.btnClip07.Name = "btnClip07";
-         this.btnClip07.Size = new System.Drawing.Size(263, 22);
+         this.btnClip07.Size = new System.Drawing.Size(268, 22);
          this.btnClip07.StyleController = this.layoutControl2;
          this.btnClip07.TabIndex = 11;
          this.btnClip07.Text = "simpleButton8";
@@ -278,7 +290,7 @@
          // 
          this.btnClip08.Location = new System.Drawing.Point(2, 210);
          this.btnClip08.Name = "btnClip08";
-         this.btnClip08.Size = new System.Drawing.Size(263, 22);
+         this.btnClip08.Size = new System.Drawing.Size(268, 22);
          this.btnClip08.StyleController = this.layoutControl2;
          this.btnClip08.TabIndex = 12;
          this.btnClip08.Text = "simpleButton9";
@@ -287,7 +299,7 @@
          // 
          this.btnClip09.Location = new System.Drawing.Point(2, 236);
          this.btnClip09.Name = "btnClip09";
-         this.btnClip09.Size = new System.Drawing.Size(263, 22);
+         this.btnClip09.Size = new System.Drawing.Size(268, 22);
          this.btnClip09.StyleController = this.layoutControl2;
          this.btnClip09.TabIndex = 13;
          this.btnClip09.Text = "simpleButton10";
@@ -296,7 +308,7 @@
          // 
          this.btnClip10.Location = new System.Drawing.Point(2, 262);
          this.btnClip10.Name = "btnClip10";
-         this.btnClip10.Size = new System.Drawing.Size(263, 22);
+         this.btnClip10.Size = new System.Drawing.Size(268, 22);
          this.btnClip10.StyleController = this.layoutControl2;
          this.btnClip10.TabIndex = 14;
          this.btnClip10.Text = "simpleButton11";
@@ -305,7 +317,7 @@
          // 
          this.btnClip11.Location = new System.Drawing.Point(2, 288);
          this.btnClip11.Name = "btnClip11";
-         this.btnClip11.Size = new System.Drawing.Size(263, 22);
+         this.btnClip11.Size = new System.Drawing.Size(268, 22);
          this.btnClip11.StyleController = this.layoutControl2;
          this.btnClip11.TabIndex = 15;
          this.btnClip11.Text = "simpleButton12";
@@ -314,7 +326,7 @@
          // 
          this.btnClip12.Location = new System.Drawing.Point(2, 314);
          this.btnClip12.Name = "btnClip12";
-         this.btnClip12.Size = new System.Drawing.Size(263, 22);
+         this.btnClip12.Size = new System.Drawing.Size(268, 22);
          this.btnClip12.StyleController = this.layoutControl2;
          this.btnClip12.TabIndex = 16;
          this.btnClip12.Text = "simpleButton13";
@@ -323,7 +335,7 @@
          // 
          this.btnClip13.Location = new System.Drawing.Point(2, 340);
          this.btnClip13.Name = "btnClip13";
-         this.btnClip13.Size = new System.Drawing.Size(263, 22);
+         this.btnClip13.Size = new System.Drawing.Size(268, 22);
          this.btnClip13.StyleController = this.layoutControl2;
          this.btnClip13.TabIndex = 17;
          this.btnClip13.Text = "simpleButton14";
@@ -332,7 +344,7 @@
          // 
          this.btnClip14.Location = new System.Drawing.Point(2, 366);
          this.btnClip14.Name = "btnClip14";
-         this.btnClip14.Size = new System.Drawing.Size(263, 22);
+         this.btnClip14.Size = new System.Drawing.Size(268, 22);
          this.btnClip14.StyleController = this.layoutControl2;
          this.btnClip14.TabIndex = 18;
          this.btnClip14.Text = "simpleButton15";
@@ -341,7 +353,7 @@
          // 
          this.btnClip15.Location = new System.Drawing.Point(2, 392);
          this.btnClip15.Name = "btnClip15";
-         this.btnClip15.Size = new System.Drawing.Size(263, 22);
+         this.btnClip15.Size = new System.Drawing.Size(268, 22);
          this.btnClip15.StyleController = this.layoutControl2;
          this.btnClip15.TabIndex = 19;
          this.btnClip15.Text = "simpleButton16";
@@ -350,7 +362,7 @@
          // 
          this.btnClip16.Location = new System.Drawing.Point(2, 418);
          this.btnClip16.Name = "btnClip16";
-         this.btnClip16.Size = new System.Drawing.Size(263, 22);
+         this.btnClip16.Size = new System.Drawing.Size(268, 22);
          this.btnClip16.StyleController = this.layoutControl2;
          this.btnClip16.TabIndex = 20;
          this.btnClip16.Text = "simpleButton17";
@@ -359,7 +371,7 @@
          // 
          this.btnClip17.Location = new System.Drawing.Point(2, 444);
          this.btnClip17.Name = "btnClip17";
-         this.btnClip17.Size = new System.Drawing.Size(263, 22);
+         this.btnClip17.Size = new System.Drawing.Size(268, 22);
          this.btnClip17.StyleController = this.layoutControl2;
          this.btnClip17.TabIndex = 21;
          this.btnClip17.Text = "simpleButton18";
@@ -368,7 +380,7 @@
          // 
          this.btnClip18.Location = new System.Drawing.Point(2, 470);
          this.btnClip18.Name = "btnClip18";
-         this.btnClip18.Size = new System.Drawing.Size(263, 22);
+         this.btnClip18.Size = new System.Drawing.Size(268, 22);
          this.btnClip18.StyleController = this.layoutControl2;
          this.btnClip18.TabIndex = 22;
          this.btnClip18.Text = "simpleButton19";
@@ -377,7 +389,7 @@
          // 
          this.btnClip19.Location = new System.Drawing.Point(2, 496);
          this.btnClip19.Name = "btnClip19";
-         this.btnClip19.Size = new System.Drawing.Size(263, 22);
+         this.btnClip19.Size = new System.Drawing.Size(268, 22);
          this.btnClip19.StyleController = this.layoutControl2;
          this.btnClip19.TabIndex = 23;
          this.btnClip19.Text = "simpleButton20";
@@ -386,7 +398,7 @@
          // 
          this.btnClip20.Location = new System.Drawing.Point(2, 522);
          this.btnClip20.Name = "btnClip20";
-         this.btnClip20.Size = new System.Drawing.Size(263, 22);
+         this.btnClip20.Size = new System.Drawing.Size(268, 22);
          this.btnClip20.StyleController = this.layoutControl2;
          this.btnClip20.TabIndex = 24;
          this.btnClip20.Text = "simpleButton21";
@@ -395,7 +407,7 @@
          // 
          this.btnClip21.Location = new System.Drawing.Point(2, 548);
          this.btnClip21.Name = "btnClip21";
-         this.btnClip21.Size = new System.Drawing.Size(263, 22);
+         this.btnClip21.Size = new System.Drawing.Size(268, 22);
          this.btnClip21.StyleController = this.layoutControl2;
          this.btnClip21.TabIndex = 25;
          this.btnClip21.Text = "simpleButton22";
@@ -404,7 +416,7 @@
          // 
          this.btnClip22.Location = new System.Drawing.Point(2, 574);
          this.btnClip22.Name = "btnClip22";
-         this.btnClip22.Size = new System.Drawing.Size(263, 22);
+         this.btnClip22.Size = new System.Drawing.Size(268, 22);
          this.btnClip22.StyleController = this.layoutControl2;
          this.btnClip22.TabIndex = 26;
          this.btnClip22.Text = "simpleButton23";
@@ -413,7 +425,7 @@
          // 
          this.btnClip23.Location = new System.Drawing.Point(2, 600);
          this.btnClip23.Name = "btnClip23";
-         this.btnClip23.Size = new System.Drawing.Size(263, 22);
+         this.btnClip23.Size = new System.Drawing.Size(268, 22);
          this.btnClip23.StyleController = this.layoutControl2;
          this.btnClip23.TabIndex = 27;
          this.btnClip23.Text = "simpleButton24";
@@ -422,7 +434,7 @@
          // 
          this.btnClip24.Location = new System.Drawing.Point(2, 626);
          this.btnClip24.Name = "btnClip24";
-         this.btnClip24.Size = new System.Drawing.Size(263, 22);
+         this.btnClip24.Size = new System.Drawing.Size(268, 22);
          this.btnClip24.StyleController = this.layoutControl2;
          this.btnClip24.TabIndex = 28;
          this.btnClip24.Text = "simpleButton25";
@@ -431,7 +443,7 @@
          // 
          this.btnClip25.Location = new System.Drawing.Point(2, 652);
          this.btnClip25.Name = "btnClip25";
-         this.btnClip25.Size = new System.Drawing.Size(263, 22);
+         this.btnClip25.Size = new System.Drawing.Size(268, 22);
          this.btnClip25.StyleController = this.layoutControl2;
          this.btnClip25.TabIndex = 29;
          this.btnClip25.Text = "simpleButton26";
@@ -440,7 +452,7 @@
          // 
          this.btnClip26.Location = new System.Drawing.Point(2, 678);
          this.btnClip26.Name = "btnClip26";
-         this.btnClip26.Size = new System.Drawing.Size(263, 22);
+         this.btnClip26.Size = new System.Drawing.Size(268, 22);
          this.btnClip26.StyleController = this.layoutControl2;
          this.btnClip26.TabIndex = 30;
          this.btnClip26.Text = "simpleButton27";
@@ -449,7 +461,7 @@
          // 
          this.btnClip27.Location = new System.Drawing.Point(2, 704);
          this.btnClip27.Name = "btnClip27";
-         this.btnClip27.Size = new System.Drawing.Size(263, 22);
+         this.btnClip27.Size = new System.Drawing.Size(268, 22);
          this.btnClip27.StyleController = this.layoutControl2;
          this.btnClip27.TabIndex = 31;
          this.btnClip27.Text = "simpleButton28";
@@ -458,7 +470,7 @@
          // 
          this.btnClip28.Location = new System.Drawing.Point(2, 730);
          this.btnClip28.Name = "btnClip28";
-         this.btnClip28.Size = new System.Drawing.Size(263, 22);
+         this.btnClip28.Size = new System.Drawing.Size(268, 22);
          this.btnClip28.StyleController = this.layoutControl2;
          this.btnClip28.TabIndex = 32;
          this.btnClip28.Text = "simpleButton29";
@@ -467,7 +479,7 @@
          // 
          this.btnClip29.Location = new System.Drawing.Point(2, 756);
          this.btnClip29.Name = "btnClip29";
-         this.btnClip29.Size = new System.Drawing.Size(263, 22);
+         this.btnClip29.Size = new System.Drawing.Size(268, 22);
          this.btnClip29.StyleController = this.layoutControl2;
          this.btnClip29.TabIndex = 33;
          this.btnClip29.Text = "simpleButton30";
@@ -510,7 +522,7 @@
             this.layoutControlItem34});
          this.Root.Name = "Root";
          this.Root.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-         this.Root.Size = new System.Drawing.Size(267, 790);
+         this.Root.Size = new System.Drawing.Size(272, 790);
          this.Root.TextVisible = false;
          // 
          // layoutControlItem11
@@ -518,7 +530,7 @@
          this.layoutControlItem11.Control = this.btnClip00;
          this.layoutControlItem11.Location = new System.Drawing.Point(0, 0);
          this.layoutControlItem11.Name = "layoutControlItem11";
-         this.layoutControlItem11.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem11.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem11.TextVisible = false;
          // 
@@ -527,7 +539,7 @@
          this.layoutControlItem12.Control = this.btnClip01;
          this.layoutControlItem12.Location = new System.Drawing.Point(0, 26);
          this.layoutControlItem12.Name = "layoutControlItem12";
-         this.layoutControlItem12.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem12.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem12.TextVisible = false;
          // 
@@ -536,7 +548,7 @@
          this.layoutControlItem17.Control = this.btnClip02;
          this.layoutControlItem17.Location = new System.Drawing.Point(0, 52);
          this.layoutControlItem17.Name = "layoutControlItem17";
-         this.layoutControlItem17.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem17.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem17.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem17.TextVisible = false;
          // 
@@ -545,7 +557,7 @@
          this.layoutControlItem18.Control = this.btnClip03;
          this.layoutControlItem18.Location = new System.Drawing.Point(0, 78);
          this.layoutControlItem18.Name = "layoutControlItem18";
-         this.layoutControlItem18.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem18.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem18.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem18.TextVisible = false;
          // 
@@ -554,7 +566,7 @@
          this.layoutControlItem19.Control = this.btnClip04;
          this.layoutControlItem19.Location = new System.Drawing.Point(0, 104);
          this.layoutControlItem19.Name = "layoutControlItem19";
-         this.layoutControlItem19.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem19.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem19.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem19.TextVisible = false;
          // 
@@ -563,7 +575,7 @@
          this.layoutControlItem20.Control = this.btnClip05;
          this.layoutControlItem20.Location = new System.Drawing.Point(0, 130);
          this.layoutControlItem20.Name = "layoutControlItem20";
-         this.layoutControlItem20.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem20.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem20.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem20.TextVisible = false;
          // 
@@ -572,7 +584,7 @@
          this.layoutControlItem21.Control = this.btnClip06;
          this.layoutControlItem21.Location = new System.Drawing.Point(0, 156);
          this.layoutControlItem21.Name = "layoutControlItem21";
-         this.layoutControlItem21.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem21.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem21.TextVisible = false;
          // 
@@ -581,7 +593,7 @@
          this.layoutControlItem22.Control = this.btnClip07;
          this.layoutControlItem22.Location = new System.Drawing.Point(0, 182);
          this.layoutControlItem22.Name = "layoutControlItem22";
-         this.layoutControlItem22.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem22.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem22.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem22.TextVisible = false;
          // 
@@ -590,7 +602,7 @@
          this.layoutControlItem4.Control = this.btnClip08;
          this.layoutControlItem4.Location = new System.Drawing.Point(0, 208);
          this.layoutControlItem4.Name = "layoutControlItem4";
-         this.layoutControlItem4.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem4.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem4.TextVisible = false;
          // 
@@ -599,7 +611,7 @@
          this.layoutControlItem5.Control = this.btnClip09;
          this.layoutControlItem5.Location = new System.Drawing.Point(0, 234);
          this.layoutControlItem5.Name = "layoutControlItem5";
-         this.layoutControlItem5.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem5.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem5.TextVisible = false;
          // 
@@ -608,7 +620,7 @@
          this.layoutControlItem6.Control = this.btnClip10;
          this.layoutControlItem6.Location = new System.Drawing.Point(0, 260);
          this.layoutControlItem6.Name = "layoutControlItem6";
-         this.layoutControlItem6.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem6.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem6.TextVisible = false;
          // 
@@ -617,7 +629,7 @@
          this.emptySpaceItem1.AllowHotTrack = false;
          this.emptySpaceItem1.Location = new System.Drawing.Point(0, 780);
          this.emptySpaceItem1.Name = "emptySpaceItem1";
-         this.emptySpaceItem1.Size = new System.Drawing.Size(267, 10);
+         this.emptySpaceItem1.Size = new System.Drawing.Size(272, 10);
          this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
          // 
          // layoutControlItem7
@@ -625,7 +637,7 @@
          this.layoutControlItem7.Control = this.btnClip11;
          this.layoutControlItem7.Location = new System.Drawing.Point(0, 286);
          this.layoutControlItem7.Name = "layoutControlItem7";
-         this.layoutControlItem7.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem7.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem7.TextVisible = false;
          // 
@@ -634,7 +646,7 @@
          this.layoutControlItem8.Control = this.btnClip12;
          this.layoutControlItem8.Location = new System.Drawing.Point(0, 312);
          this.layoutControlItem8.Name = "layoutControlItem8";
-         this.layoutControlItem8.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem8.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem8.TextVisible = false;
          // 
@@ -643,7 +655,7 @@
          this.layoutControlItem9.Control = this.btnClip13;
          this.layoutControlItem9.Location = new System.Drawing.Point(0, 338);
          this.layoutControlItem9.Name = "layoutControlItem9";
-         this.layoutControlItem9.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem9.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem9.TextVisible = false;
          // 
@@ -652,7 +664,7 @@
          this.layoutControlItem13.Control = this.btnClip14;
          this.layoutControlItem13.Location = new System.Drawing.Point(0, 364);
          this.layoutControlItem13.Name = "layoutControlItem13";
-         this.layoutControlItem13.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem13.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem13.TextVisible = false;
          // 
@@ -661,7 +673,7 @@
          this.layoutControlItem14.Control = this.btnClip15;
          this.layoutControlItem14.Location = new System.Drawing.Point(0, 390);
          this.layoutControlItem14.Name = "layoutControlItem14";
-         this.layoutControlItem14.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem14.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem14.TextVisible = false;
          // 
@@ -670,7 +682,7 @@
          this.layoutControlItem15.Control = this.btnClip16;
          this.layoutControlItem15.Location = new System.Drawing.Point(0, 416);
          this.layoutControlItem15.Name = "layoutControlItem15";
-         this.layoutControlItem15.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem15.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem15.TextVisible = false;
          // 
@@ -679,7 +691,7 @@
          this.layoutControlItem23.Control = this.btnClip17;
          this.layoutControlItem23.Location = new System.Drawing.Point(0, 442);
          this.layoutControlItem23.Name = "layoutControlItem23";
-         this.layoutControlItem23.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem23.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem23.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem23.TextVisible = false;
          // 
@@ -688,7 +700,7 @@
          this.layoutControlItem24.Control = this.btnClip18;
          this.layoutControlItem24.Location = new System.Drawing.Point(0, 468);
          this.layoutControlItem24.Name = "layoutControlItem24";
-         this.layoutControlItem24.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem24.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem24.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem24.TextVisible = false;
          // 
@@ -697,7 +709,7 @@
          this.layoutControlItem16.Control = this.btnClip19;
          this.layoutControlItem16.Location = new System.Drawing.Point(0, 494);
          this.layoutControlItem16.Name = "layoutControlItem16";
-         this.layoutControlItem16.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem16.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem16.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem16.TextVisible = false;
          // 
@@ -706,7 +718,7 @@
          this.layoutControlItem25.Control = this.btnClip20;
          this.layoutControlItem25.Location = new System.Drawing.Point(0, 520);
          this.layoutControlItem25.Name = "layoutControlItem25";
-         this.layoutControlItem25.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem25.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem25.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem25.TextVisible = false;
          // 
@@ -715,7 +727,7 @@
          this.layoutControlItem26.Control = this.btnClip21;
          this.layoutControlItem26.Location = new System.Drawing.Point(0, 546);
          this.layoutControlItem26.Name = "layoutControlItem26";
-         this.layoutControlItem26.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem26.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem26.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem26.TextVisible = false;
          // 
@@ -724,7 +736,7 @@
          this.layoutControlItem27.Control = this.btnClip22;
          this.layoutControlItem27.Location = new System.Drawing.Point(0, 572);
          this.layoutControlItem27.Name = "layoutControlItem27";
-         this.layoutControlItem27.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem27.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem27.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem27.TextVisible = false;
          // 
@@ -733,7 +745,7 @@
          this.layoutControlItem28.Control = this.btnClip23;
          this.layoutControlItem28.Location = new System.Drawing.Point(0, 598);
          this.layoutControlItem28.Name = "layoutControlItem28";
-         this.layoutControlItem28.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem28.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem28.TextVisible = false;
          // 
@@ -742,7 +754,7 @@
          this.layoutControlItem29.Control = this.btnClip24;
          this.layoutControlItem29.Location = new System.Drawing.Point(0, 624);
          this.layoutControlItem29.Name = "layoutControlItem29";
-         this.layoutControlItem29.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem29.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem29.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem29.TextVisible = false;
          // 
@@ -751,7 +763,7 @@
          this.layoutControlItem30.Control = this.btnClip25;
          this.layoutControlItem30.Location = new System.Drawing.Point(0, 650);
          this.layoutControlItem30.Name = "layoutControlItem30";
-         this.layoutControlItem30.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem30.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem30.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem30.TextVisible = false;
          // 
@@ -760,7 +772,7 @@
          this.layoutControlItem31.Control = this.btnClip26;
          this.layoutControlItem31.Location = new System.Drawing.Point(0, 676);
          this.layoutControlItem31.Name = "layoutControlItem31";
-         this.layoutControlItem31.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem31.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem31.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem31.TextVisible = false;
          // 
@@ -769,7 +781,7 @@
          this.layoutControlItem32.Control = this.btnClip27;
          this.layoutControlItem32.Location = new System.Drawing.Point(0, 702);
          this.layoutControlItem32.Name = "layoutControlItem32";
-         this.layoutControlItem32.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem32.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem32.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem32.TextVisible = false;
          // 
@@ -778,7 +790,7 @@
          this.layoutControlItem33.Control = this.btnClip28;
          this.layoutControlItem33.Location = new System.Drawing.Point(0, 728);
          this.layoutControlItem33.Name = "layoutControlItem33";
-         this.layoutControlItem33.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem33.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem33.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem33.TextVisible = false;
          // 
@@ -787,13 +799,13 @@
          this.layoutControlItem34.Control = this.btnClip29;
          this.layoutControlItem34.Location = new System.Drawing.Point(0, 754);
          this.layoutControlItem34.Name = "layoutControlItem34";
-         this.layoutControlItem34.Size = new System.Drawing.Size(267, 26);
+         this.layoutControlItem34.Size = new System.Drawing.Size(272, 26);
          this.layoutControlItem34.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem34.TextVisible = false;
          // 
          // btnApply
          // 
-         this.btnApply.Location = new System.Drawing.Point(385, 277);
+         this.btnApply.Location = new System.Drawing.Point(394, 334);
          this.btnApply.Name = "btnApply";
          this.btnApply.Size = new System.Drawing.Size(80, 22);
          this.btnApply.StyleController = this.layoutControl1;
@@ -804,7 +816,7 @@
          // btnCancel
          // 
          this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-         this.btnCancel.Location = new System.Drawing.Point(480, 277);
+         this.btnCancel.Location = new System.Drawing.Point(489, 334);
          this.btnCancel.Name = "btnCancel";
          this.btnCancel.Size = new System.Drawing.Size(85, 22);
          this.btnCancel.StyleController = this.layoutControl1;
@@ -815,9 +827,29 @@
          // 
          this.memTokens.Location = new System.Drawing.Point(12, 12);
          this.memTokens.Name = "memTokens";
-         this.memTokens.Size = new System.Drawing.Size(265, 261);
+         this.memTokens.Size = new System.Drawing.Size(269, 318);
          this.memTokens.StyleController = this.layoutControl1;
          this.memTokens.TabIndex = 6;
+         // 
+         // btnSave
+         // 
+         this.btnSave.Location = new System.Drawing.Point(285, 334);
+         this.btnSave.Name = "btnSave";
+         this.btnSave.Size = new System.Drawing.Size(91, 22);
+         this.btnSave.StyleController = this.layoutControl1;
+         this.btnSave.TabIndex = 21;
+         this.btnSave.Text = "Save";
+         this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+         // 
+         // btnOpen
+         // 
+         this.btnOpen.Location = new System.Drawing.Point(181, 334);
+         this.btnOpen.Name = "btnOpen";
+         this.btnOpen.Size = new System.Drawing.Size(85, 22);
+         this.btnOpen.StyleController = this.layoutControl1;
+         this.btnOpen.TabIndex = 22;
+         this.btnOpen.Text = "Open";
+         this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
          // 
          // layoutControlGroup1
          // 
@@ -827,17 +859,21 @@
             this.layoutControlItem2,
             this.layoutControlItem3,
             this.emptySpaceItem2,
-            this.emptySpaceItem3,
             this.layoutControlItem1,
-            this.layoutControlItem10});
+            this.layoutControlItem10,
+            this.layoutControlItem35,
+            this.emptySpaceItem4,
+            this.layoutControlItem36,
+            this.emptySpaceItem3,
+            this.emptySpaceItem5});
          this.layoutControlGroup1.Name = "Root";
-         this.layoutControlGroup1.Size = new System.Drawing.Size(577, 311);
+         this.layoutControlGroup1.Size = new System.Drawing.Size(586, 368);
          this.layoutControlGroup1.TextVisible = false;
          // 
          // layoutControlItem2
          // 
          this.layoutControlItem2.Control = this.btnCancel;
-         this.layoutControlItem2.Location = new System.Drawing.Point(468, 265);
+         this.layoutControlItem2.Location = new System.Drawing.Point(477, 322);
          this.layoutControlItem2.MaxSize = new System.Drawing.Size(89, 26);
          this.layoutControlItem2.MinSize = new System.Drawing.Size(89, 26);
          this.layoutControlItem2.Name = "layoutControlItem2";
@@ -849,7 +885,7 @@
          // layoutControlItem3
          // 
          this.layoutControlItem3.Control = this.btnApply;
-         this.layoutControlItem3.Location = new System.Drawing.Point(373, 265);
+         this.layoutControlItem3.Location = new System.Drawing.Point(382, 322);
          this.layoutControlItem3.MaxSize = new System.Drawing.Size(84, 26);
          this.layoutControlItem3.MinSize = new System.Drawing.Size(84, 26);
          this.layoutControlItem3.Name = "layoutControlItem3";
@@ -861,7 +897,7 @@
          // emptySpaceItem2
          // 
          this.emptySpaceItem2.AllowHotTrack = false;
-         this.emptySpaceItem2.Location = new System.Drawing.Point(457, 265);
+         this.emptySpaceItem2.Location = new System.Drawing.Point(466, 322);
          this.emptySpaceItem2.MaxSize = new System.Drawing.Size(11, 26);
          this.emptySpaceItem2.MinSize = new System.Drawing.Size(11, 26);
          this.emptySpaceItem2.Name = "emptySpaceItem2";
@@ -869,20 +905,12 @@
          this.emptySpaceItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
          this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
          // 
-         // emptySpaceItem3
-         // 
-         this.emptySpaceItem3.AllowHotTrack = false;
-         this.emptySpaceItem3.Location = new System.Drawing.Point(0, 265);
-         this.emptySpaceItem3.Name = "emptySpaceItem3";
-         this.emptySpaceItem3.Size = new System.Drawing.Size(373, 26);
-         this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
-         // 
          // layoutControlItem1
          // 
          this.layoutControlItem1.Control = this.memTokens;
          this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
          this.layoutControlItem1.Name = "layoutControlItem1";
-         this.layoutControlItem1.Size = new System.Drawing.Size(269, 265);
+         this.layoutControlItem1.Size = new System.Drawing.Size(273, 322);
          this.layoutControlItem1.Text = "Tokens";
          this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem1.TextVisible = false;
@@ -890,19 +918,61 @@
          // layoutControlItem10
          // 
          this.layoutControlItem10.Control = this.layoutControl2;
-         this.layoutControlItem10.Location = new System.Drawing.Point(269, 0);
+         this.layoutControlItem10.Location = new System.Drawing.Point(273, 0);
          this.layoutControlItem10.MinSize = new System.Drawing.Size(24, 24);
          this.layoutControlItem10.Name = "layoutControlItem10";
-         this.layoutControlItem10.Size = new System.Drawing.Size(288, 265);
+         this.layoutControlItem10.Size = new System.Drawing.Size(293, 322);
          this.layoutControlItem10.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
          this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem10.TextVisible = false;
+         // 
+         // layoutControlItem35
+         // 
+         this.layoutControlItem35.Control = this.btnSave;
+         this.layoutControlItem35.Location = new System.Drawing.Point(273, 322);
+         this.layoutControlItem35.Name = "layoutControlItem35";
+         this.layoutControlItem35.Size = new System.Drawing.Size(95, 26);
+         this.layoutControlItem35.TextSize = new System.Drawing.Size(0, 0);
+         this.layoutControlItem35.TextVisible = false;
+         // 
+         // emptySpaceItem4
+         // 
+         this.emptySpaceItem4.AllowHotTrack = false;
+         this.emptySpaceItem4.Location = new System.Drawing.Point(368, 322);
+         this.emptySpaceItem4.Name = "emptySpaceItem4";
+         this.emptySpaceItem4.Size = new System.Drawing.Size(14, 26);
+         this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
+         // 
+         // layoutControlItem36
+         // 
+         this.layoutControlItem36.Control = this.btnOpen;
+         this.layoutControlItem36.Location = new System.Drawing.Point(169, 322);
+         this.layoutControlItem36.Name = "layoutControlItem36";
+         this.layoutControlItem36.Size = new System.Drawing.Size(89, 26);
+         this.layoutControlItem36.TextSize = new System.Drawing.Size(0, 0);
+         this.layoutControlItem36.TextVisible = false;
+         // 
+         // emptySpaceItem3
+         // 
+         this.emptySpaceItem3.AllowHotTrack = false;
+         this.emptySpaceItem3.Location = new System.Drawing.Point(0, 322);
+         this.emptySpaceItem3.Name = "emptySpaceItem3";
+         this.emptySpaceItem3.Size = new System.Drawing.Size(169, 26);
+         this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
+         // 
+         // emptySpaceItem5
+         // 
+         this.emptySpaceItem5.AllowHotTrack = false;
+         this.emptySpaceItem5.Location = new System.Drawing.Point(258, 322);
+         this.emptySpaceItem5.Name = "emptySpaceItem5";
+         this.emptySpaceItem5.Size = new System.Drawing.Size(15, 26);
+         this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
          // 
          // Frm_ClipboardHelper
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(577, 311);
+         this.ClientSize = new System.Drawing.Size(586, 368);
          this.Controls.Add(this.layoutControl1);
          this.MaximizeBox = false;
          this.Name = "Frm_ClipboardHelper";
@@ -950,9 +1020,13 @@
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem35)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem36)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
          this.ResumeLayout(false);
 
       }
@@ -1032,5 +1106,11 @@
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem32;
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem33;
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem34;
+      private DevExpress.XtraEditors.SimpleButton btnSave;
+      private DevExpress.XtraEditors.SimpleButton btnOpen;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem35;
+      private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem36;
+      private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem5;
    }
 }

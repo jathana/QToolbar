@@ -17,6 +17,7 @@ using System.Collections.Specialized;
 using DiffPlex.DiffBuilder;
 using DiffPlex;
 using DiffPlex.DiffBuilder.Model;
+using System.Collections;
 
 namespace QToolbar.Forms
 {
@@ -261,9 +262,10 @@ namespace QToolbar.Forms
             string table = arg.Item2;
             string field = arg.Item1;
             StringBuilder b = new StringBuilder();
+            StringBuilder tmpBuilder = new StringBuilder();
 
             // dev dbs, including current
-            var devdbs = _DBs.Where(d => OptionsInstance.DevSQLInstances.Contains(d.Server) &&
+            var devdbs = _DBs.Where(d => OptionsInstance.DevSQLInstances.ToLower().Contains(d.Server.ToLower()) &&
                                       d.Database.ToLower().StartsWith("qbcollection_plus_")).OrderByDescending(d=>d.DatabaseSortName).ToList();
 
             Dictionary<string, Tuple<DataTable, string>> data = new Dictionary<string, Tuple<DataTable, string>>();
@@ -301,26 +303,29 @@ namespace QToolbar.Forms
             // find table differences against current's version
             DataTable currentTable = data[currentDB.Database].Item1;
             string currentScript = data[currentDB.Database].Item2;
-
+            bool diffFound = false;
             foreach (KeyValuePair<string, Tuple<DataTable, string>> pair in data.Where(c=>c.Key!=currentDB.Database))
             {
                workerGenerateSQL.ReportProgress(0, $"Processing ({pair.Key})");
-               b.AppendLine();
-               b.AppendLine($"-- db:{pair.Key}, table:{table}");
+               diffFound = false;
+               tmpBuilder.Clear();
+               tmpBuilder.AppendLine();
+               tmpBuilder.AppendLine($"-- db:{pair.Key}, table:{table}");
 
                if (pair.Value.Item1 != null)
                {
                   string tableScript = pair.Value.Item2;
 
                   var differ = new Differ();
-                  var charDiffs=differ.CreateCharacterDiffs(tableScript, currentScript, true);
+                  var charDiffs=differ.CreateCharacterDiffs(tableScript, currentScript, true, true);
+                  
                   if (charDiffs.DiffBlocks.Count > 0)
                   {
-                     b.AppendLine();
-                     b.AppendLine($"USE [{pair.Key}]");
-                     b.AppendLine("GO");
-                     b.AppendLine();
-                     b.AppendLine($"ALTER TABLE {table} ADD ");
+                     tmpBuilder.AppendLine();
+                     tmpBuilder.AppendLine($"USE [{pair.Key}]");
+                     tmpBuilder.AppendLine("GO");
+                     tmpBuilder.AppendLine();
+                     tmpBuilder.AppendLine($"ALTER TABLE {table} ADD ");
                   }
                   string blockScript = string.Empty;
                   StringBuilder fb = new StringBuilder(); 
@@ -348,8 +353,9 @@ namespace QToolbar.Forms
                         {
                            line = linesFound[0].ToString().Trim();
                            line = line.RemoveAtEnd(",");
-                           b.AppendLine($"  {separator}{line}");
+                           tmpBuilder.AppendLine($"  {separator}{line}");
                            separator = ",";
+                           diffFound = true;
                         }
                      }
                      if (fieldToScript.ToLower().Equals(lkpField.EditValue.ToString().ToLower()))
@@ -360,9 +366,14 @@ namespace QToolbar.Forms
 
                   if (charDiffs.DiffBlocks.Count > 0)
                   {
-                     b.AppendLine();
-                     b.AppendLine("GO");
-                     b.AppendLine();
+                     tmpBuilder.AppendLine();
+                     tmpBuilder.AppendLine("GO");
+                     tmpBuilder.AppendLine();
+                  }
+
+                  if(diffFound)
+                  {
+                     b.Append(tmpBuilder.ToString());
                   }
                }
                else
@@ -419,9 +430,9 @@ namespace QToolbar.Forms
       private void LoadDevDBs()
       {
 
-         var devdbs = _DBs.Where(d => OptionsInstance.DevSQLInstances.Contains(d.Server) &&
+         var devdbs = _DBs.Where(d => OptionsInstance.DevSQLInstances.ToLower().Contains(d.Server.ToLower()) &&
                                       d.Database.ToLower().StartsWith("qbcollection_plus_") &&
-                                      d.Database != _Info.Database).Select(c => new { DATABASE = c.Database, CON_INFO = c }).ToList();
+                                      d.Database.ToLower() != _Info.Database.ToLower()).Select(c => new { DATABASE = c.Database, CON_INFO = c }).ToList();
 
          lkpDatabase.Properties.DataSource = devdbs;
       }

@@ -98,6 +98,57 @@ namespace QToolbar.Plugins.ClipboardHelper
             }
          }
       }
+
+      private void btnOpen_Click(object sender, EventArgs e)
+      {
+         var fileContent = string.Empty;
+         var filePath = string.Empty;
+
+         using (OpenFileDialog openFileDialog = new OpenFileDialog())
+         {
+            openFileDialog.InitialDirectory = "c:\\";
+            openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog.FilterIndex = 2;
+            openFileDialog.RestoreDirectory = true;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+               //Get the path of specified file
+               filePath = openFileDialog.FileName;
+
+               //Read the contents of the file into a stream
+               var fileStream = openFileDialog.OpenFile();
+
+               using (StreamReader reader = new StreamReader(fileStream))
+               {
+                 memTokens.Text = reader.ReadToEnd();
+               }
+            }
+         }
+
+      }
+
+      private void btnSave_Click(object sender, EventArgs e)
+      {
+         SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+         saveFileDialog1.InitialDirectory = @"C:\";      
+         saveFileDialog1.Title = "Save text Files";
+         saveFileDialog1.CheckFileExists = true;
+         saveFileDialog1.CheckPathExists = true;
+         saveFileDialog1.DefaultExt = "txt";
+         saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+         saveFileDialog1.FilterIndex = 2;
+         saveFileDialog1.RestoreDirectory = true;
+         saveFileDialog1.FileName = "clipboard";
+         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+         {
+            using (StreamWriter sw = File.AppendText(saveFileDialog1.FileName))
+            {
+               sw.Write(memTokens.Text);
+               
+            }
+         }
+      }
    }
 
 }

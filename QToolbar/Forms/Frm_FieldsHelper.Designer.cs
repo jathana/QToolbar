@@ -131,7 +131,7 @@
         '\''};
          this.txtGenerateSQL.AutoIndentCharsPatterns = "";
          this.txtGenerateSQL.AutoIndentExistingLines = false;
-         this.txtGenerateSQL.AutoScrollMinSize = new System.Drawing.Size(2, 15);
+         this.txtGenerateSQL.AutoScrollMinSize = new System.Drawing.Size(32, 15);
          this.txtGenerateSQL.BackBrush = null;
          this.txtGenerateSQL.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
          this.txtGenerateSQL.CharHeight = 15;
@@ -175,7 +175,7 @@
          this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
          this.layoutControl2.Location = new System.Drawing.Point(2, 2);
          this.layoutControl2.Name = "layoutControl2";
-         this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(741, 474, 450, 400);
+         this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(960, 290, 820, 632);
          this.layoutControl2.Root = this.layoutControlGroup2;
          this.layoutControl2.Size = new System.Drawing.Size(762, 145);
          this.layoutControl2.TabIndex = 0;
