@@ -92,21 +92,21 @@ namespace QToolbar
          ribbonControl1.Enabled = false;
          Task.Run(() =>
          {
-            //_DatabaseScripterButton.CreateMenuItems();
-            //_DesignersButton.CreateMenuItems();
-            //_EnvironmentsConfigurationButton.CreateMenuItems();
-            //_ExecutorConfiguratorButton.CreateMenuItems();
-            //_FieldsExplorerButton.CreateMenuItems();
-            //_FoldersButton.CreateMenuItems();
-            //_InternalBuildsButton.CreateMenuItems();
-            //_LegalLinksButton.CreateMenuItems();
-            //_NextBuildButton.CreateMenuItems();
-            //_QCSAdminButton.CreateMenuItems();
-            //_QCSAdminCFsButton.CreateMenuItems();
-            //_QCSAgentButton.CreateMenuItems();
-            //_ShellCommandsButton.CreateMenuItems();
-            //_DesignersLocalButton.CreateMenuItems();
-            //_PluginsButton.CreateMenuItems();
+            _DatabaseScripterButton.CreateMenuItems();
+            _DesignersButton.CreateMenuItems();
+            _EnvironmentsConfigurationButton.CreateMenuItems();
+            _ExecutorConfiguratorButton.CreateMenuItems();
+            _FieldsExplorerButton.CreateMenuItems();
+            _FoldersButton.CreateMenuItems();
+            _InternalBuildsButton.CreateMenuItems();
+            _LegalLinksButton.CreateMenuItems();
+            _NextBuildButton.CreateMenuItems();
+            _QCSAdminButton.CreateMenuItems();
+            _QCSAdminCFsButton.CreateMenuItems();
+            _QCSAgentButton.CreateMenuItems();
+            _ShellCommandsButton.CreateMenuItems();
+            _DesignersLocalButton.CreateMenuItems();
+            _PluginsButton.CreateMenuItems();
          }).ContinueWith((x) =>
          {
             _SyncContext.Post((input) =>
