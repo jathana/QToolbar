@@ -823,7 +823,7 @@ namespace QToolbar.Forms
          // clear links
          mnuDevDBs.ClearLinks();
 
-         var devdbs = _DBs.Where(d => OptionsInstance.DevSQLInstances.Contains(d.Server) && 
+         var devdbs = _DBs.Where(d => OptionsInstance.DevSQLInstances.ToLower().Contains(d.Server.ToLower()) && 
                                       d.Database.ToLower().StartsWith("qbcollection_plus_") &&
                                       d.Database!=_Info.Database).ToList();
 
