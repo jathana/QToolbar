@@ -212,8 +212,12 @@
     <Compile Include="Helpers\ErrorType.cs" />
     <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="Helpers\MultiSqlExecutor.cs" />
+    <Compile Include="Helpers\WebAPISiteInfo.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Helpers\WebServerHelper.cs" />
+    <Compile Include="Helpers\WebSiteInfo.cs" />
+    <Compile Include="Helpers\WebSiteInfoEventArgs.cs" />
     <Compile Include="Options\EnvCFs.cs" />
     <Compile Include="Plugins\CFsValidator\CfFileValidationEventArgs.cs" />
     <Compile Include="Plugins\CFsValidator\CFsValidator.cs" />
@@ -223,6 +227,13 @@
     </Compile>
     <Compile Include="Plugins\CFsValidator\Frm_CFsValidator.Designer.cs">
       <DependentUpon>Frm_CFsValidator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\WebSitesInfo\WebSitesInfoPlugin.cs" />
+    <Compile Include="Plugins\WebSitesInfo\Frm_WebSitesInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\WebSitesInfo\Frm_WebSitesInfo.Designer.cs">
+      <DependentUpon>Frm_WebSitesInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Plugins\Environments\EnvInfoEventArgs.cs" />
     <Compile Include="Plugins\Environments\EnvironmentsInfoPlugin.cs" />
@@ -399,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Plugins\CFsValidator\Frm_CFsValidator.resx">
       <DependentUpon>Frm_CFsValidator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\WebSitesInfo\Frm_WebSitesInfo.resx">
+      <DependentUpon>Frm_WebSitesInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Plugins\Environments\Frm_Environments.resx">
       <DependentUpon>Frm_Environments.cs</DependentUpon>
