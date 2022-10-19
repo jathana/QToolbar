@@ -1,6 +1,7 @@
 ﻿using Microsoft.Web.Administration;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -12,75 +13,78 @@ namespace QToolbar.Helpers
    {
       // QCRWebAPI_X_Y_Z
       private const string WEB_API_NAME_PATTERN = "QCRWebAPI[_][0-9]+[_][0-9]+[_]*[0-9]*";
+      private const string IDENTITY_SERVER_PATTERN = "IdentityServer[_][0-9]+[_][0-9]+[_]*[0-9]*";
 
 
-      public List<WebSiteInfo> WebSites = new List<WebSiteInfo>();
+      public List<WebSiteInfo> WebSites { get; }
 
       #region events
       public delegate void WebSiteInfoCollectedEventHandler(object sender, WebSiteInfoEventArgs args);
       public event WebSiteInfoCollectedEventHandler WebSiteInfoCollected;
       #endregion
 
-      private string _Host;
-      public void LoadInfo(string host)
+
+
+      public WebServerHelper()
+      {
+         WebSites = new List<WebSiteInfo>();
+   }
+      /// <summary>
+      /// comma separated hosts list
+      /// </summary>
+      private string _HostsList;
+      public void LoadInfo(string hostsList)
       {
 
          WebSites.Clear();
          Regex reg = new Regex(WEB_API_NAME_PATTERN);
-         _Host = host;
+         _HostsList = hostsList;
+
+         List<string> hosts = _HostsList.Split(',').ToList<string>();
+         foreach(string host in hosts)
+         {
+            LoadInfoInternal(host);
+         }
+      }
+
+      private void OnWebSiteInfoCollected(WebSiteInfoEventArgs args)
+      {
+         if (WebSiteInfoCollected != null)
+         {
+            WebSiteInfoCollected(this, args);
+         }
+      }
+
+      private void LoadInfoInternal(string host)
+      {
+         
+         Regex webAPIReg = new Regex(WEB_API_NAME_PATTERN);
+         Regex identityReg = new Regex(IDENTITY_SERVER_PATTERN);
+
+
+         Regex allReg = new Regex($"{WEB_API_NAME_PATTERN}|{IDENTITY_SERVER_PATTERN}");
+
          try
          {
-
-            // add cfs from web server
-
-            using (ServerManager mgr = ServerManager.OpenRemote(_Host))
+            using (ServerManager mgr = ServerManager.OpenRemote(host))
             {
-               foreach (var s in mgr.Sites)
+               foreach (var site in mgr.Sites.Where(x=>allReg.IsMatch(x.Name)))  // enrich regex to filter sites
                {
                   try
                   {
-                     //if (s.Bindings != null && s.Bindings.Count > 0 && (s.Bindings[0]).EndPoint != null && (s.Bindings[0]).EndPoint.Port.ToString().Equals(objEnv.AppWSUrlPort) && s.Name.StartsWith(envNameInWeb))
-                     if (s.Bindings != null && s.Bindings.Count > 0 && (s.Bindings[0]).EndPoint != null &&  reg.IsMatch(s.Name))
+                     if (site.Bindings != null && site.Bindings.Count > 0 && (site.Bindings[0]).EndPoint != null)
                      {
-                        WebAPISiteInfo siteInfo = new WebAPISiteInfo()
+                        if (webAPIReg.IsMatch(site.Name))
                         {
-                           Host = _Host,
-                           Name = s.Name,
-                           Port = (s.Bindings[0]).EndPoint.Port.ToString(),
-                           Protocol = s.Bindings[0].Protocol
-                        };
-                        
-                        WebSites.Add(siteInfo);
-                        OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
+                           WebAPISiteInfo siteInfo = new WebAPISiteInfo(host, site);
+                           WebSites.Add(siteInfo);
+                           OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));                           
+                        }
 
-                        //string qcwsPhPath = null;
-                        //string toolkitPhPath = null;
-                        //foreach (var a in s.Applications)
-                        //{
-                        //   var qcwsVDir = a.VirtualDirectories.FirstOrDefault(v => v.PhysicalPath.Contains("\\Qualco\\QCSWS"));
-                        //   if (qcwsVDir != null)
-                        //   {
-                        //      qcwsPhPath = qcwsVDir.PhysicalPath;
-                        //      QEnvironment.CfInfo cfInfo = new QEnvironment.CfInfo();
-                        //      cfInfo.Name = "qbc.cf";
-                        //      cfInfo.Repository = "QC";
-                        //      cfInfo.Path = $"\\\\{webServer.Host}\\{qcwsPhPath.Replace(":", "$")}\\qbc.cf";
-                        //      objEnv.CFs.Add(cfInfo);
-                        //   }
-
-
-                        //   var toolkitVDir = a.VirtualDirectories.FirstOrDefault(v => v.PhysicalPath.Contains("\\Qualco\\SCToolkitWS"));
-                        //   if (toolkitVDir != null)
-                        //   {
-                        //      toolkitPhPath = toolkitVDir.PhysicalPath;
-                        //      QEnvironment.CfInfo cfInfo = new QEnvironment.CfInfo();
-                        //      cfInfo.Name = "qbc.cf";
-                        //      cfInfo.Repository = "QC";
-                        //      cfInfo.Path = $"\\\\{webServer.Host}\\{toolkitPhPath.Replace(":", "$")}\\qbc.cf";
-                        //      objEnv.CFs.Add(cfInfo);
-
-                        //   }
-                        //}
+                        if (identityReg.IsMatch(site.Name))
+                        {
+                           
+                        }
                      }
                   }
                   catch (Exception ex)
@@ -97,12 +101,7 @@ namespace QToolbar.Helpers
          }
       }
 
-      private void OnWebSiteInfoCollected(WebSiteInfoEventArgs args)
-      {
-         if (WebSiteInfoCollected != null)
-         {
-            WebSiteInfoCollected(this, args);
-         }
-      }
+
+      
    }
 }

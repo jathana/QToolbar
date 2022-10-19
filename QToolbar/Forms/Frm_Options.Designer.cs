@@ -96,6 +96,8 @@
          this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
          this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
          this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+         this.txtQCWebServers = new DevExpress.XtraEditors.TextEdit();
+         this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
          this.layoutControl1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.txtDevSQLInstances.Properties)).BeginInit();
@@ -160,6 +162,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtQCWebServers.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
          this.SuspendLayout();
          // 
          // layoutControl1
@@ -180,6 +184,7 @@
          this.layoutControl1.Controls.Add(this.numMaxMenuItems);
          this.layoutControl1.Controls.Add(this.txtClearValuesFromCFs);
          this.layoutControl1.Controls.Add(this.txtQASQLInstances);
+         this.layoutControl1.Controls.Add(this.txtQCWebServers);
          this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
          this.layoutControl1.Location = new System.Drawing.Point(0, 0);
          this.layoutControl1.Name = "layoutControl1";
@@ -241,9 +246,9 @@
          // 
          // memFolders
          // 
-         this.memFolders.Location = new System.Drawing.Point(159, 368);
+         this.memFolders.Location = new System.Drawing.Point(159, 392);
          this.memFolders.Name = "memFolders";
-         this.memFolders.Size = new System.Drawing.Size(649, 75);
+         this.memFolders.Size = new System.Drawing.Size(649, 51);
          this.memFolders.StyleController = this.layoutControl1;
          this.memFolders.TabIndex = 15;
          // 
@@ -353,7 +358,7 @@
          // 
          // txtClearValuesFromCFs
          // 
-         this.txtClearValuesFromCFs.Location = new System.Drawing.Point(159, 344);
+         this.txtClearValuesFromCFs.Location = new System.Drawing.Point(159, 368);
          this.txtClearValuesFromCFs.Name = "txtClearValuesFromCFs";
          this.txtClearValuesFromCFs.Size = new System.Drawing.Size(649, 20);
          this.txtClearValuesFromCFs.StyleController = this.layoutControl1;
@@ -394,7 +399,8 @@
             this.layoutControlItem16,
             this.layoutControlItem18,
             this.layoutControlItem17,
-            this.layoutControlItem19});
+            this.layoutControlItem19,
+            this.layoutControlItem20});
          this.layoutControlGroup1.Name = "Root";
          this.layoutControlGroup1.Size = new System.Drawing.Size(820, 456);
          this.layoutControlGroup1.TextVisible = false;
@@ -530,9 +536,9 @@
          // layoutControlItem11
          // 
          this.layoutControlItem11.Control = this.memFolders;
-         this.layoutControlItem11.Location = new System.Drawing.Point(0, 356);
+         this.layoutControlItem11.Location = new System.Drawing.Point(0, 380);
          this.layoutControlItem11.Name = "layoutControlItem11";
-         this.layoutControlItem11.Size = new System.Drawing.Size(800, 79);
+         this.layoutControlItem11.Size = new System.Drawing.Size(800, 55);
          this.layoutControlItem11.Text = "My Folders";
          this.layoutControlItem11.TextSize = new System.Drawing.Size(144, 13);
          // 
@@ -596,7 +602,7 @@
          // layoutControlItem17
          // 
          this.layoutControlItem17.Control = this.txtClearValuesFromCFs;
-         this.layoutControlItem17.Location = new System.Drawing.Point(0, 332);
+         this.layoutControlItem17.Location = new System.Drawing.Point(0, 356);
          this.layoutControlItem17.Name = "layoutControlItem17";
          this.layoutControlItem17.Size = new System.Drawing.Size(800, 24);
          this.layoutControlItem17.Text = "Clear Values From CFs";
@@ -870,6 +876,25 @@
          this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem3.TextVisible = false;
          // 
+         // txtQCWebServers
+         // 
+         this.txtQCWebServers.Location = new System.Drawing.Point(159, 344);
+         this.txtQCWebServers.Name = "txtQCWebServers";
+         this.txtQCWebServers.Size = new System.Drawing.Size(649, 20);
+         this.txtQCWebServers.StyleController = this.layoutControl1;
+         this.txtQCWebServers.TabIndex = 24;
+         // 
+         // layoutControlItem20
+         // 
+         this.layoutControlItem20.Control = this.txtQCWebServers;
+         this.layoutControlItem20.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+         this.layoutControlItem20.CustomizationFormText = "QA SQL Instances";
+         this.layoutControlItem20.Location = new System.Drawing.Point(0, 332);
+         this.layoutControlItem20.Name = "layoutControlItem20";
+         this.layoutControlItem20.Size = new System.Drawing.Size(800, 24);
+         this.layoutControlItem20.Text = "QC Web Servers";
+         this.layoutControlItem20.TextSize = new System.Drawing.Size(144, 13);
+         // 
          // Frm_Options
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -946,6 +971,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtQCWebServers.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
          this.ResumeLayout(false);
 
       }
@@ -1019,5 +1046,7 @@
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
       private DevExpress.XtraEditors.TextEdit txtQASQLInstances;
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
+      private DevExpress.XtraEditors.TextEdit txtQCWebServers;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
    }
 }

@@ -170,6 +170,13 @@ namespace QToolbar.Options
          }
       }
 
+      public static string QCWebServers
+      {
+         get
+         {
+            return Properties.Settings.Default.QCWebServers;
+         }
+      }
 
    }
 }

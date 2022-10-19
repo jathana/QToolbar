@@ -277,7 +277,7 @@ namespace QToolbar.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Q-SRV-SQL2K12")]
+        [global::System.Configuration.DefaultSettingValueAttribute("q-srv-w2k12r2")]
         public string QCWebServers {
             get {
                 return ((string)(this["QCWebServers"]));
