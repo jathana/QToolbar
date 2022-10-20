@@ -22,7 +22,7 @@ namespace QToolbar.Plugins.WebSitesInfo
       private WebServerHelper _WebServerHelper;
 
       private SynchronizationContext _SyncContext;
-      private BindingList<WebAPISiteInfo> _WebAPISites;
+      private BindingList<WebSiteInfo> _WebSites;
 
       public Frm_WebSitesInfo()
       {
@@ -40,7 +40,7 @@ namespace QToolbar.Plugins.WebSitesInfo
          _WebServerHelper = new WebServerHelper();
          _WebServerHelper.WebSiteInfoCollected += WebServerHelper_WebSiteInfoCollected;
          _SyncContext = SynchronizationContext.Current;
-         _WebAPISites = new BindingList<WebAPISiteInfo>();
+         _WebSites = new BindingList<WebSiteInfo>();
 
       }
 
@@ -57,20 +57,20 @@ namespace QToolbar.Plugins.WebSitesInfo
             if(input != null)
             {
                WebSiteInfoEventArgs inputArgs = (WebSiteInfoEventArgs)input;
-               if (inputArgs.WebSiteInfo != null && inputArgs.WebSiteInfo is WebAPISiteInfo)
+               if (inputArgs.WebSiteInfo != null)
                {
-                  _WebAPISites.Add((WebAPISiteInfo)inputArgs.WebSiteInfo);
+                  _WebSites.Add((WebSiteInfo)inputArgs.WebSiteInfo);
                }
             }
             //UXGridView.BestFitColumns();
          }, args);
-         backgroundWorker1.ReportProgress(_WebAPISites.Count);
+         backgroundWorker1.ReportProgress(_WebSites.Count);
       }
 
       private void Frm_WebSitesInfo_Load(object sender, EventArgs e)
       {
-         _WebAPISites.Clear();
-         gridWebAPI.DataSource = _WebAPISites;
+         _WebSites.Clear();
+         gridWebAPI.DataSource = _WebSites;
 
          backgroundWorker1.RunWorkerAsync();
       }

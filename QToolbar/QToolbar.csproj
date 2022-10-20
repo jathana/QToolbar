@@ -218,6 +218,7 @@
     <Compile Include="Helpers\ErrorType.cs" />
     <Compile Include="Helpers\DateTimeExtensions.cs" />
     <Compile Include="Helpers\MultiSqlExecutor.cs" />
+    <Compile Include="Helpers\IdentityServerSiteInfo.cs" />
     <Compile Include="Helpers\WebAPISiteInfo.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />

@@ -90,7 +90,9 @@ namespace QToolbar.Helpers
 
                         if (identityReg.IsMatch(site.Name))
                         {
-                           
+                           IdentityServerSiteInfo siteInfo = new IdentityServerSiteInfo(host, site);
+                           WebSites.Add(siteInfo);
+                           OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
                         }
                      }
                   }
