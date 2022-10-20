@@ -14,6 +14,8 @@ namespace QToolbar.Helpers
       // QCRWebAPI_X_Y_Z
       private const string WEB_API_NAME_PATTERN = "QCRWebAPI[_][0-9]+[_][0-9]+[_]*[0-9]*";
       private const string IDENTITY_SERVER_PATTERN = "IdentityServer[_][0-9]+[_][0-9]+[_]*[0-9]*";
+      private const string LEGAL_APP_PATTERN = "LegalApp[_][0-9]+[_][0-9]+[_]*[0-9]*";
+
       private bool _CancelLoad;
 
       public List<WebSiteInfo> WebSites { get; }
@@ -39,7 +41,6 @@ namespace QToolbar.Helpers
 
          _CancelLoad = false;
          WebSites.Clear();
-         Regex reg = new Regex(WEB_API_NAME_PATTERN);
          _HostsList = hostsList;
 
          List<string> hosts = _HostsList.Split(',').ToList<string>();
@@ -67,9 +68,10 @@ namespace QToolbar.Helpers
          
          Regex webAPIReg = new Regex(WEB_API_NAME_PATTERN);
          Regex identityReg = new Regex(IDENTITY_SERVER_PATTERN);
+         Regex legalAppReg = new Regex(LEGAL_APP_PATTERN);
 
 
-         Regex allReg = new Regex($"{WEB_API_NAME_PATTERN}|{IDENTITY_SERVER_PATTERN}");
+         Regex allReg = new Regex($"{WEB_API_NAME_PATTERN}|{IDENTITY_SERVER_PATTERN}|{LEGAL_APP_PATTERN}");
 
          try
          {
@@ -91,6 +93,12 @@ namespace QToolbar.Helpers
                         if (identityReg.IsMatch(site.Name))
                         {
                            IdentityServerSiteInfo siteInfo = new IdentityServerSiteInfo(host, site);
+                           WebSites.Add(siteInfo);
+                           OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
+                        }
+                        if (legalAppReg.IsMatch(site.Name))
+                        {
+                           LegalAppSiteInfo siteInfo = new LegalAppSiteInfo(host, site);
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
                         }

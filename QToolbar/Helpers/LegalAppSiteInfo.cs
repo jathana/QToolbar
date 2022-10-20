@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace QToolbar.Helpers
 {
-   public class IdentityServerSiteInfo : WebSiteInfo
+   public class LegalAppSiteInfo : WebSiteInfo
    {
-      public IdentityServerSiteInfo(string host, Site site): base(host, site)
+      public LegalAppSiteInfo(string host, Site site): base(host, site)
       {
-         Url = GetIdentityUrl();
+         Url = GetUrl();
       }
       
 
-      private string GetIdentityUrl()
+      private string GetUrl()
       {
-         return $"{Protocol}://{Host}.qualco.int:{Port}";
+         return $"{Protocol}://{Host}:{Port}/QCLegalApplicationApp/";
       }
    }
 }
