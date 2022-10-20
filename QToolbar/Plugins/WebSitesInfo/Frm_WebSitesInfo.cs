@@ -93,6 +93,11 @@ namespace QToolbar.Plugins.WebSitesInfo
       {
          
       }
+
+      private void Frm_WebSitesInfo_FormClosing(object sender, FormClosingEventArgs e)
+      {
+         _WebServerHelper.CancelLoadInfo();
+      }
    }
 
 }

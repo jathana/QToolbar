@@ -14,7 +14,7 @@ namespace QToolbar.Helpers
       // QCRWebAPI_X_Y_Z
       private const string WEB_API_NAME_PATTERN = "QCRWebAPI[_][0-9]+[_][0-9]+[_]*[0-9]*";
       private const string IDENTITY_SERVER_PATTERN = "IdentityServer[_][0-9]+[_][0-9]+[_]*[0-9]*";
-
+      private bool _CancelLoad;
 
       public List<WebSiteInfo> WebSites { get; }
 
@@ -28,6 +28,7 @@ namespace QToolbar.Helpers
       public WebServerHelper()
       {
          WebSites = new List<WebSiteInfo>();
+         _CancelLoad = false;
    }
       /// <summary>
       /// comma separated hosts list
@@ -36,6 +37,7 @@ namespace QToolbar.Helpers
       public void LoadInfo(string hostsList)
       {
 
+         _CancelLoad = false;
          WebSites.Clear();
          Regex reg = new Regex(WEB_API_NAME_PATTERN);
          _HostsList = hostsList;
@@ -45,6 +47,11 @@ namespace QToolbar.Helpers
          {
             LoadInfoInternal(host);
          }
+      }
+
+      public void CancelLoadInfo()
+      {
+         _CancelLoad = true;
       }
 
       private void OnWebSiteInfoCollected(WebSiteInfoEventArgs args)
@@ -91,6 +98,7 @@ namespace QToolbar.Helpers
                   {
 
                   }
+                  if (_CancelLoad) break;
                }
 
             }

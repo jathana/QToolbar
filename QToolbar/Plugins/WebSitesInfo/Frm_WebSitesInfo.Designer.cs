@@ -138,6 +138,7 @@
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "Web Sites Info";
          this.TopMost = true;
+         this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_WebSitesInfo_FormClosing);
          this.Load += new System.EventHandler(this.Frm_WebSitesInfo_Load);
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
          this.layoutControl1.ResumeLayout(false);
