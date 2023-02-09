@@ -108,6 +108,54 @@ namespace QToolbar.Tools
          int i = 0;
          foreach (DataRow dsrcRow in dataset.Tables[0].Rows)
          {
+
+            string sql = dsrcRow.Field<string>("DSRC_DEFINITION");
+
+            SqlCommand command = new SqlCommand(sql, con);
+
+            SqlDataReader reader = command.ExecuteReader();
+            DataTable schemaTable = reader.GetSchemaTable();
+
+            DataSet dataset2 = new DataSet();
+            try
+            {
+               DataColumn col = new DataColumn("DSRC_CODE", typeof(int));
+               col.DefaultValue = dsrcRow.Field<int>("DSRC_CODE");
+               schemaTable.Columns.Add(col);
+               dataset2.Tables.Add(schemaTable);
+               dataset2.AcceptChanges();
+               result.Merge(dataset2);
+               result.AcceptChanges();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+               reader.Close();               
+            }
+            i++;
+            backgroundWorker1.ReportProgress(i);
+         }
+         return result;
+      }
+
+      private DataSet GetDatasourcesColumnsByDefinition1(SqlConnection con)
+      {
+
+         StringBuilder builder = new StringBuilder();
+         builder.Append("SELECT DSRC_DEFINITION,DSRC_CODE  FROM TLK_DATASOURCES WITH(NOLOCK)");
+         SqlDataAdapter adapter = new SqlDataAdapter(builder.ToString(), con);
+
+         DataSet result = new DataSet();
+
+         DataSet dataset = new DataSet();
+         adapter.Fill(dataset);
+         int i = 0;
+         foreach (DataRow dsrcRow in dataset.Tables[0].Rows)
+         {
+
             string sql = dsrcRow.Field<string>("DSRC_DEFINITION");
             SqlCommand sqlCmd = new SqlCommand("sp_describe_first_result_set", con);
             sqlCmd.CommandType = CommandType.StoredProcedure;
@@ -141,7 +189,6 @@ namespace QToolbar.Tools
          }
          return result;
       }
-         
 
       private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
       {
