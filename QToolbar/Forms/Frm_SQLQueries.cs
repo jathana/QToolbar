@@ -356,7 +356,14 @@ namespace QToolbar
                   e.Menu.Items.Add(mnuItemAutoDoc);
                }
 
-
+               // check datasources for dev dbs only
+               if (devDBs.Count > 0 && devDBs.Count(d => d.Database == obj.Data.Database) > 0)
+               {
+                  DevExpress.Utils.Menu.DXMenuItem mnuCheckdatasources = new DevExpress.Utils.Menu.DXMenuItem("Check Datasources", checkDatasources_ItemClick);
+                  mnuCheckdatasources.Tag = obj.Data;
+                  e.Menu.Items.Add(mnuCheckdatasources);
+               }
+               
             }
 
 
@@ -443,6 +450,13 @@ namespace QToolbar
          f.Show(data, _DBs);
       }
 
+      private void checkDatasources_ItemClick(object sender, EventArgs e)
+      {
+         TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
+         ConnectionInfo data = obj.Data;
+         Frm_CheckDatasources f = new Frm_CheckDatasources();
+         f.Show(data);
+      }
       private void treeDatabases_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
       {
          TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(e.Node);

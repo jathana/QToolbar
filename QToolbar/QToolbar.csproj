@@ -192,6 +192,12 @@
     <Compile Include="Buttons\InternalBuildsButton.cs" />
     <Compile Include="Buttons\NextBuildButton.cs" />
     <Compile Include="Builds\CheckResult.cs" />
+    <Compile Include="Forms\Frm_CheckDataSources.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_CheckDataSources.Designer.cs">
+      <DependentUpon>Frm_CheckDataSources.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_TxtDiff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,6 +412,9 @@
     </Compile>
     <EmbeddedResource Include="AutoDoc\Frm_AutoDoc.resx">
       <DependentUpon>Frm_AutoDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_CheckDataSources.resx">
+      <DependentUpon>Frm_CheckDataSources.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_TxtDiff.resx">
       <DependentUpon>Frm_TxtDiff.cs</DependentUpon>
