@@ -14,6 +14,8 @@ using System.Diagnostics;
 using QToolbar.Helpers;
 using System.Threading;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using static QToolbar.Helpers.WebSiteInfo;
 
 namespace QToolbar.Plugins.WebSitesInfo
 {
@@ -46,7 +48,7 @@ namespace QToolbar.Plugins.WebSitesInfo
 
       private void UXGrid_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
       {
-        // e.View.DoubleClick += View_DoubleClick;
+         e.View.DoubleClick += View_DoubleClick;
          ((GridView)e.View).BestFitColumns();
       }
 
@@ -63,6 +65,7 @@ namespace QToolbar.Plugins.WebSitesInfo
                }
             }
             //UXGridView.BestFitColumns();
+            UXGridView.BestFitColumns();
          }, args);
          backgroundWorker1.ReportProgress(_WebSites.Count);
       }
@@ -97,6 +100,77 @@ namespace QToolbar.Plugins.WebSitesInfo
       private void Frm_WebSitesInfo_FormClosing(object sender, FormClosingEventArgs e)
       {
          _WebServerHelper.CancelLoadInfo();
+      }
+
+      private void View_DoubleClick(object sender, EventArgs e)
+      {
+         GridView view = (GridView)sender;
+         Point pt = view.GridControl.PointToClient(Control.MousePosition);
+         DoRowDoubleClick(view, pt);
+      }
+
+      private void UXGridView_DoubleClick(object sender, EventArgs e)
+      {
+         GridView view = (GridView)sender;
+         Point pt = view.GridControl.PointToClient(Control.MousePosition);
+         DoRowDoubleClick(view, pt);
+      }
+
+      private void DoRowDoubleClick(GridView view, Point pt)
+      {
+         GridHitInfo info = view.CalcHitInfo(pt);
+         if (info.InRow || info.InRowCell)
+         {
+            string cellText = view.FocusedValue.ToString();
+            string url = string.Empty;
+            
+            if (info.RowInfo.RowKey is SimpleProperty)
+            {
+               SimpleProperty simpleProperty = (SimpleProperty)info.RowInfo.RowKey;
+               switch (info.Column.GetCaption())
+               { 
+                  // Child row - Properties, Value column
+                  case "Value":
+                        Open(cellText);
+                     break;
+               }
+            }
+            else if (info.RowInfo.RowKey is WebSiteInfo)
+            {
+               WebSiteInfo webSiteInfo = (WebSiteInfo)info.RowInfo.RowKey;
+
+               switch (info.Column.GetCaption())
+               {
+                  // Master row - Url column
+                  case "Url":                  
+                     if (webSiteInfo.WebSiteType.Equals(WebSiteTypeEnum.LegalApp))
+                     {
+                        System.Diagnostics.Process.Start("IEXPLORE.EXE", cellText);
+                     }
+                     else
+                     {
+                        Open(cellText);
+                     }
+                     break;
+               }
+            }
+         }
+      }
+
+      protected void Open(string cmd)
+      {
+         try
+         {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+            process.StartInfo.FileName = cmd;            
+            process.StartInfo.UseShellExecute = true;
+            process.Start();
+         }
+         catch (Exception ex)
+         {
+            XtraMessageBox.Show(ex.Message);
+         }
       }
    }
 

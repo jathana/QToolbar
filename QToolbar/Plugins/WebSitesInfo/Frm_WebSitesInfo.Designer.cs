@@ -93,6 +93,7 @@
          // 
          this.UXGridView.GridControl = this.gridWebAPI;
          this.UXGridView.Name = "UXGridView";
+         this.UXGridView.DoubleClick += new System.EventHandler(this.UXGridView_DoubleClick);
          // 
          // xtraTabPage2
          // 

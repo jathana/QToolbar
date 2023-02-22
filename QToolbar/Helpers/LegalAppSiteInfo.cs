@@ -15,6 +15,8 @@ namespace QToolbar.Helpers
       public LegalAppSiteInfo(string host, Site site): base(host, site)
       {
          Url = GetUrl();
+
+         WebSiteType = WebSiteTypeEnum.LegalApp;
       }
       
 

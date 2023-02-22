@@ -15,6 +15,8 @@ namespace QToolbar.Helpers
       public IdentityServerSiteInfo(string host, Site site): base(host, site)
       {
          Url = GetIdentityUrl();
+
+         WebSiteType = WebSiteTypeEnum.IdentityServer;
       }
       
 

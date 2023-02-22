@@ -45,11 +45,13 @@ namespace QToolbar.Helpers
          #endregion
       }
 
+      public WebSiteTypeEnum WebSiteType { get; set; }
+      public string Name { get; set; }
       public string Url { get; set; }
 
       public string Host { get; set; }
       public string Port { get; set; }
-      public string Name { get; set; }
+      
       public string Protocol { get; set; }
 
       public List<SimpleProperty> Properties { get; }
@@ -62,7 +64,7 @@ namespace QToolbar.Helpers
          Host = host;
          Name = GetSiteName(site);
          Port = GetSitePort(site);
-         Protocol = GetSiteProtocol(site);
+         Protocol = GetSiteProtocol(site);         
       }
 
       public override string ToString()

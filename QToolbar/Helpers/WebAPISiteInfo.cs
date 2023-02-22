@@ -24,9 +24,11 @@ namespace QToolbar.Helpers
 
       public WebAPISiteInfo(string host, Site site): base(host, site)
       {
+         WebSiteType = WebSiteTypeEnum.WebAPI;
+
          Url = GetSwaggerUrl();
 
-         AddProperty("Environments", GetEnvUrl());
+         AddProperty("Environments", GetEnvsUrl());
          LoadEnvironments();
       }
 
@@ -37,7 +39,7 @@ namespace QToolbar.Helpers
          try
          {
             WebRequest wrGetEnvs;
-            wrGetEnvs = WebRequest.Create(GetEnvUrl());
+            wrGetEnvs = WebRequest.Create(GetEnvsUrl());
 
 
             using (Stream objStream = wrGetEnvs.GetResponse().GetResponseStream())
@@ -46,7 +48,10 @@ namespace QToolbar.Helpers
                {
                   string json = objReader.ReadToEnd();
                   WebAPIEnvironments = JsonConvert.DeserializeObject<List<WebAPIEnv>>(json);
-
+                  foreach (WebAPIEnv env in WebAPIEnvironments)
+                  {
+                     AddProperty(env.description, GetSwaggerEnvUrl(env.connectionStringHash));
+                  }
                }
             }
          }
@@ -56,13 +61,18 @@ namespace QToolbar.Helpers
          }
       }
 
-      private string GetEnvUrl()
+      private string GetEnvsUrl()
       {
          return $"{Protocol}://{Host}.qualco.int:{Port}/API/Environments";
       }
+
       private string GetSwaggerUrl()
       {
          return $"{Protocol}://{Host}.qualco.int:{Port}/swagger/index.html";
+      }
+      private string GetSwaggerEnvUrl(string connectionStringHash)
+      { 
+         return $"{Protocol}://{Host}.qualco.int:{Port}/swagger/index.html?connectionStringHash={connectionStringHash}";
       }
    }
 }
