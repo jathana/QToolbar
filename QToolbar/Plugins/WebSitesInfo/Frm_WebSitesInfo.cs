@@ -172,6 +172,31 @@ namespace QToolbar.Plugins.WebSitesInfo
             XtraMessageBox.Show(ex.Message);
          }
       }
+
+      private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         File.Delete(AppInstance.WebSitesCacheFile);
+      }
+      private void LoadWebSites()
+      {
+         // if cache file is present load from cache
+         //if (File.Exists(AppInstance.WebSitesCacheFile))
+         //{
+         //   TreeNodeSerializer<ConnectionInfo> ser = new TreeNodeSerializer<ConnectionInfo>();
+         //   TreeNode<ConnectionInfo> tree = ser.Deserialize(AppInstance.CFsTreeCacheFile);
+         //   SetDBsInfo(tree);
+         //   PopulateDBTree(tree);
+         //}
+         //else
+         //{
+         //   btnAdd.Enabled = false;
+         //   treeDatabases.ClearNodes();
+         //   treeDatabases.Cursor = Cursors.WaitCursor;
+         //   EnableUI(false);
+         //   // get all databases from cf
+         //   backgroundWorker1.RunWorkerAsync();
+         //}
+      }
    }
 
 }

@@ -48,6 +48,17 @@ namespace QToolbar
          }
       }
 
+      /// <summary>
+      /// Cache file for websites information.
+      /// </summary>
+      public static string WebSitesCacheFile
+      {
+         get
+         {
+            return Path.Combine(CacheDirectory, "WebSitesInfo.xml");
+         }
+      }
+
 
    }
 }
