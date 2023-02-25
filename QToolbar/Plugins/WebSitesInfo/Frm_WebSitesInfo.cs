@@ -16,6 +16,7 @@ using System.Threading;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using static QToolbar.Helpers.WebSiteInfo;
+using DevExpress.XtraGrid;
 
 namespace QToolbar.Plugins.WebSitesInfo
 {
@@ -34,6 +35,7 @@ namespace QToolbar.Plugins.WebSitesInfo
          UXGridView.OptionsBehavior.Editable = false;
          UXGridView.OptionsView.RowAutoHeight = true;
          gridWebAPI.ViewRegistered += UXGrid_ViewRegistered;
+         gridWebAPI.KeyDown += grid_KeyDown;
 
          UXGridView.OptionsPrint.PrintDetails = true;
          UXGridView.OptionsPrint.ExpandAllDetails = true;
@@ -46,6 +48,16 @@ namespace QToolbar.Plugins.WebSitesInfo
 
       }
 
+      private void grid_KeyDown(object sender, KeyEventArgs e)
+      {
+         if (e.Control && e.KeyCode == Keys.C)
+         {
+            GridControl grid = (GridControl)sender;
+            GridView view = grid.FocusedView as GridView;
+            Clipboard.SetText(view.GetFocusedDisplayText());
+            e.Handled = true;
+         }
+      }
       private void UXGrid_ViewRegistered(object sender, DevExpress.XtraGrid.ViewOperationEventArgs e)
       {
          e.View.DoubleClick += View_DoubleClick;
@@ -72,10 +84,16 @@ namespace QToolbar.Plugins.WebSitesInfo
 
       private void Frm_WebSitesInfo_Load(object sender, EventArgs e)
       {
+         LoadWebSitesInfo();
+      }
+
+      private void LoadWebSitesInfo()
+      {
          _WebSites.Clear();
          gridWebAPI.DataSource = _WebSites;
 
          backgroundWorker1.RunWorkerAsync();
+
       }
 
       private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -175,7 +193,7 @@ namespace QToolbar.Plugins.WebSitesInfo
 
       private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
       {
-         File.Delete(AppInstance.WebSitesCacheFile);
+         //LoadWebSitesInfo();
       }
       private void LoadWebSites()
       {

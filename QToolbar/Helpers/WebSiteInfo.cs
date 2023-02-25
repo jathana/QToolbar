@@ -42,6 +42,9 @@ namespace QToolbar.Helpers
                _Value = value;
             }
          }
+         public List<SimpleProperty> Properties { get; set; } = new List<SimpleProperty>();
+
+
          #endregion
       }
 
@@ -55,6 +58,8 @@ namespace QToolbar.Helpers
       public string Protocol { get; set; }
 
       public List<SimpleProperty> Properties { get; }
+
+      public string PhysicalPath { get; set; }
       
 
       public WebSiteInfo(string host, Site site)
@@ -64,7 +69,9 @@ namespace QToolbar.Helpers
          Host = host;
          Name = GetSiteName(site);
          Port = GetSitePort(site);
-         Protocol = GetSiteProtocol(site);         
+         Protocol = GetSiteProtocol(site);
+         PhysicalPath = site.Applications["/"].VirtualDirectories["/"].PhysicalPath;
+         UNCPath = $"\\\\{Host}\\{PhysicalPath.Replace(":","$")}";
       }
 
       public override string ToString()
@@ -72,13 +79,16 @@ namespace QToolbar.Helpers
          return $"{Protocol}://{Host}/{Name}:{Port}";
       }
 
-      protected void AddProperty(string name, string value)
+      public string UNCPath {get;}
+      protected void AddProperty(string name, string value, List<SimpleProperty> children)
       {
-        
+
          Properties.Add(new SimpleProperty()
          {
             Name = name,
-            Value = value
+            Value = value,
+            Properties = children,
+
          });
       }
 
