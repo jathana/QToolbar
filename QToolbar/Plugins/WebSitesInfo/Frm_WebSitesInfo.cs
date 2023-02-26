@@ -25,27 +25,62 @@ namespace QToolbar.Plugins.WebSitesInfo
       private WebServerHelper _WebServerHelper;
 
       private SynchronizationContext _SyncContext;
-      private BindingList<WebSiteInfo> _WebSites;
+      private BindingList<WebAPISiteInfo> _WebAPIWebSites;
+      private BindingList<LegalAppSiteInfo> _LegalAppWebSites;
+      private BindingList<IdentityServerSiteInfo> _IdentityServerWebSites;
+      private BindingList<WebOfficerClientSiteInfo> _WebOfficerClientWebSites;
 
       public Frm_WebSitesInfo()
       {
          InitializeComponent();
 
+         // UXWebAPIGridView
+         UXWebAPIGrid.ViewRegistered += UXGrid_ViewRegistered;
+         UXWebAPIGrid.KeyDown += grid_KeyDown;
 
-         UXGridView.OptionsBehavior.Editable = false;
-         UXGridView.OptionsView.RowAutoHeight = true;
-         gridWebAPI.ViewRegistered += UXGrid_ViewRegistered;
-         gridWebAPI.KeyDown += grid_KeyDown;
+         UXWebAPIGridView.OptionsBehavior.Editable = false;
+         UXWebAPIGridView.OptionsView.RowAutoHeight = true;
+         UXWebAPIGridView.OptionsPrint.PrintDetails = true;
+         UXWebAPIGridView.OptionsPrint.ExpandAllDetails = true;
+         UXWebAPIGridView.OptionsPrint.ExpandAllGroups = true;
 
-         UXGridView.OptionsPrint.PrintDetails = true;
-         UXGridView.OptionsPrint.ExpandAllDetails = true;
-         UXGridView.OptionsPrint.ExpandAllGroups = true;
+         // UXLegalAppGridView
+         UXLegalAppGrid.ViewRegistered += UXGrid_ViewRegistered;
+         UXLegalAppGrid.KeyDown += grid_KeyDown;
+         UXLegalAppGridView.OptionsBehavior.Editable = false;
+         UXLegalAppGridView.OptionsView.RowAutoHeight = true;
+         UXLegalAppGridView.OptionsPrint.PrintDetails = true;
+         UXLegalAppGridView.OptionsPrint.ExpandAllDetails = true;
+         UXLegalAppGridView.OptionsPrint.ExpandAllGroups = true;
+
+         // UXIdentityServerView
+         UXIdentityServerGrid.ViewRegistered += UXGrid_ViewRegistered;
+         UXIdentityServerGrid.KeyDown += grid_KeyDown;
+         UXIdentityServerGridView.OptionsBehavior.Editable = false;
+         UXIdentityServerGridView.OptionsView.RowAutoHeight = true;
+         UXIdentityServerGridView.OptionsPrint.PrintDetails = true;
+         UXIdentityServerGridView.OptionsPrint.ExpandAllDetails = true;
+         UXIdentityServerGridView.OptionsPrint.ExpandAllGroups = true;
+
+         // UXWebOfficerClientView
+         UXWebOfficerClientGrid.ViewRegistered += UXGrid_ViewRegistered;
+         UXWebOfficerClientGrid.KeyDown += grid_KeyDown;
+         UXWebOfficerClientGridView.OptionsBehavior.Editable = false;
+         UXWebOfficerClientGridView.OptionsView.RowAutoHeight = true;
+         UXWebOfficerClientGridView.OptionsPrint.PrintDetails = true;
+         UXWebOfficerClientGridView.OptionsPrint.ExpandAllDetails = true;
+         UXWebOfficerClientGridView.OptionsPrint.ExpandAllGroups = true;
+
+
+
 
          _WebServerHelper = new WebServerHelper();
          _WebServerHelper.WebSiteInfoCollected += WebServerHelper_WebSiteInfoCollected;
          _SyncContext = SynchronizationContext.Current;
-         _WebSites = new BindingList<WebSiteInfo>();
-
+         _WebAPIWebSites = new BindingList<WebAPISiteInfo>();
+         _LegalAppWebSites = new BindingList<LegalAppSiteInfo>();
+         _IdentityServerWebSites = new BindingList<IdentityServerSiteInfo>();
+         _WebOfficerClientWebSites = new BindingList<WebOfficerClientSiteInfo>();
       }
 
       private void grid_KeyDown(object sender, KeyEventArgs e)
@@ -73,13 +108,32 @@ namespace QToolbar.Plugins.WebSitesInfo
                WebSiteInfoEventArgs inputArgs = (WebSiteInfoEventArgs)input;
                if (inputArgs.WebSiteInfo != null)
                {
-                  _WebSites.Add((WebSiteInfo)inputArgs.WebSiteInfo);
+                  if(inputArgs.WebSiteInfo is WebAPISiteInfo)
+                  {
+                     _WebAPIWebSites.Add((WebAPISiteInfo)inputArgs.WebSiteInfo);
+                     UXWebAPIGridView.BestFitColumns();
+                  }
+                  else if (inputArgs.WebSiteInfo is LegalAppSiteInfo)
+                  {
+                     _LegalAppWebSites.Add((LegalAppSiteInfo)inputArgs.WebSiteInfo);
+                     UXLegalAppGridView.BestFitColumns();
+                  }
+                  else if (inputArgs.WebSiteInfo is IdentityServerSiteInfo)
+                  {
+                     _IdentityServerWebSites.Add((IdentityServerSiteInfo)inputArgs.WebSiteInfo);
+                     UXIdentityServerGridView.BestFitColumns();
+                  }
+                  else if (inputArgs.WebSiteInfo is WebOfficerClientSiteInfo)
+                  {
+                     _WebOfficerClientWebSites.Add((WebOfficerClientSiteInfo)inputArgs.WebSiteInfo);
+                     UXWebOfficerClientGridView.BestFitColumns();
+                  }
                }
             }
             //UXGridView.BestFitColumns();
-            UXGridView.BestFitColumns();
+            
          }, args);
-         backgroundWorker1.ReportProgress(_WebSites.Count);
+         //backgroundWorker1.ReportProgress(_WebSites.Count);
       }
 
       private void Frm_WebSitesInfo_Load(object sender, EventArgs e)
@@ -89,11 +143,16 @@ namespace QToolbar.Plugins.WebSitesInfo
 
       private void LoadWebSitesInfo()
       {
-         _WebSites.Clear();
-         gridWebAPI.DataSource = _WebSites;
+         _WebAPIWebSites.Clear();
+         _LegalAppWebSites.Clear();
+         _IdentityServerWebSites.Clear();
+
+         UXWebAPIGrid.DataSource = _WebAPIWebSites;
+         UXLegalAppGrid.DataSource = _LegalAppWebSites;
+         UXIdentityServerGrid.DataSource = _IdentityServerWebSites;
+         UXWebOfficerClientGrid.DataSource = _WebOfficerClientWebSites;
 
          backgroundWorker1.RunWorkerAsync();
-
       }
 
       private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -105,7 +164,11 @@ namespace QToolbar.Plugins.WebSitesInfo
       {
          _SyncContext.Post((input) =>
          {
-            UXGridView.BestFitColumns();
+            UXWebAPIGridView.BestFitColumns();
+            UXLegalAppGridView.BestFitColumns();
+            UXIdentityServerGridView.BestFitColumns();
+            UXWebOfficerClientGridView.BestFitColumns();
+
          }, e);
          
       }
@@ -142,18 +205,7 @@ namespace QToolbar.Plugins.WebSitesInfo
             string cellText = view.FocusedValue.ToString();
             string url = string.Empty;
             
-            if (info.RowInfo.RowKey is SimpleProperty)
-            {
-               SimpleProperty simpleProperty = (SimpleProperty)info.RowInfo.RowKey;
-               switch (info.Column.GetCaption())
-               { 
-                  // Child row - Properties, Value column
-                  case "Value":
-                        Open(cellText);
-                     break;
-               }
-            }
-            else if (info.RowInfo.RowKey is WebSiteInfo)
+            if (info.RowInfo.RowKey is WebSiteInfo)
             {
                WebSiteInfo webSiteInfo = (WebSiteInfo)info.RowInfo.RowKey;
 

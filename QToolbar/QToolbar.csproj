@@ -224,6 +224,9 @@
     <Compile Include="Helpers\CfFile.cs" />
     <Compile Include="Helpers\CfValidator.cs" />
     <Compile Include="Helpers\CryptographyExtensions.cs" />
+    <Compile Include="Helpers\WebOfficerClientSiteInfo.cs" />
+    <Compile Include="Helpers\WebAPIEnvironmentLogin.cs" />
+    <Compile Include="Helpers\WebAPIEnvironment.cs" />
     <Compile Include="Helpers\WebSiteTypeEnum.cs" />
     <Compile Include="Helpers\DBUtils.cs" />
     <Compile Include="Helpers\Error.cs" />

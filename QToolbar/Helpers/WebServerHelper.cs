@@ -15,6 +15,8 @@ namespace QToolbar.Helpers
       private const string WEB_API_NAME_PATTERN = "QCRWebAPI[_][0-9]+[_][0-9]+[_]*[0-9]*";
       private const string IDENTITY_SERVER_PATTERN = "IdentityServer[_][0-9]+[_][0-9]+[_]*[0-9]*";
       private const string LEGAL_APP_PATTERN = "LegalApp[_][0-9]+[_][0-9]+[_]*[0-9]*";
+      private const string WEB_OFFICER_CLIENT_PATTERN = "WebLegalOfficer[_][0-9]+[_][0-9]+[_]*[0-9]*[_]Client";
+
 
       private bool _CancelLoad;
 
@@ -65,13 +67,11 @@ namespace QToolbar.Helpers
 
       private void LoadInfoInternal(string host)
       {
-         
          Regex webAPIReg = new Regex(WEB_API_NAME_PATTERN);
          Regex identityReg = new Regex(IDENTITY_SERVER_PATTERN);
          Regex legalAppReg = new Regex(LEGAL_APP_PATTERN);
-
-
-         Regex allReg = new Regex($"{WEB_API_NAME_PATTERN}|{IDENTITY_SERVER_PATTERN}|{LEGAL_APP_PATTERN}");
+         Regex webOfficerClientReg = new Regex(WEB_OFFICER_CLIENT_PATTERN);
+         Regex allReg = new Regex($"{WEB_API_NAME_PATTERN}|{IDENTITY_SERVER_PATTERN}|{LEGAL_APP_PATTERN}|{WEB_OFFICER_CLIENT_PATTERN}");
 
          try
          {
@@ -89,19 +89,25 @@ namespace QToolbar.Helpers
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));                           
                         }
-
-                        if (identityReg.IsMatch(site.Name))
+                        else if (identityReg.IsMatch(site.Name))
                         {
                            IdentityServerSiteInfo siteInfo = new IdentityServerSiteInfo(host, site);
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
                         }
-                        if (legalAppReg.IsMatch(site.Name))
+                        else if (legalAppReg.IsMatch(site.Name))
                         {
                            LegalAppSiteInfo siteInfo = new LegalAppSiteInfo(host, site);
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
                         }
+                        else if (webOfficerClientReg.IsMatch(site.Name))
+                        {
+                           WebOfficerClientSiteInfo siteInfo = new WebOfficerClientSiteInfo(host, site);
+                           WebSites.Add(siteInfo);
+                           OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
+                        }
+
                      }
                   }
                   catch (Exception ex)

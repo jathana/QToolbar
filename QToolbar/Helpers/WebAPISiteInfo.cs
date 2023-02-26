@@ -20,54 +20,41 @@ namespace QToolbar.Helpers
       /// Key : connection string hash, value: connection string
       /// </summary>
       private Dictionary<string, string> _ConnectionStrings;
-      public class WebAPIEnv
-      {
-         public string name { get; set; }
-         public string description { get; set; }
-         public string connectionStringHash { get; set; }
-         public string connectionString { get; set; }
 
-         public SortedList<string, string> Logins { get; } = new SortedList<string, string>();
-      }
-
-      public List<WebAPIEnv> WebAPIEnvironments { get; internal set; }
+      
 
       public WebAPISiteInfo(string host, Site site): base(host, site)
       {
          WebSiteType = WebSiteTypeEnum.WebAPI;
          _ConnectionStrings = new Dictionary<string, string>();
-         _AppSettingsFile = $"{UNCPath}\\appsettings.json";
+         _AppSettingsFile = GetAppSettingsFile();
 
          Url = GetSwaggerUrl();
-
-         AddProperty("Environments", GetEnvsUrl(), null);
+         EnvironmentsUrl = GetEnvsUrl();
          LoadConnectionStringsWithHashes();
          LoadEnvironments();
-         
-
       }
-
+      
+      public string EnvironmentsUrl { get; }
+      public List<WebAPIEnvironment> WebAPIEnvironments { get; internal set; }
 
       private void LoadEnvironments()
       {
-
          try
          {
             WebRequest wrGetEnvs;
             wrGetEnvs = WebRequest.Create(GetEnvsUrl());
-
 
             using (Stream objStream = wrGetEnvs.GetResponse().GetResponseStream())
             {
                using (StreamReader objReader = new StreamReader(objStream))
                {
                   string json = objReader.ReadToEnd();
-                  WebAPIEnvironments = JsonConvert.DeserializeObject<List<WebAPIEnv>>(json);
-                  foreach (WebAPIEnv env in WebAPIEnvironments)
+                  WebAPIEnvironments = JsonConvert.DeserializeObject<List<WebAPIEnvironment>>(json);
+                  foreach (WebAPIEnvironment env in WebAPIEnvironments)
                   {
                      env.connectionString = _ConnectionStrings[env.connectionStringHash];
                      LoadEnvLogins(env);
-                     AddProperty(env.description, GetSwaggerEnvUrl(env.connectionStringHash), env.Logins.AsEnumerable().Select(i=>new SimpleProperty() { Name = i.Key, Value = i.Value }).ToList());
                   }
                }
             }
@@ -94,22 +81,54 @@ namespace QToolbar.Helpers
       }
 
 
-      private void LoadEnvLogins(WebAPIEnv env)
+      private void LoadEnvLogins(WebAPIEnvironment env)
       {
          try
          {
-            using (SqlConnection con = new SqlConnection(env.connectionString))
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(env.connectionString);
+            string initialCatalog = builder.InitialCatalog;
+            builder.InitialCatalog = string.Empty;
+            bool databaseExists = false;
+            using (SqlConnection con = new SqlConnection(builder.ConnectionString))
             {
-               string sql = "SELECT APC_NAME,APC_COMMENTS FROM AT_API_CLIENT_CREDENTIALS WHERE APC_ACTIVE_FLAG=1 AND ISNULL(APC_COMMENTS,'')<>''";
-               SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
-
-               DataSet dataset = new DataSet();
-               adapter.Fill(dataset);
-               foreach(DataRow row in dataset.Tables[0].Rows)
+               string sql = $" SELECT COUNT(1) FROM master.dbo.sysdatabases WHERE name = '{initialCatalog}'";
+               SqlCommand cmd = new SqlCommand(sql, con);
+               try
                {
-                  env.Logins.Add(row.Field<string>("APC_NAME") + "{[(" + env.connectionStringHash + ")]}", row.Field<string>("APC_COMMENTS"));
+                  con.Open();
+                  int result = (int)cmd.ExecuteScalar();
+                  databaseExists = result > 0;
                }
-               
+               catch(Exception ex)
+               {
+
+               }
+               finally
+               {
+                  con.Close();
+               }
+            }
+
+            if (databaseExists)
+            {
+
+
+               using (SqlConnection con = new SqlConnection(env.connectionString))
+               {
+                  string sql = "SELECT APC_NAME,APC_COMMENTS FROM AT_API_CLIENT_CREDENTIALS WHERE APC_ACTIVE_FLAG=1 AND ISNULL(APC_COMMENTS,'')<>''";
+                  SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
+
+                  DataSet dataset = new DataSet();
+                  adapter.Fill(dataset);
+                  foreach (DataRow row in dataset.Tables[0].Rows)
+                  {
+                     env.Logins.Add(new WebAPIEnvironmentLogin()
+                     {
+                        ClientId = row.Field<string>("APC_NAME") + "{[(" + env.connectionStringHash + ")]}",
+                        ClientSecret = row.Field<string>("APC_COMMENTS")
+                     });
+                  }
+               }
             }
          }
          catch (Exception ex)
@@ -153,6 +172,11 @@ namespace QToolbar.Helpers
       private string GetSwaggerEnvUrl(string connectionStringHash)
       { 
          return $"{Protocol}://{Host}.qualco.int:{Port}/swagger/index.html?connectionStringHash={connectionStringHash}";
+      }
+
+      private string GetAppSettingsFile()
+      {
+         return $"{UNCPath}\\appsettings.json";
       }
    }
 }

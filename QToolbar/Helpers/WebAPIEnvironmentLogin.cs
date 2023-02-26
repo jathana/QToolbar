@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace QToolbar.Helpers
 {
-   public enum WebSiteTypeEnum
+   public class WebAPIEnvironmentLogin
    {
-      IdentityServer,
-      WebAPI,
-      LegalApp,
-      WebOfficerClient
+      public string ClientId { get; set; }
+      public string ClientSecret { get; set; }
    }
 }
