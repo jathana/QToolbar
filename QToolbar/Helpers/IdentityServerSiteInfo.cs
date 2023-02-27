@@ -12,6 +12,14 @@ namespace QToolbar.Helpers
 {
    public class IdentityServerSiteInfo : WebSiteInfo
    {
+
+      /// <summary>
+      /// Used by deserialization
+      /// </summary>
+      public IdentityServerSiteInfo()
+      {
+      }
+
       public IdentityServerSiteInfo(string host, Site site): base(host, site)
       {
          Url = GetIdentityUrl();

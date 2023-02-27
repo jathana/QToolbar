@@ -34,10 +34,15 @@ namespace QToolbar.Plugins.WebSitesInfo
       {
          InitializeComponent();
 
+         _WebAPIWebSites = new BindingList<WebAPISiteInfo>();
+         _LegalAppWebSites = new BindingList<LegalAppSiteInfo>();
+         _IdentityServerWebSites = new BindingList<IdentityServerSiteInfo>();
+         _WebOfficerClientWebSites = new BindingList<WebOfficerClientSiteInfo>();
+
          // UXWebAPIGridView
          UXWebAPIGrid.ViewRegistered += UXGrid_ViewRegistered;
          UXWebAPIGrid.KeyDown += grid_KeyDown;
-
+         UXWebAPIGrid.DataSource = _WebAPIWebSites;
          UXWebAPIGridView.OptionsBehavior.Editable = false;
          UXWebAPIGridView.OptionsView.RowAutoHeight = true;
          UXWebAPIGridView.OptionsPrint.PrintDetails = true;
@@ -47,6 +52,7 @@ namespace QToolbar.Plugins.WebSitesInfo
          // UXLegalAppGridView
          UXLegalAppGrid.ViewRegistered += UXGrid_ViewRegistered;
          UXLegalAppGrid.KeyDown += grid_KeyDown;
+         UXLegalAppGrid.DataSource = _LegalAppWebSites;
          UXLegalAppGridView.OptionsBehavior.Editable = false;
          UXLegalAppGridView.OptionsView.RowAutoHeight = true;
          UXLegalAppGridView.OptionsPrint.PrintDetails = true;
@@ -56,6 +62,7 @@ namespace QToolbar.Plugins.WebSitesInfo
          // UXIdentityServerView
          UXIdentityServerGrid.ViewRegistered += UXGrid_ViewRegistered;
          UXIdentityServerGrid.KeyDown += grid_KeyDown;
+         UXIdentityServerGrid.DataSource = _IdentityServerWebSites;
          UXIdentityServerGridView.OptionsBehavior.Editable = false;
          UXIdentityServerGridView.OptionsView.RowAutoHeight = true;
          UXIdentityServerGridView.OptionsPrint.PrintDetails = true;
@@ -65,22 +72,17 @@ namespace QToolbar.Plugins.WebSitesInfo
          // UXWebOfficerClientView
          UXWebOfficerClientGrid.ViewRegistered += UXGrid_ViewRegistered;
          UXWebOfficerClientGrid.KeyDown += grid_KeyDown;
+         UXWebOfficerClientGrid.DataSource = _WebOfficerClientWebSites;
          UXWebOfficerClientGridView.OptionsBehavior.Editable = false;
          UXWebOfficerClientGridView.OptionsView.RowAutoHeight = true;
          UXWebOfficerClientGridView.OptionsPrint.PrintDetails = true;
          UXWebOfficerClientGridView.OptionsPrint.ExpandAllDetails = true;
          UXWebOfficerClientGridView.OptionsPrint.ExpandAllGroups = true;
 
-
-
-
          _WebServerHelper = new WebServerHelper();
          _WebServerHelper.WebSiteInfoCollected += WebServerHelper_WebSiteInfoCollected;
          _SyncContext = SynchronizationContext.Current;
-         _WebAPIWebSites = new BindingList<WebAPISiteInfo>();
-         _LegalAppWebSites = new BindingList<LegalAppSiteInfo>();
-         _IdentityServerWebSites = new BindingList<IdentityServerSiteInfo>();
-         _WebOfficerClientWebSites = new BindingList<WebOfficerClientSiteInfo>();
+         
       }
 
       private void grid_KeyDown(object sender, KeyEventArgs e)
@@ -130,10 +132,9 @@ namespace QToolbar.Plugins.WebSitesInfo
                   }
                }
             }
-            //UXGridView.BestFitColumns();
             
          }, args);
-         //backgroundWorker1.ReportProgress(_WebSites.Count);
+         backgroundWorker1.ReportProgress(_WebSites.Count);
       }
 
       private void Frm_WebSitesInfo_Load(object sender, EventArgs e)
@@ -143,15 +144,8 @@ namespace QToolbar.Plugins.WebSitesInfo
 
       private void LoadWebSitesInfo()
       {
-         _WebAPIWebSites.Clear();
-         _LegalAppWebSites.Clear();
-         _IdentityServerWebSites.Clear();
 
-         UXWebAPIGrid.DataSource = _WebAPIWebSites;
-         UXLegalAppGrid.DataSource = _LegalAppWebSites;
-         UXIdentityServerGrid.DataSource = _IdentityServerWebSites;
-         UXWebOfficerClientGrid.DataSource = _WebOfficerClientWebSites;
-
+         
          backgroundWorker1.RunWorkerAsync();
       }
 
@@ -168,6 +162,10 @@ namespace QToolbar.Plugins.WebSitesInfo
             UXLegalAppGridView.BestFitColumns();
             UXIdentityServerGridView.BestFitColumns();
             UXWebOfficerClientGridView.BestFitColumns();
+            if(backgroundWorker1.CancellationPending)
+            {
+               _WebServerHelper.CancelLoadInfo();
+            }
 
          }, e);
          
@@ -208,20 +206,18 @@ namespace QToolbar.Plugins.WebSitesInfo
             if (info.RowInfo.RowKey is WebSiteInfo)
             {
                WebSiteInfo webSiteInfo = (WebSiteInfo)info.RowInfo.RowKey;
-
-               switch (info.Column.GetCaption())
+               string columnCaption = info.Column.GetCaption();
+               if (columnCaption.ToLower().Contains("url"))
                {
-                  // Master row - Url column
-                  case "Url":                  
-                     if (webSiteInfo.WebSiteType.Equals(WebSiteTypeEnum.LegalApp))
-                     {
-                        System.Diagnostics.Process.Start("IEXPLORE.EXE", cellText);
-                     }
-                     else
-                     {
-                        Open(cellText);
-                     }
-                     break;
+                  // old legal opens with ie only upon silverlight
+                  if (webSiteInfo.WebSiteType.Equals(WebSiteTypeEnum.LegalApp))
+                  {
+                     Process.Start("IEXPLORE.EXE", cellText);
+                  }
+                  else
+                  {
+                     Open(cellText);
+                  }
                }
             }
          }
@@ -245,28 +241,30 @@ namespace QToolbar.Plugins.WebSitesInfo
 
       private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
       {
-         //LoadWebSitesInfo();
+         _SyncContext.Post((input) =>
+         {
+            if(backgroundWorker1.IsBusy)
+            {
+               backgroundWorker1.CancelAsync();
+            }
+            else
+            {
+               ClearData();
+               _WebServerHelper.ClearCache();
+               _WebServerHelper.CancelLoadInfo();
+               backgroundWorker1.RunWorkerAsync();
+            }
+         }, e);
       }
-      private void LoadWebSites()
+
+      private void ClearData()
       {
-         // if cache file is present load from cache
-         //if (File.Exists(AppInstance.WebSitesCacheFile))
-         //{
-         //   TreeNodeSerializer<ConnectionInfo> ser = new TreeNodeSerializer<ConnectionInfo>();
-         //   TreeNode<ConnectionInfo> tree = ser.Deserialize(AppInstance.CFsTreeCacheFile);
-         //   SetDBsInfo(tree);
-         //   PopulateDBTree(tree);
-         //}
-         //else
-         //{
-         //   btnAdd.Enabled = false;
-         //   treeDatabases.ClearNodes();
-         //   treeDatabases.Cursor = Cursors.WaitCursor;
-         //   EnableUI(false);
-         //   // get all databases from cf
-         //   backgroundWorker1.RunWorkerAsync();
-         //}
-      }
+         _WebAPIWebSites.Clear();
+         _LegalAppWebSites.Clear();
+         _IdentityServerWebSites.Clear();
+         _WebOfficerClientWebSites.Clear();
+   }
+      
    }
 
 }

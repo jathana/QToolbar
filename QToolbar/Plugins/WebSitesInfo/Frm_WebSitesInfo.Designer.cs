@@ -41,6 +41,9 @@
          this.tabIdentityServer = new DevExpress.XtraTab.XtraTabPage();
          this.UXIdentityServerGrid = new DevExpress.XtraGrid.GridControl();
          this.UXIdentityServerGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+         this.tabWebOfficerClient = new DevExpress.XtraTab.XtraTabPage();
+         this.UXWebOfficerClientGrid = new DevExpress.XtraGrid.GridControl();
+         this.UXWebOfficerClientGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
          this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
          this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -52,9 +55,6 @@
          this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-         this.tabWebOfficerClient = new DevExpress.XtraTab.XtraTabPage();
-         this.UXWebOfficerClientGrid = new DevExpress.XtraGrid.GridControl();
-         this.UXWebOfficerClientGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
          this.layoutControl1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.UXTabControl)).BeginInit();
@@ -68,12 +68,12 @@
          this.tabIdentityServer.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.UXIdentityServerGrid)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.UXIdentityServerGridView)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
          this.tabWebOfficerClient.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.UXWebOfficerClientGrid)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.UXWebOfficerClientGridView)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
          this.SuspendLayout();
          // 
          // layoutControl1
@@ -166,13 +166,36 @@
          this.UXIdentityServerGrid.TabIndex = 1;
          this.UXIdentityServerGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UXIdentityServerGridView});
-         this.UXIdentityServerGrid.DoubleClick += new System.EventHandler(this.View_DoubleClick);
          // 
          // UXIdentityServerGridView
          // 
          this.UXIdentityServerGridView.GridControl = this.UXIdentityServerGrid;
          this.UXIdentityServerGridView.Name = "UXIdentityServerGridView";
          this.UXIdentityServerGridView.DoubleClick += new System.EventHandler(this.View_DoubleClick);
+         // 
+         // tabWebOfficerClient
+         // 
+         this.tabWebOfficerClient.Controls.Add(this.UXWebOfficerClientGrid);
+         this.tabWebOfficerClient.Name = "tabWebOfficerClient";
+         this.tabWebOfficerClient.Size = new System.Drawing.Size(780, 351);
+         this.tabWebOfficerClient.Text = "Web Officer Client";
+         // 
+         // UXWebOfficerClientGrid
+         // 
+         this.UXWebOfficerClientGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.UXWebOfficerClientGrid.Location = new System.Drawing.Point(0, 0);
+         this.UXWebOfficerClientGrid.MainView = this.UXWebOfficerClientGridView;
+         this.UXWebOfficerClientGrid.Name = "UXWebOfficerClientGrid";
+         this.UXWebOfficerClientGrid.Size = new System.Drawing.Size(780, 351);
+         this.UXWebOfficerClientGrid.TabIndex = 1;
+         this.UXWebOfficerClientGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.UXWebOfficerClientGridView});
+         // 
+         // UXWebOfficerClientGridView
+         // 
+         this.UXWebOfficerClientGridView.GridControl = this.UXWebOfficerClientGrid;
+         this.UXWebOfficerClientGridView.Name = "UXWebOfficerClientGridView";
+         this.UXWebOfficerClientGridView.DoubleClick += new System.EventHandler(this.View_DoubleClick);
          // 
          // layoutControlGroup1
          // 
@@ -278,31 +301,6 @@
          this.barDockControlRight.Manager = this.barManager1;
          this.barDockControlRight.Size = new System.Drawing.Size(0, 400);
          // 
-         // tabWebOfficerClient
-         // 
-         this.tabWebOfficerClient.Controls.Add(this.UXWebOfficerClientGrid);
-         this.tabWebOfficerClient.Name = "tabWebOfficerClient";
-         this.tabWebOfficerClient.Size = new System.Drawing.Size(780, 351);
-         this.tabWebOfficerClient.Text = "Web Officer Client";
-         // 
-         // UXWebOfficerClientGrid
-         // 
-         this.UXWebOfficerClientGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.UXWebOfficerClientGrid.Location = new System.Drawing.Point(0, 0);
-         this.UXWebOfficerClientGrid.MainView = this.UXWebOfficerClientGridView;
-         this.UXWebOfficerClientGrid.Name = "UXWebOfficerClientGrid";
-         this.UXWebOfficerClientGrid.Size = new System.Drawing.Size(780, 351);
-         this.UXWebOfficerClientGrid.TabIndex = 1;
-         this.UXWebOfficerClientGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.UXWebOfficerClientGridView});
-         this.UXWebOfficerClientGrid.DoubleClick += new System.EventHandler(this.View_DoubleClick);
-         // 
-         // UXWebOfficerClientGridView
-         // 
-         this.UXWebOfficerClientGridView.GridControl = this.UXWebOfficerClientGrid;
-         this.UXWebOfficerClientGridView.Name = "UXWebOfficerClientGridView";
-         this.UXWebOfficerClientGridView.DoubleClick += new System.EventHandler(this.View_DoubleClick);
-         // 
          // Frm_WebSitesInfo
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,12 +331,12 @@
          this.tabIdentityServer.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.UXIdentityServerGrid)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.UXIdentityServerGridView)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
          this.tabWebOfficerClient.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.UXWebOfficerClientGrid)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.UXWebOfficerClientGridView)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 

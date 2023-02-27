@@ -21,7 +21,15 @@ namespace QToolbar.Helpers
       /// </summary>
       private Dictionary<string, string> _ConnectionStrings;
 
-      
+      public string EnvironmentsUrl { get; set; }
+      public List<WebAPIEnvironment> WebAPIEnvironments { get; internal set; }
+
+      /// <summary>
+      /// Used by deserialization
+      /// </summary>
+      public WebAPISiteInfo()
+      {
+      }
 
       public WebAPISiteInfo(string host, Site site): base(host, site)
       {
@@ -35,8 +43,6 @@ namespace QToolbar.Helpers
          LoadEnvironments();
       }
       
-      public string EnvironmentsUrl { get; }
-      public List<WebAPIEnvironment> WebAPIEnvironments { get; internal set; }
 
       private void LoadEnvironments()
       {

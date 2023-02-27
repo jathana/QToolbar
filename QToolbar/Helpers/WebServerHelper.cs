@@ -1,7 +1,9 @@
 ﻿using Microsoft.Web.Administration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,7 +22,7 @@ namespace QToolbar.Helpers
 
       private bool _CancelLoad;
 
-      public List<WebSiteInfo> WebSites { get; }
+      public List<WebSiteInfo> WebSites { get; internal set; }
 
       #region events
       public delegate void WebSiteInfoCollectedEventHandler(object sender, WebSiteInfoEventArgs args);
@@ -38,6 +40,25 @@ namespace QToolbar.Helpers
       /// comma separated hosts list
       /// </summary>
       private string _HostsList;
+
+      public bool ClearCache()
+      {
+         bool retVal = false;
+         try
+         {
+            if (File.Exists(AppInstance.WebSitesCacheFile))
+            {
+               File.Delete(AppInstance.WebSitesCacheFile);
+               retVal = true;
+            }
+         }
+         catch(Exception ex)
+         {
+            retVal = false;
+         }
+         return retVal;
+      }
+
       public void LoadInfo(string hostsList)
       {
 
@@ -46,9 +67,14 @@ namespace QToolbar.Helpers
          _HostsList = hostsList;
 
          List<string> hosts = _HostsList.Split(',').ToList<string>();
-         foreach(string host in hosts)
+
+         if (!ReadFromCache())
          {
-            LoadInfoInternal(host);
+            foreach (string host in hosts)
+            {
+               LoadInfoInternal(host);
+            }
+            WriteToCache();
          }
       }
 
@@ -65,8 +91,11 @@ namespace QToolbar.Helpers
          }
       }
 
+
       private void LoadInfoInternal(string host)
       {
+
+
          Regex webAPIReg = new Regex(WEB_API_NAME_PATTERN);
          Regex identityReg = new Regex(IDENTITY_SERVER_PATTERN);
          Regex legalAppReg = new Regex(LEGAL_APP_PATTERN);
@@ -77,17 +106,19 @@ namespace QToolbar.Helpers
          {
             using (ServerManager mgr = ServerManager.OpenRemote(host))
             {
-               foreach (var site in mgr.Sites.Where(x=>allReg.IsMatch(x.Name)))  // enrich regex to filter sites
+               var sites = mgr.Sites.Where(x => allReg.IsMatch(x.Name));
+               foreach (var site in sites)  // enrich regex to filter sites
                {
                   try
                   {
                      if (site.Bindings != null && site.Bindings.Count > 0 && (site.Bindings[0]).EndPoint != null)
                      {
+
                         if (webAPIReg.IsMatch(site.Name))
                         {
                            WebAPISiteInfo siteInfo = new WebAPISiteInfo(host, site);
                            WebSites.Add(siteInfo);
-                           OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));                           
+                           OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
                         }
                         else if (identityReg.IsMatch(site.Name))
                         {
@@ -116,6 +147,7 @@ namespace QToolbar.Helpers
                   }
                   if (_CancelLoad) break;
                }
+               
 
             }
          }
@@ -125,7 +157,45 @@ namespace QToolbar.Helpers
          }
       }
 
+      private bool ReadFromCache()
+      {
+         bool retVal = false;
+         try
+         {
+            if (File.Exists(AppInstance.WebSitesCacheFile))
+            {
+               string json = File.ReadAllText(AppInstance.WebSitesCacheFile);
+               JsonSerializerSettings settings = new JsonSerializerSettings();
+               settings.TypeNameHandling = TypeNameHandling.Auto;
+               WebSites = JsonConvert.DeserializeObject<List<WebSiteInfo>>(json, settings);
+               foreach(var siteInfo in WebSites)
+               {
+                  OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo)); 
+               }
+               retVal = true;
+            }
+         }
+         catch(Exception ex)
+         {
+            retVal = false;
+         }
+         return retVal;
+      }
 
+      private void WriteToCache()
+      {
+         try
+         {
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Auto;
+            string json = JsonConvert.SerializeObject(WebSites, Formatting.Indented, settings);
+            File.WriteAllText(AppInstance.WebSitesCacheFile, json);
+         }
+         catch(Exception ex)
+         {
+
+         }
+      }
       
    }
 }

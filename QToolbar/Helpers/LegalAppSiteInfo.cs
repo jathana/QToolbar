@@ -12,6 +12,14 @@ namespace QToolbar.Helpers
 {
    public class LegalAppSiteInfo : WebSiteInfo
    {
+      /// <summary>
+      /// Used by deserialization
+      /// </summary>
+      public LegalAppSiteInfo()
+      {
+      }
+
+
       public LegalAppSiteInfo(string host, Site site): base(host, site)
       {
          Url = GetUrl();

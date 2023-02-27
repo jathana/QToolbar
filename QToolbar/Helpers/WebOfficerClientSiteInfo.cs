@@ -12,10 +12,17 @@ namespace QToolbar.Helpers
 {
    public class WebOfficerClientSiteInfo : WebSiteInfo
    {
+      /// <summary>
+      /// Used by deserialization
+      /// </summary>
+      public WebOfficerClientSiteInfo()
+      {
+      }
+
+
       public WebOfficerClientSiteInfo(string host, Site site): base(host, site)
       {
          Url = GetUrl();
-
          WebSiteType = WebSiteTypeEnum.WebOfficerClient;
       }
       

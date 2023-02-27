@@ -1,6 +1,7 @@
 ﻿using Microsoft.Web.Administration;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace QToolbar.Helpers
 {
    public class WebSiteInfo
    {
+      [Display(AutoGenerateField = false)]
       public WebSiteTypeEnum WebSiteType { get; set; }
       public string Name { get; set; }
       public string Url { get; set; }
@@ -19,7 +21,11 @@ namespace QToolbar.Helpers
       public string Protocol { get; set; }
 
       public string PhysicalPath { get; set; }
-      
+      public string UNCPath { get; set; }
+
+      public WebSiteInfo()
+      {
+      }
 
       public WebSiteInfo(string host, Site site)
       {
@@ -36,7 +42,7 @@ namespace QToolbar.Helpers
          return $"{Protocol}://{Host}/{Name}:{Port}";
       }
 
-      public string UNCPath {get;}
+      
       
 
       private string GetSitePort(Site site)
