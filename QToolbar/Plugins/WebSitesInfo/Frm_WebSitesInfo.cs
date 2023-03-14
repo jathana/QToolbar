@@ -134,7 +134,7 @@ namespace QToolbar.Plugins.WebSitesInfo
             }
             
          }, args);
-         backgroundWorker1.ReportProgress(_WebSites.Count);
+         //backgroundWorker1.ReportProgress(WebSites.Count);
       }
 
       private void Frm_WebSitesInfo_Load(object sender, EventArgs e)

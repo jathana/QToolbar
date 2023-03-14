@@ -51,13 +51,14 @@ namespace QToolbar.Buttons
                SortedList<string, LegalLinkData> menuItems = new SortedList<string, LegalLinkData>();
 
                string[] devInstArr = devInst.Split(',');
-               Regex reg = new Regex("^QBCollection[_]Plus[_][A-Za-z]+[_][0-9]+[_][0-9]+[_]*[0-9]*$");
-               Regex regVer = new Regex("[0-9]+[_][0-9]+[_]*[0-9]*$");
+               Regex reg = new Regex("^QBCollection[_]Plus[_][A-Za-z]+[_][0-9]+[_][0-9]+[_]*[0-9]*[_]*[0-9]*$");
+               Regex regVer = new Regex("[0-9]+[_][0-9]+[_]*[0-9]*[_]*[0-9]*$");
                BarSubItem cutOffMenu = new BarSubItem(_BarManager, "Other", 0);
                foreach (string sqlInst in devInstArr)
                {
 
-                  string connectionString = $"Server={sqlInst};Integrated Security=SSPI;";
+                  string connectionString = Utils.GetConnectionString(sqlInst);
+
                   using (SqlConnection con = new SqlConnection(connectionString))
                   {
                      try
@@ -128,7 +129,7 @@ namespace QToolbar.Buttons
                               if (!string.IsNullOrEmpty(dbVer) && !string.IsNullOrEmpty(legalUrl) && !sysPrefNewWebLegal)  // new legal does have the port in database
                               {
                                  if (menuItems.Values.AsEnumerable().Where(x => x.Url.Equals(legalUrl)).ToList().Count.Equals(0))
-                                 {                                    
+                                 {
                                     menuItems.Add(Utils.GetSortName(dbVer, new Char[] { '.' }, '.', ' ', 3, true), new LegalLinkData(dbVer, legalUrl, sysPrefNewWebLegal, db));
                                  }
                               }
@@ -156,7 +157,7 @@ namespace QToolbar.Buttons
                   }
                   i++;
                }
-               if(cutOffMenu.ItemLinks.Count>0)
+               if (cutOffMenu.ItemLinks.Count > 0)
                {
                   _Menu.AddItem(cutOffMenu);
                }
@@ -207,20 +208,20 @@ namespace QToolbar.Buttons
 
       private string ClearVersionLeast(string version, char delimiter)
       {
-         if(!string.IsNullOrWhiteSpace(version))
+         if (!string.IsNullOrWhiteSpace(version))
          {
             var vals = version.Split(new char[] { delimiter });
-            
 
-            if (vals.Length==4)
+
+            if (vals.Length == 4)
             {
-               if(Int32.TryParse(vals[2],out int result2))
+               if (Int32.TryParse(vals[2], out int result2))
                {
-                 if(result2 > 50)
+                  if (result2 > 50)
                   {
                      return $"{vals[0]}.{vals[1]}.{vals[2]}";
                   }
-               }               
+               }
             }
             if (vals.Length == 3)
             {

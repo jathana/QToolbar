@@ -53,7 +53,7 @@ namespace QToolbar
                   else
                   {
                      res.Add(db[i]);
-                  }                  
+                  }
                }
                else
                {
@@ -86,7 +86,7 @@ namespace QToolbar
          {
             string dirName = Path.GetFileName(dir);
             string sortName = GetSortName(dirName, new Char[] { '\\', '.', ' ' }, '_', '0', 5);
-            if(!string.IsNullOrEmpty(sortName))
+            if (!string.IsNullOrEmpty(sortName))
             {
                x.Add(new Tuple<string, string>(sortName, dir));
             }
@@ -107,11 +107,11 @@ namespace QToolbar
 
          DataTable result = table.Clone();
          var sorted = x.OrderByDescending(item => item.Item1);
-         sorted.AsEnumerable().ToList().ForEach(item=> result.ImportRow(item.Item2));
+         sorted.AsEnumerable().ToList().ForEach(item => result.ImportRow(item.Item2));
 
          return result;
       }
-            
+
 
       public static bool EnsureFolder(string dir)
       {
@@ -142,7 +142,7 @@ namespace QToolbar
             }
             catch (Exception ex)
             {
-               throw new Exception($"Cannot open file \"{file}\" ({ex.Message}).",ex);
+               throw new Exception($"Cannot open file \"{file}\" ({ex.Message}).", ex);
             }
          }
          else
@@ -152,7 +152,7 @@ namespace QToolbar
          return retVal;
       }
 
-      
+
 
       public static string GetPath(string uncPath, out int permissions, out bool unresolved)
       {
@@ -206,7 +206,7 @@ namespace QToolbar
                         path = path.EndsWith(@"\") ? path + uncParts[i] : path + @"\" + uncParts[i];
                   }
                }
-               if(string.IsNullOrWhiteSpace(path))
+               if (string.IsNullOrWhiteSpace(path))
                {
                   unresolved = true;
                }
@@ -222,20 +222,20 @@ namespace QToolbar
 
       public static string GetPermissionsDesc(int permissions)
       {
-            string retval = string.Empty;
-            switch (permissions)
-            {
-               case -1:
-                  retval = string.Empty;
-                  break;
-               case FILE_PERMISSION_FULL_ACCESS:
-                  retval = "Full Access";
-                  break;
-               default:
-                  retval = $"Limited Access ({permissions})";
-                  break;
-            }
-            return retval;
+         string retval = string.Empty;
+         switch (permissions)
+         {
+            case -1:
+               retval = string.Empty;
+               break;
+            case FILE_PERMISSION_FULL_ACCESS:
+               retval = "Full Access";
+               break;
+            default:
+               retval = $"Limited Access ({permissions})";
+               break;
+         }
+         return retval;
       }
 
       #endregion
@@ -327,6 +327,11 @@ namespace QToolbar
          return $"Server={server};Database={database};Integrated Security=SSPI;TransparentNetworkIPResolution = False;";
       }
 
+      public static string GetConnectionString(string server)
+      {
+         return $"Server={server};Integrated Security=SSPI;TransparentNetworkIPResolution = False;";
+         //return $"Server={server};User Id = qbc_user; Password = qbc_user;";
+      }
 
       #endregion
       #region sql
