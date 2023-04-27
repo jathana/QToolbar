@@ -81,8 +81,19 @@ namespace QToolbar.Plugins.WebSitesInfo
 
          _WebServerHelper = new WebServerHelper();
          _WebServerHelper.WebSiteInfoCollected += WebServerHelper_WebSiteInfoCollected;
+         _WebServerHelper.ProcessingInfoCollected += _WebServerHelper_ProcessingInfoCollected;
          _SyncContext = SynchronizationContext.Current;
          
+      }
+
+      private void _WebServerHelper_ProcessingInfoCollected(object sender, ProcessingInfoCollectedEventArgs args)
+      {
+         _SyncContext.Post((input) =>
+         {
+
+            Text = $"Web Sites Info - Hosts: {args.CurrentHostLoadedNumber}/{args.HostsCount},  Host Sites: {args.HostCurrentSiteLoadedNumber}/{args.HostSitesCount}";
+
+         }, args);
       }
 
       private void grid_KeyDown(object sender, KeyEventArgs e)
@@ -134,7 +145,7 @@ namespace QToolbar.Plugins.WebSitesInfo
             }
             
          }, args);
-         //backgroundWorker1.ReportProgress(WebSites.Count);
+         
       }
 
       private void Frm_WebSitesInfo_Load(object sender, EventArgs e)

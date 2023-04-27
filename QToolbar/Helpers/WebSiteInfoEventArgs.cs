@@ -9,6 +9,7 @@ namespace QToolbar.Helpers
    public class WebSiteInfoEventArgs : EventArgs
    {
       public WebSiteInfo WebSiteInfo { get; set; }
+      
       public WebSiteInfoEventArgs(WebSiteInfo webSiteInfo)
       {
          WebSiteInfo = webSiteInfo;

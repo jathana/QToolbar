@@ -22,7 +22,7 @@ namespace QToolbar.Helpers
       private Dictionary<string, string> _ConnectionStrings;
 
       public string EnvironmentsUrl { get; set; }
-      public List<WebAPIEnvironment> WebAPIEnvironments { get; internal set; }
+      public List<WebAPIEnvironment> WebAPIEnvironments { get; set; }
 
       /// <summary>
       /// Used by deserialization
@@ -61,6 +61,8 @@ namespace QToolbar.Helpers
                   {
                      env.connectionString = _ConnectionStrings[env.connectionStringHash];
                      env.WebSiteInfoUrl = this.Url;
+                     env.EnvironmentUrl = $"{this.Url}?connectionStringHash={env.connectionStringHash}";
+                     env.LocalEnvironmentUrl = $"https://localhost:44367/swagger/index.html?connectionStringHash={env.connectionStringHash}";
                      LoadEnvLogins(env);
                   }
                }

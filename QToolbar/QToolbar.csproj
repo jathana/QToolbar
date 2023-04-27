@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>\\qsrvdevfs19\QCS Development and Testing\Tools\QToolbar\</InstallUrl>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>187</ApplicationRevision>
+    <ApplicationRevision>188</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -227,6 +227,7 @@
     <Compile Include="Helpers\WebOfficerClientSiteInfo.cs" />
     <Compile Include="Helpers\WebAPIEnvironmentLogin.cs" />
     <Compile Include="Helpers\WebAPIEnvironment.cs" />
+    <Compile Include="Helpers\ProcessingInfoCollectedEventArgs.cs" />
     <Compile Include="Helpers\WebSiteTypeEnum.cs" />
     <Compile Include="Helpers\DBUtils.cs" />
     <Compile Include="Helpers\Error.cs" />

@@ -22,14 +22,20 @@ namespace QToolbar.Helpers
 
       private bool _CancelLoad;
 
+      private int _HostsCount;
+      private int _CurrentHostLoadedNumber;
+
       public List<WebSiteInfo> WebSites { get; internal set; }
 
       #region events
       public delegate void WebSiteInfoCollectedEventHandler(object sender, WebSiteInfoEventArgs args);
       public event WebSiteInfoCollectedEventHandler WebSiteInfoCollected;
+
+      public delegate void ProcessingInfoCollectedEventHandler(object sender, ProcessingInfoCollectedEventArgs args);
+      public event ProcessingInfoCollectedEventHandler ProcessingInfoCollected;
       #endregion
 
-
+      
 
       public WebServerHelper()
       {
@@ -70,9 +76,15 @@ namespace QToolbar.Helpers
 
          if (!ReadFromCache())
          {
+            int i = 0;
             foreach (string host in hosts)
             {
+               i++;
+               _HostsCount = hosts.Count;
+               _CurrentHostLoadedNumber = i;
+
                LoadInfoInternal(host);
+               
             }
             WriteToCache();
          }
@@ -83,6 +95,7 @@ namespace QToolbar.Helpers
          _CancelLoad = true;
       }
 
+      
       private void OnWebSiteInfoCollected(WebSiteInfoEventArgs args)
       {
          if (WebSiteInfoCollected != null)
@@ -90,7 +103,13 @@ namespace QToolbar.Helpers
             WebSiteInfoCollected(this, args);
          }
       }
-
+      private void OnProcessingInfoCollected(ProcessingInfoCollectedEventArgs args)
+      {
+         if (ProcessingInfoCollected != null)
+         {
+            ProcessingInfoCollected(this, args);
+         }
+      }
 
       private void LoadInfoInternal(string host)
       {
@@ -107,6 +126,7 @@ namespace QToolbar.Helpers
             using (ServerManager mgr = ServerManager.OpenRemote(host))
             {
                var sites = mgr.Sites.Where(x => allReg.IsMatch(x.Name));
+               int sitesIndex = 0;
                foreach (var site in sites)  // enrich regex to filter sites
                {
                   
@@ -120,6 +140,7 @@ namespace QToolbar.Helpers
                            WebAPISiteInfo siteInfo = new WebAPISiteInfo(host, site);                           
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
+
                         }
                         else if (identityReg.IsMatch(site.Name))
                         {
@@ -146,6 +167,8 @@ namespace QToolbar.Helpers
                   {
 
                   }
+                  sitesIndex++;
+                  OnProcessingInfoCollected(new ProcessingInfoCollectedEventArgs(_HostsCount, _CurrentHostLoadedNumber, sites.Count(), sitesIndex));
                   if (_CancelLoad) break;
                }
                
