@@ -60,7 +60,7 @@ namespace QToolbar.Helpers
                   foreach (WebAPIEnvironment env in WebAPIEnvironments)
                   {
                      env.connectionString = _ConnectionStrings[env.connectionStringHash];
-                     env.WebSiteInfo = this;
+                     env.WebSiteInfoUrl = this.Url;
                      LoadEnvLogins(env);
                   }
                }

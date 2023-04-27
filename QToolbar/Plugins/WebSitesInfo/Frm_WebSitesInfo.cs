@@ -178,14 +178,7 @@ namespace QToolbar.Plugins.WebSitesInfo
 
       private void Frm_WebSitesInfo_FormClosing(object sender, FormClosingEventArgs e)
       {
-         if (XtraMessageBox.Show("Are you sure?", "Form Closing", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
-         {
             _WebServerHelper.CancelLoadInfo();
-         }
-         else
-         {
-            e.Cancel = true;
-         }   
       }
 
       private void View_DoubleClick(object sender, EventArgs e)
