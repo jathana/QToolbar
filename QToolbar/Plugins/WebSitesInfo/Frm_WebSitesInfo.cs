@@ -227,6 +227,15 @@ namespace QToolbar.Plugins.WebSitesInfo
                   }
                }
             }
+            if (info.RowInfo.RowKey is WebAPIEnvironment)
+            {
+               WebAPIEnvironment webAPIEnvironment = (WebAPIEnvironment)info.RowInfo.RowKey;
+               string columnCaption = info.Column.GetCaption();
+               if (columnCaption.ToLower().Contains("url"))
+               {
+                  Open(cellText);
+               }
+            }
          }
       }
 

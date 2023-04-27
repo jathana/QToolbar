@@ -117,7 +117,7 @@ namespace QToolbar.Helpers
                         //if (!site.Name.Contains("12_3")) continue;
                         if (webAPIReg.IsMatch(site.Name))
                         {
-                           WebAPISiteInfo siteInfo = new WebAPISiteInfo(host, site);
+                           WebAPISiteInfo siteInfo = new WebAPISiteInfo(host, site);                           
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
                         }
