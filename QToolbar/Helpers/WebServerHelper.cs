@@ -114,7 +114,7 @@ namespace QToolbar.Helpers
                   {
                      if (site.Bindings != null && site.Bindings.Count > 0 && (site.Bindings[0]).EndPoint != null)
                      {
-                        if (!site.Name.Contains("12_3")) continue;
+                        //if (!site.Name.Contains("12_3")) continue;
                         if (webAPIReg.IsMatch(site.Name))
                         {
                            WebAPISiteInfo siteInfo = new WebAPISiteInfo(host, site);

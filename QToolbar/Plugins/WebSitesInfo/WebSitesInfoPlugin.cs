@@ -28,6 +28,15 @@ namespace QToolbar.Plugins.ClipboardHelper
             
          return retVal;
       }
+
+
+      private void ExportWebSites()
+      {
+         //% windir %\system32\inetsrv\appcmd list site / config / xml > c:\websites.xml
+         string remoteCommand = @"%windir%\system32\inetsrv\appcmd list site /config /xml > c:\websites.xml";
+
+
+      }
       
    }
 }

@@ -54,7 +54,7 @@
     <ApplicationIcon>Analyze.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>2BEB441C32EF4A6F3C33CE047F7BE60ECBBAF2F3</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>68624E87915EBDEB27601FFDEE791E2CB5BDF71F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>QToolbar_TemporaryKey.pfx</ManifestKeyFile>
