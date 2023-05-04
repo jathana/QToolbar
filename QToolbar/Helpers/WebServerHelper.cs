@@ -115,46 +115,48 @@ namespace QToolbar.Helpers
       {
 
 
-         Regex webAPIReg = new Regex(WEB_API_NAME_PATTERN);
-         Regex identityReg = new Regex(IDENTITY_SERVER_PATTERN);
-         Regex legalAppReg = new Regex(LEGAL_APP_PATTERN);
-         Regex webOfficerClientReg = new Regex(WEB_OFFICER_CLIENT_PATTERN);
-         Regex allReg = new Regex($"{WEB_API_NAME_PATTERN}|{IDENTITY_SERVER_PATTERN}|{LEGAL_APP_PATTERN}|{WEB_OFFICER_CLIENT_PATTERN}");
+         Regex webAPIReg = new Regex(WEB_API_NAME_PATTERN.ToLower());
+         Regex identityReg = new Regex(IDENTITY_SERVER_PATTERN.ToLower());
+         Regex legalAppReg = new Regex(LEGAL_APP_PATTERN.ToLower());
+         Regex webOfficerClientReg = new Regex(WEB_OFFICER_CLIENT_PATTERN.ToLower());
+         Regex allReg = new Regex($"{WEB_API_NAME_PATTERN.ToLower()}|{IDENTITY_SERVER_PATTERN.ToLower()}|{LEGAL_APP_PATTERN.ToLower()}|{WEB_OFFICER_CLIENT_PATTERN.ToLower()}");
 
          try
          {
             using (ServerManager mgr = ServerManager.OpenRemote(host))
             {
-               var sites = mgr.Sites.Where(x => allReg.IsMatch(x.Name));
+               var sites = mgr.Sites.Where(x => allReg.IsMatch(x.Name.ToLower()));
                int sitesIndex = 0;
                foreach (var site in sites)  // enrich regex to filter sites
                {
                   
                   try
                   {
+                     var siteName = site.Name;
+
                      if (site.Bindings != null && site.Bindings.Count > 0 && (site.Bindings[0]).EndPoint != null)
                      {
                         //if (!site.Name.Contains("12_3")) continue;
-                        if (webAPIReg.IsMatch(site.Name))
+                        if (webAPIReg.IsMatch(site.Name.ToLower()))
                         {
                            WebAPISiteInfo siteInfo = new WebAPISiteInfo(host, site);                           
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
 
                         }
-                        else if (identityReg.IsMatch(site.Name))
+                        else if (identityReg.IsMatch(site.Name.ToLower()))
                         {
                            IdentityServerSiteInfo siteInfo = new IdentityServerSiteInfo(host, site);
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
                         }
-                        else if (legalAppReg.IsMatch(site.Name))
+                        else if (legalAppReg.IsMatch(site.Name.ToLower()))
                         {
                            LegalAppSiteInfo siteInfo = new LegalAppSiteInfo(host, site);
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
                         }
-                        else if (webOfficerClientReg.IsMatch(site.Name))
+                        else if (webOfficerClientReg.IsMatch(site.Name.ToLower()))
                         {
                            WebOfficerClientSiteInfo siteInfo = new WebOfficerClientSiteInfo(host, site);
                            WebSites.Add(siteInfo);
