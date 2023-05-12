@@ -18,6 +18,7 @@ using System.Threading;
 using QToolbar.Tools;
 using QToolbar.Forms;
 using QToolbar.AutoDoc;
+using System.Text.RegularExpressions;
 
 namespace QToolbar
 {
@@ -375,8 +376,10 @@ namespace QToolbar
 
       private List<ConnectionInfo> GetDevDBsConnectionInfo()
       {
-         var result = _DBs.Where(d => d.Database.ToLower().StartsWith("qbcollection_plus_") &&
+         Regex reg = new Regex("^qbcollection[_]plus[_][0-9]+[_][0-9]+[_]*[0-9]*$");
+         var result = _DBs.Where(d => reg.IsMatch(d.Database.ToLower()) &&
                                     OptionsInstance.DevSQLInstances.ToLower().Contains(d.Server.ToLower())).OrderByDescending(d => d.DatabaseSortName).ToList();
+
          return result;
       }
 

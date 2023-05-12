@@ -30,6 +30,10 @@
       {
          this.components = new System.ComponentModel.Container();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_WebSitesInfo));
+         DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+         DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+         DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+         DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
          this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
          this.UXTabControl = new DevExpress.XtraTab.XtraTabControl();
          this.tabWebAPI = new DevExpress.XtraTab.XtraTabPage();
@@ -49,12 +53,13 @@
          this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
          this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
          this.bar1 = new DevExpress.XtraBars.Bar();
-         this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+         this.btnReloadWebSitesInformation = new DevExpress.XtraBars.BarButtonItem();
          this.bar3 = new DevExpress.XtraBars.Bar();
          this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
          this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+         this.btnCancelLoadWebSitesInformation = new DevExpress.XtraBars.BarButtonItem();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
          this.layoutControl1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.UXTabControl)).BeginInit();
@@ -235,8 +240,9 @@
          this.barManager1.DockControls.Add(this.barDockControlRight);
          this.barManager1.Form = this;
          this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1});
-         this.barManager1.MaxItemId = 1;
+            this.btnReloadWebSitesInformation,
+            this.btnCancelLoadWebSitesInformation});
+         this.barManager1.MaxItemId = 2;
          this.barManager1.StatusBar = this.bar3;
          // 
          // bar1
@@ -246,16 +252,20 @@
          this.bar1.DockRow = 0;
          this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
          this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnReloadWebSitesInformation),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCancelLoadWebSitesInformation)});
          this.bar1.Text = "Tools";
          // 
-         // barButtonItem1
+         // btnReloadWebSitesInformation
          // 
-         this.barButtonItem1.Id = 0;
-         this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-         this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-         this.barButtonItem1.Name = "barButtonItem1";
-         this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+         this.btnReloadWebSitesInformation.Id = 0;
+         this.btnReloadWebSitesInformation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+         this.btnReloadWebSitesInformation.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+         this.btnReloadWebSitesInformation.Name = "btnReloadWebSitesInformation";
+         toolTipItem1.Text = "Reloads Web Sites Information";
+         superToolTip1.Items.Add(toolTipItem1);
+         this.btnReloadWebSitesInformation.SuperTip = superToolTip1;
+         this.btnReloadWebSitesInformation.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
          // 
          // bar3
          // 
@@ -300,6 +310,17 @@
          this.barDockControlRight.Location = new System.Drawing.Point(806, 24);
          this.barDockControlRight.Manager = this.barManager1;
          this.barDockControlRight.Size = new System.Drawing.Size(0, 400);
+         // 
+         // btnCancelLoadWebSitesInformation
+         // 
+         this.btnCancelLoadWebSitesInformation.Id = 1;
+         this.btnCancelLoadWebSitesInformation.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
+         this.btnCancelLoadWebSitesInformation.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+         this.btnCancelLoadWebSitesInformation.Name = "btnCancelLoadWebSitesInformation";
+         toolTipItem2.Text = "Cancels Loading WebSites Information";
+         superToolTip2.Items.Add(toolTipItem2);
+         this.btnCancelLoadWebSitesInformation.SuperTip = superToolTip2;
+         this.btnCancelLoadWebSitesInformation.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancelLoadWebSitesInformation_ItemClick);
          // 
          // Frm_WebSitesInfo
          // 
@@ -357,7 +378,7 @@
       private DevExpress.XtraBars.BarDockControl barDockControlBottom;
       private DevExpress.XtraBars.BarDockControl barDockControlLeft;
       private DevExpress.XtraBars.BarDockControl barDockControlRight;
-      private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+      private DevExpress.XtraBars.BarButtonItem btnReloadWebSitesInformation;
       private DevExpress.XtraTab.XtraTabPage tabLegalApp;
       private DevExpress.XtraGrid.GridControl UXLegalAppGrid;
       private DevExpress.XtraGrid.Views.Grid.GridView UXLegalAppGridView;
@@ -367,5 +388,6 @@
       private DevExpress.XtraTab.XtraTabPage tabWebOfficerClient;
       private DevExpress.XtraGrid.GridControl UXWebOfficerClientGrid;
       private DevExpress.XtraGrid.Views.Grid.GridView UXWebOfficerClientGridView;
+      private DevExpress.XtraBars.BarButtonItem btnCancelLoadWebSitesInformation;
    }
 }

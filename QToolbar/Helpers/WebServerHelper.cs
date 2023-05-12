@@ -84,9 +84,15 @@ namespace QToolbar.Helpers
                _CurrentHostLoadedNumber = i;
 
                LoadInfoInternal(host);
+
+               if (_CancelLoad) break;
                
             }
-            WriteToCache();
+            if(!_CancelLoad)
+            {
+               WriteToCache();
+            }
+            
          }
       }
 
@@ -125,11 +131,10 @@ namespace QToolbar.Helpers
          {
             using (ServerManager mgr = ServerManager.OpenRemote(host))
             {
-               var sites = mgr.Sites.Where(x => allReg.IsMatch(x.Name.ToLower()));
+               var sites = mgr.Sites.Where(x => allReg.IsMatch(x.Name.ToLower())); // enrich regex to filter sites
                int sitesIndex = 0;
-               foreach (var site in sites)  // enrich regex to filter sites
+               foreach (var site in sites)  
                {
-                  
                   try
                   {
                      var siteName = site.Name;
@@ -173,8 +178,6 @@ namespace QToolbar.Helpers
                   OnProcessingInfoCollected(new ProcessingInfoCollectedEventArgs(_HostsCount, _CurrentHostLoadedNumber, sites.Count(), sitesIndex));
                   if (_CancelLoad) break;
                }
-               
-
             }
          }
          catch (Exception ex)

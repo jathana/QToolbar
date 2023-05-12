@@ -153,16 +153,22 @@ namespace QToolbar.Plugins.WebSitesInfo
          LoadWebSitesInfo();
       }
 
-      private void LoadWebSitesInfo()
-      {
-
-         
-         backgroundWorker1.RunWorkerAsync();
-      }
+      #region Background Worker
 
       private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
       {
-         _WebServerHelper.LoadInfo(OptionsInstance.QCWebServers);
+         try
+         {
+            btnReloadWebSitesInformation.Enabled = false;
+            btnCancelLoadWebSitesInformation.Enabled = true;
+            _WebServerHelper.LoadInfo(OptionsInstance.QCWebServers);
+         }
+         catch
+         {
+            btnReloadWebSitesInformation.Enabled = true;
+            btnCancelLoadWebSitesInformation.Enabled = false;
+         }
+         
       }
 
       private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -184,8 +190,10 @@ namespace QToolbar.Plugins.WebSitesInfo
 
       private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
       {
-         
+         btnReloadWebSitesInformation.Enabled = true;
+         btnCancelLoadWebSitesInformation.Enabled = false;
       }
+      #endregion
 
       private void Frm_WebSitesInfo_FormClosing(object sender, FormClosingEventArgs e)
       {
@@ -259,24 +267,35 @@ namespace QToolbar.Plugins.WebSitesInfo
          }
       }
 
+      #region Buttons Click Handlers
       private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
       {
          _SyncContext.Post((input) =>
          {
-            if(backgroundWorker1.IsBusy)
-            {
-               backgroundWorker1.CancelAsync();
-            }
-            else
-            {
-               ClearData();
-               _WebServerHelper.ClearCache();
-               _WebServerHelper.CancelLoadInfo();
-               backgroundWorker1.RunWorkerAsync();
-            }
+            ReloadWebSitesInfo();
          }, e);
       }
+      #endregion
 
+
+      private void LoadWebSitesInfo()
+      {
+            backgroundWorker1.RunWorkerAsync();
+      }
+      private void ReloadWebSitesInfo()
+      {
+         if (backgroundWorker1.IsBusy)
+         {
+            backgroundWorker1.CancelAsync();
+         }
+         else
+         {
+            ClearData();
+            _WebServerHelper.ClearCache();
+            _WebServerHelper.CancelLoadInfo();
+            backgroundWorker1.RunWorkerAsync();
+         }
+      }
       private void ClearData()
       {
          _WebAPIWebSites.Clear();
@@ -284,7 +303,12 @@ namespace QToolbar.Plugins.WebSitesInfo
          _IdentityServerWebSites.Clear();
          _WebOfficerClientWebSites.Clear();
    }
-      
+
+      private void btnCancelLoadWebSitesInformation_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+      {
+         btnCancelLoadWebSitesInformation.Enabled = false;
+         _WebServerHelper.CancelLoadInfo();
+      }
    }
 
 }
