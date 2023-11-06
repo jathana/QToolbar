@@ -142,9 +142,22 @@ namespace QToolbar
 
       private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
       {
-         ClearAppInstance();
-         InitUI();
-         CreateMenuItems();
+         XtraMessageBoxArgs args = new XtraMessageBoxArgs()
+         {
+            // Sets the caption of the message box.
+            Caption = "Confirmation",
+            // Sets the message of the message box.
+            Text = "Do you want to refresh?",
+            // Sets the buttons of the message box.
+            Buttons = new DialogResult[] { DialogResult.Yes, DialogResult.No },
+            // Sets the auto-close options of the message box.
+         };
+         if (XtraMessageBox.Show(args) == DialogResult.Yes)
+         {
+            ClearAppInstance();
+            InitUI();
+            CreateMenuItems();
+         }
       }
 
 
