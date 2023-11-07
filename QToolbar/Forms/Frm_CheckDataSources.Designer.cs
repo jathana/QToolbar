@@ -30,8 +30,8 @@
       {
          this.components = new System.ComponentModel.Container();
          System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_CheckDatasources));
-         DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-         DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+         DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+         DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
          this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
          this.bar1 = new DevExpress.XtraBars.Bar();
          this.btnRun = new DevExpress.XtraBars.BarButtonItem();
@@ -46,20 +46,20 @@
          this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
          this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
          this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-         this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-         this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-         this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
          this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+         this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+         this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
          this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
          ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
          this.layoutControl1.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
          this.splitContainerControl1.SuspendLayout();
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
          this.SuspendLayout();
          // 
          // barManager1
@@ -115,9 +115,9 @@
          this.btnSelectFromFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSelectFromFile.ImageOptions.Image")));
          this.btnSelectFromFile.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnSelectFromFile.ImageOptions.LargeImage")));
          this.btnSelectFromFile.Name = "btnSelectFromFile";
-         toolTipTitleItem3.Text = "Select Criteria From File";
-         superToolTip3.Items.Add(toolTipTitleItem3);
-         this.btnSelectFromFile.SuperTip = superToolTip3;
+         toolTipTitleItem1.Text = "Select Criteria From File";
+         superToolTip1.Items.Add(toolTipTitleItem1);
+         this.btnSelectFromFile.SuperTip = superToolTip1;
          // 
          // bar3
          // 
@@ -187,6 +187,23 @@
          this.layoutControl1.TabIndex = 0;
          this.layoutControl1.Text = "layoutControl1";
          // 
+         // gridControl1
+         // 
+         this.gridControl1.Location = new System.Drawing.Point(2, 2);
+         this.gridControl1.MainView = this.gridView1;
+         this.gridControl1.Name = "gridControl1";
+         this.gridControl1.Size = new System.Drawing.Size(1045, 411);
+         this.gridControl1.TabIndex = 2;
+         this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+         // 
+         // gridView1
+         // 
+         this.gridView1.GridControl = this.gridControl1;
+         this.gridView1.Name = "gridView1";
+         this.gridView1.OptionsSelection.MultiSelect = true;
+         this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+         // 
          // layoutControlGroup1
          // 
          this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -197,6 +214,15 @@
          this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
          this.layoutControlGroup1.Size = new System.Drawing.Size(1049, 415);
          this.layoutControlGroup1.TextVisible = false;
+         // 
+         // layoutControlItem2
+         // 
+         this.layoutControlItem2.Control = this.gridControl1;
+         this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+         this.layoutControlItem2.Name = "layoutControlItem2";
+         this.layoutControlItem2.Size = new System.Drawing.Size(1049, 415);
+         this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+         this.layoutControlItem2.TextVisible = false;
          // 
          // splitContainerControl1
          // 
@@ -211,32 +237,6 @@
          this.splitContainerControl1.Size = new System.Drawing.Size(1049, 525);
          this.splitContainerControl1.TabIndex = 14;
          this.splitContainerControl1.Text = "splitContainerControl1";
-         // 
-         // gridView1
-         // 
-         this.gridView1.GridControl = this.gridControl1;
-         this.gridView1.Name = "gridView1";
-         this.gridView1.OptionsSelection.MultiSelect = true;
-         this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-         // 
-         // gridControl1
-         // 
-         this.gridControl1.Location = new System.Drawing.Point(2, 2);
-         this.gridControl1.MainView = this.gridView1;
-         this.gridControl1.Name = "gridControl1";
-         this.gridControl1.Size = new System.Drawing.Size(1045, 411);
-         this.gridControl1.TabIndex = 2;
-         this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-         // 
-         // layoutControlItem2
-         // 
-         this.layoutControlItem2.Control = this.gridControl1;
-         this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
-         this.layoutControlItem2.Name = "layoutControlItem2";
-         this.layoutControlItem2.Size = new System.Drawing.Size(1049, 415);
-         this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-         this.layoutControlItem2.TextVisible = false;
          // 
          // Frm_CheckDatasources
          // 
@@ -254,12 +254,12 @@
          ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
          this.layoutControl1.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
          this.splitContainerControl1.ResumeLayout(false);
-         ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
          this.ResumeLayout(false);
          this.PerformLayout();
 

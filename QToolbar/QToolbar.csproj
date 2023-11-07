@@ -23,9 +23,9 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\qsrvdevfs19\QCS Development and Testing\Tools\QToolbar\</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>190</ApplicationRevision>
+    <ApplicationRevision>194</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -67,6 +67,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
@@ -253,6 +259,13 @@
     <Compile Include="Plugins\CFsValidator\Frm_CFsValidator.Designer.cs">
       <DependentUpon>Frm_CFsValidator.cs</DependentUpon>
     </Compile>
+    <Compile Include="Plugins\TDSHelper\Frm_TDSHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\TDSHelper\Frm_TDSHelper.Designer.cs">
+      <DependentUpon>Frm_TDSHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\TDSHelper\TDSHelperPlugin.cs" />
     <Compile Include="Plugins\WebSitesInfo\WebSitesInfoPlugin.cs" />
     <Compile Include="Plugins\WebSitesInfo\Frm_WebSitesInfo.cs">
       <SubType>Form</SubType>
@@ -439,6 +452,9 @@
     <EmbeddedResource Include="Plugins\CFsValidator\Frm_CFsValidator.resx">
       <DependentUpon>Frm_CFsValidator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\TDSHelper\Frm_TDSHelper.resx">
+      <DependentUpon>Frm_TDSHelper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Plugins\WebSitesInfo\Frm_WebSitesInfo.resx">
       <DependentUpon>Frm_WebSitesInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -513,6 +529,7 @@
       <DependentUpon>AutoDocModel.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

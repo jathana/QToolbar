@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QToolbar.Plugins.ClipboardHelper
+namespace QToolbar.Plugins.WebSitesInfo
 {
 
    [Plugin(pluginName: "Web Sites Info", pluginDesc: @"Web Sites Information.")]

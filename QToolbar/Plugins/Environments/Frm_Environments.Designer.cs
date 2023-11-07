@@ -116,11 +116,11 @@
          this.ribbonControl1.Images = this.imageCollection1;
          this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
+            this.ribbonControl1.SearchEditItem,
             this.mnuEnvironments,
             this.btnRefresh,
             this.btnUpdateCFs,
-            this.btnExcelExport,
-            this.ribbonControl1.SearchEditItem});
+            this.btnExcelExport});
          this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
          this.ribbonControl1.MaxItemId = 17;
          this.ribbonControl1.Name = "ribbonControl1";
