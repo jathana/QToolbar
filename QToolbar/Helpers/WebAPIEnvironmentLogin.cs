@@ -10,5 +10,8 @@ namespace QToolbar.Helpers
    {
       public string ClientId { get; set; }
       public string ClientSecret { get; set; }
+
+      public int? VendCode { get; set; }
+      public int? ExtcCode { get; set; }
    }
 }

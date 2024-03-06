@@ -124,7 +124,7 @@ namespace QToolbar.Helpers
 
                using (SqlConnection con = new SqlConnection(env.connectionString))
                {
-                  string sql = "SELECT APC_NAME,APC_COMMENTS FROM AT_API_CLIENT_CREDENTIALS WHERE APC_ACTIVE_FLAG=1 AND ISNULL(APC_COMMENTS,'')<>''";
+                  string sql = "SELECT APC_NAME, APC_COMMENTS, EXTC_CODE, VEND_CODE FROM AT_API_CLIENT_CREDENTIALS WHERE APC_ACTIVE_FLAG=1 AND ISNULL(APC_COMMENTS,'')<>''";
                   SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
 
                   DataSet dataset = new DataSet();
@@ -134,7 +134,9 @@ namespace QToolbar.Helpers
                      env.Logins.Add(new WebAPIEnvironmentLogin()
                      {
                         ClientId = row.Field<string>("APC_NAME") + "{[(" + env.connectionStringHash + ")]}",
-                        ClientSecret = row.Field<string>("APC_COMMENTS")
+                        ClientSecret = row.Field<string>("APC_COMMENTS"),
+                        ExtcCode = row.Field<int?>("EXTC_CODE"),
+                        VendCode = row.Field<int?>("VEND_CODE")
                      });
                   }
                }

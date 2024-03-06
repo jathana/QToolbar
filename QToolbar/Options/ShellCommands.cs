@@ -9,8 +9,8 @@ namespace QToolbar.Options
 {
    public class ShellCommands : SerializableTable
    {
-      private string[] columns = new string[] { "Name", "Command", "Arguments" };
-      private Type[] types = new Type[] { typeof(string), typeof(string), typeof(string) };
+      private string[] columns = new string[] { "Name", "Command", "Arguments", "RunOnStartup" };
+      private Type[] types = new Type[] { typeof(string), typeof(string), typeof(string), typeof(bool) };
 
       public ShellCommands()
       {

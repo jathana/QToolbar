@@ -9,22 +9,61 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="AutoDocModel" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AutoDocModel" msprop:Generator_UserDSName="AutoDocModel">
+  <xs:element name="AutoDocModel" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="AutoDocModel" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="AutoDocModel">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="AT_FIELDS" msprop:Generator_TableClassName="AT_FIELDSDataTable" msprop:Generator_TableVarName="tableAT_FIELDS" msprop:Generator_TablePropName="AT_FIELDS" msprop:Generator_RowDeletingName="AT_FIELDSRowDeleting" msprop:Generator_RowChangingName="AT_FIELDSRowChanging" msprop:Generator_RowEvHandlerName="AT_FIELDSRowChangeEventHandler" msprop:Generator_RowDeletedName="AT_FIELDSRowDeleted" msprop:Generator_UserTableName="AT_FIELDS" msprop:Generator_RowChangedName="AT_FIELDSRowChanged" msprop:Generator_RowEvArgName="AT_FIELDSRowChangeEvent" msprop:Generator_RowClassName="AT_FIELDSRow">
+        <xs:element name="AT_FIELDS" msprop:Generator_RowEvHandlerName="AT_FIELDSRowChangeEventHandler" msprop:Generator_RowDeletedName="AT_FIELDSRowDeleted" msprop:Generator_RowDeletingName="AT_FIELDSRowDeleting" msprop:Generator_RowEvArgName="AT_FIELDSRowChangeEvent" msprop:Generator_TablePropName="AT_FIELDS" msprop:Generator_RowChangedName="AT_FIELDSRowChanged" msprop:Generator_UserTableName="AT_FIELDS" msprop:Generator_RowChangingName="AT_FIELDSRowChanging" msprop:Generator_RowClassName="AT_FIELDSRow" msprop:Generator_TableClassName="AT_FIELDSDataTable" msprop:Generator_TableVarName="tableAT_FIELDS">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="FLD_TABLE_NAME" msprop:Generator_ColumnVarNameInTable="columnFLD_TABLE_NAME" msprop:Generator_ColumnPropNameInRow="FLD_TABLE_NAME" msprop:Generator_ColumnPropNameInTable="FLD_TABLE_NAMEColumn" msprop:Generator_UserColumnName="FLD_TABLE_NAME" type="xs:string" minOccurs="0" />
-              <xs:element name="FLD_FIELD_NAME" msprop:Generator_ColumnVarNameInTable="columnFLD_FIELD_NAME" msprop:Generator_ColumnPropNameInRow="FLD_FIELD_NAME" msprop:Generator_ColumnPropNameInTable="FLD_FIELD_NAMEColumn" msprop:Generator_UserColumnName="FLD_FIELD_NAME" type="xs:string" minOccurs="0" />
-              <xs:element name="FLD_FIELD_CAPTION" msprop:Generator_ColumnVarNameInTable="columnFLD_FIELD_CAPTION" msprop:Generator_ColumnPropNameInRow="FLD_FIELD_CAPTION" msprop:Generator_ColumnPropNameInTable="FLD_FIELD_CAPTIONColumn" msprop:Generator_UserColumnName="FLD_FIELD_CAPTION" type="xs:string" minOccurs="0" />
-              <xs:element name="FLD_DATABASE_REQUIRED" msprop:Generator_ColumnVarNameInTable="columnFLD_DATABASE_REQUIRED" msprop:Generator_ColumnPropNameInRow="FLD_DATABASE_REQUIRED" msprop:Generator_ColumnPropNameInTable="FLD_DATABASE_REQUIREDColumn" msprop:Generator_UserColumnName="FLD_DATABASE_REQUIRED" type="xs:boolean" minOccurs="0" />
-              <xs:element name="FLD_DATASOURCE_REQUIRED" msprop:Generator_ColumnVarNameInTable="columnFLD_DATASOURCE_REQUIRED" msprop:Generator_ColumnPropNameInRow="FLD_DATASOURCE_REQUIRED" msprop:Generator_ColumnPropNameInTable="FLD_DATASOURCE_REQUIREDColumn" msprop:Generator_UserColumnName="FLD_DATASOURCE_REQUIRED" type="xs:boolean" minOccurs="0" />
-              <xs:element name="FLD_NEW_FIELD" msprop:Generator_ColumnVarNameInTable="columnFLD_NEW_FIELD" msprop:Generator_ColumnPropNameInRow="FLD_NEW_FIELD" msprop:Generator_ColumnPropNameInTable="FLD_NEW_FIELDColumn" msprop:Generator_UserColumnName="FLD_NEW_FIELD" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FLD_TABLE_NAME" msprop:Generator_UserColumnName="FLD_TABLE_NAME" msprop:Generator_ColumnPropNameInTable="FLD_TABLE_NAMEColumn" msprop:Generator_ColumnPropNameInRow="FLD_TABLE_NAME" msprop:Generator_ColumnVarNameInTable="columnFLD_TABLE_NAME" type="xs:string" />
+              <xs:element name="FLD_FIELD_NAME" msprop:Generator_UserColumnName="FLD_FIELD_NAME" msprop:Generator_ColumnPropNameInTable="FLD_FIELD_NAMEColumn" msprop:Generator_ColumnPropNameInRow="FLD_FIELD_NAME" msprop:Generator_ColumnVarNameInTable="columnFLD_FIELD_NAME" type="xs:string" minOccurs="0" />
+              <xs:element name="FLD_FIELD_CAPTION" msprop:Generator_UserColumnName="FLD_FIELD_CAPTION" msprop:Generator_ColumnPropNameInTable="FLD_FIELD_CAPTIONColumn" msprop:Generator_ColumnPropNameInRow="FLD_FIELD_CAPTION" msprop:Generator_ColumnVarNameInTable="columnFLD_FIELD_CAPTION" type="xs:string" minOccurs="0" />
+              <xs:element name="FLD_DATABASE_REQUIRED" msprop:Generator_UserColumnName="FLD_DATABASE_REQUIRED" msprop:Generator_ColumnPropNameInTable="FLD_DATABASE_REQUIREDColumn" msprop:Generator_ColumnPropNameInRow="FLD_DATABASE_REQUIRED" msprop:Generator_ColumnVarNameInTable="columnFLD_DATABASE_REQUIRED" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FLD_DATASOURCE_REQUIRED" msprop:Generator_UserColumnName="FLD_DATASOURCE_REQUIRED" msprop:Generator_ColumnPropNameInTable="FLD_DATASOURCE_REQUIREDColumn" msprop:Generator_ColumnPropNameInRow="FLD_DATASOURCE_REQUIRED" msprop:Generator_ColumnVarNameInTable="columnFLD_DATASOURCE_REQUIRED" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FLD_NEW_FIELD" msprop:Generator_UserColumnName="FLD_NEW_FIELD" msprop:Generator_ColumnPropNameInTable="FLD_NEW_FIELDColumn" msprop:Generator_ColumnPropNameInRow="FLD_NEW_FIELD" msprop:Generator_ColumnVarNameInTable="columnFLD_NEW_FIELD" type="xs:boolean" minOccurs="0" />
+              <xs:element name="FLD_CODE" msprop:Generator_UserColumnName="FLD_CODE" msprop:Generator_ColumnPropNameInTable="FLD_CODEColumn" msprop:Generator_ColumnPropNameInRow="FLD_CODE" msprop:Generator_ColumnVarNameInTable="columnFLD_CODE" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TDS_DATASOURCES" msprop:Generator_RowClassName="TDS_DATASOURCESRow" msprop:Generator_RowEvHandlerName="TDS_DATASOURCESRowChangeEventHandler" msprop:Generator_RowDeletedName="TDS_DATASOURCESRowDeleted" msprop:Generator_RowDeletingName="TDS_DATASOURCESRowDeleting" msprop:Generator_RowEvArgName="TDS_DATASOURCESRowChangeEvent" msprop:Generator_TablePropName="TDS_DATASOURCES" msprop:Generator_RowChangedName="TDS_DATASOURCESRowChanged" msprop:Generator_UserTableName="TDS_DATASOURCES" msprop:Generator_RowChangingName="TDS_DATASOURCESRowChanging" msprop:Generator_TableClassName="TDS_DATASOURCESDataTable" msprop:Generator_TableVarName="tableTDS_DATASOURCES">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DSRC_NAME" msprop:Generator_UserColumnName="DSRC_NAME" msprop:Generator_ColumnPropNameInTable="DSRC_NAMEColumn" msprop:Generator_ColumnPropNameInRow="DSRC_NAME" msprop:Generator_ColumnVarNameInTable="columnDSRC_NAME" type="xs:string" />
+              <xs:element name="DSRC_CODE" msprop:Generator_UserColumnName="DSRC_CODE" msprop:Generator_ColumnPropNameInTable="DSRC_CODEColumn" msprop:Generator_ColumnPropNameInRow="DSRC_CODE" msprop:Generator_ColumnVarNameInTable="columnDSRC_CODE" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TDS_DATASOURCE_FIELDS" msprop:Generator_RowClassName="TDS_DATASOURCE_FIELDSRow" msprop:Generator_RowEvHandlerName="TDS_DATASOURCE_FIELDSRowChangeEventHandler" msprop:Generator_RowDeletedName="TDS_DATASOURCE_FIELDSRowDeleted" msprop:Generator_RowDeletingName="TDS_DATASOURCE_FIELDSRowDeleting" msprop:Generator_RowEvArgName="TDS_DATASOURCE_FIELDSRowChangeEvent" msprop:Generator_TablePropName="TDS_DATASOURCE_FIELDS" msprop:Generator_RowChangedName="TDS_DATASOURCE_FIELDSRowChanged" msprop:Generator_UserTableName="TDS_DATASOURCE_FIELDS" msprop:Generator_RowChangingName="TDS_DATASOURCE_FIELDSRowChanging" msprop:Generator_TableClassName="TDS_DATASOURCE_FIELDSDataTable" msprop:Generator_TableVarName="tableTDS_DATASOURCE_FIELDS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DSRC_CODE" msprop:Generator_UserColumnName="DSRC_CODE" msprop:Generator_ColumnPropNameInTable="DSRC_CODEColumn" msprop:Generator_ColumnPropNameInRow="DSRC_CODE" msprop:Generator_ColumnVarNameInTable="columnDSRC_CODE" type="xs:int" />
+              <xs:element name="FLD_CODE" msprop:Generator_UserColumnName="FLD_CODE" msprop:Generator_ColumnPropNameInTable="FLD_CODEColumn" msprop:Generator_ColumnPropNameInRow="FLD_CODE" msprop:Generator_ColumnVarNameInTable="columnFLD_CODE" type="xs:int" />
+              <xs:element name="DSF_CODE" msprop:Generator_ColumnPropNameInRow="DSF_CODE" msprop:Generator_ColumnPropNameInTable="DSF_CODEColumn" msprop:Generator_ColumnVarNameInTable="columnDSF_CODE" msprop:Generator_UserColumnName="DSF_CODE" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AT_FIELDS" />
+      <xs:field xpath="mstns:FLD_CODE" />
+    </xs:unique>
+    <xs:unique name="TDS_DATASOURCES_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TDS_DATASOURCES" />
+      <xs:field xpath="mstns:DSRC_CODE" />
+    </xs:unique>
+    <xs:unique name="TDS_DATASOURCE_FIELDS_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TDS_DATASOURCE_FIELDS" />
+      <xs:field xpath="mstns:DSRC_CODE" />
+      <xs:field xpath="mstns:FLD_CODE" />
+    </xs:unique>
+    <xs:keyref name="FK_AT_FIELDS_TDS_DATASOURCE_FIELDS" refer="Constraint1" msprop:rel_Generator_UserParentTable="AT_FIELDS" msprop:rel_Generator_UserChildTable="TDS_DATASOURCE_FIELDS" msprop:rel_Generator_RelationVarName="relationFK_AT_FIELDS_TDS_DATASOURCE_FIELDS" msprop:rel_Generator_ChildPropName="GetTDS_DATASOURCE_FIELDSRows" msprop:rel_Generator_UserRelationName="FK_AT_FIELDS_TDS_DATASOURCE_FIELDS" msprop:rel_Generator_ParentPropName="AT_FIELDSRow">
+      <xs:selector xpath=".//mstns:TDS_DATASOURCE_FIELDS" />
+      <xs:field xpath="mstns:FLD_CODE" />
+    </xs:keyref>
+    <xs:keyref name="FK_TDS_DATASOURCES_TDS_DATASOURCE_FIELDS" refer="TDS_DATASOURCES_Constraint1" msprop:rel_Generator_UserParentTable="TDS_DATASOURCES" msprop:rel_Generator_UserChildTable="TDS_DATASOURCE_FIELDS" msprop:rel_Generator_RelationVarName="relationFK_TDS_DATASOURCES_TDS_DATASOURCE_FIELDS" msprop:rel_Generator_ChildPropName="GetTDS_DATASOURCE_FIELDSRows" msprop:rel_Generator_UserRelationName="FK_TDS_DATASOURCES_TDS_DATASOURCE_FIELDS" msprop:rel_Generator_ParentPropName="TDS_DATASOURCESRow">
+      <xs:selector xpath=".//mstns:TDS_DATASOURCE_FIELDS" />
+      <xs:field xpath="mstns:DSRC_CODE" />
+    </xs:keyref>
   </xs:element>
 </xs:schema>

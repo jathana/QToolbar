@@ -149,24 +149,24 @@ namespace QToolbar.Helpers
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
 
                         }
-                        else if (identityReg.IsMatch(site.Name.ToLower()))
-                        {
-                           IdentityServerSiteInfo siteInfo = new IdentityServerSiteInfo(host, site);
-                           WebSites.Add(siteInfo);
-                           OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
-                        }
-                        else if (legalAppReg.IsMatch(site.Name.ToLower()))
-                        {
-                           LegalAppSiteInfo siteInfo = new LegalAppSiteInfo(host, site);
-                           WebSites.Add(siteInfo);
-                           OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
-                        }
-                        else if (webOfficerClientReg.IsMatch(site.Name.ToLower()))
-                        {
-                           WebOfficerClientSiteInfo siteInfo = new WebOfficerClientSiteInfo(host, site);
-                           WebSites.Add(siteInfo);
-                           OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
-                        }
+                        //else if (identityReg.IsMatch(site.Name.ToLower()))
+                        //{
+                        //   IdentityServerSiteInfo siteInfo = new IdentityServerSiteInfo(host, site);
+                        //   WebSites.Add(siteInfo);
+                        //   OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
+                        //}
+                        //else if (legalAppReg.IsMatch(site.Name.ToLower()))
+                        //{
+                        //   LegalAppSiteInfo siteInfo = new LegalAppSiteInfo(host, site);
+                        //   WebSites.Add(siteInfo);
+                        //   OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
+                        //}
+                        //else if (webOfficerClientReg.IsMatch(site.Name.ToLower()))
+                        //{
+                        //   WebOfficerClientSiteInfo siteInfo = new WebOfficerClientSiteInfo(host, site);
+                        //   WebSites.Add(siteInfo);
+                        //   OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
+                        //}
 
                      }
                   }

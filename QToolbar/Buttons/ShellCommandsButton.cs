@@ -40,14 +40,31 @@ namespace QToolbar.Buttons
          shellCommandItem.ItemClick += MenuItemClick;
          shellCommandItem.Tag = row;
          _Menu.AddItem(shellCommandItem);
+
+         if (row != null)
+         {
+            bool? runOnStartup = row.Field<bool?>("RunOnStartup");
+            if(runOnStartup.HasValue && runOnStartup.Value)
+            {
+               ExecuteShellCommand(row);
+            }
+
+         }
       }
 
       protected override void MenuItemClick(object sender, ItemClickEventArgs e)
       {
+         DataRow row = (DataRow)e.Item.Tag;
+         if (row != null)
+         {
+            ExecuteShellCommand(row);
+         }
+      }
+
+      private void ExecuteShellCommand(DataRow row)
+      {
          try
          {
-            DataRow row = (DataRow)e.Item.Tag;
-
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
             process.StartInfo.FileName = row["Command"].ToString();
@@ -62,5 +79,7 @@ namespace QToolbar.Buttons
             XtraMessageBox.Show(ex.Message);
          }
       }
+
+
    }
 }
