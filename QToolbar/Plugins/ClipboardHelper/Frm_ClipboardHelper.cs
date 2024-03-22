@@ -47,7 +47,7 @@ namespace QToolbar.Plugins.ClipboardHelper
       private void InitButtons()
       {
          // prepare buttons
-         _Buttons.ForEach(b => { b.Click += btnClip_Click; b.Text = _BtnDefaultText; });
+         _Buttons.ForEach(b => { b.Click += btnClip_Click; b.Text = _BtnDefaultText; b.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;  });
       }
 
       private void btnClip_Click(object sender, EventArgs e)
