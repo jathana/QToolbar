@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QToolbar</RootNamespace>
     <AssemblyName>QToolbar</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>\\qsrvdevfs19\QCS Development and Testing\Tools\QToolbar\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
@@ -23,9 +24,9 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>\\qsrvdevfs19\QCS Development and Testing\Tools\QToolbar\</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>176</ApplicationRevision>
+    <ApplicationRevision>196</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -54,7 +55,7 @@
     <ApplicationIcon>Analyze.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>E53FC02AEE5E22854D7787667579B562703D782A</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>40963FDE11DB446B68F612E879CDF8C37C92539F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>QToolbar_1_TemporaryKey.pfx</ManifestKeyFile>
@@ -68,27 +69,44 @@
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="Accessibility" />
+    <Reference Include="BouncyCastle.Crypto">
+      <HintPath>..\..\..\..\Users\jathanasoulopoulos\.nuget\packages\portable.bouncycastle\1.9.0\lib\netstandard2.0\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Drawing.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Images.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Images.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Printing.v23.1.Core, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.XtraBars.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Data.Desktop.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v23.1.Core, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v23.1, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DiffPlex, Version=1.4.1.0, Culture=neutral, PublicKeyToken=1d35e91d1bd7bc0f, processorArchitecture=MSIL">
       <HintPath>..\packages\DiffPlex.1.4.1\lib\netstandard1.0\DiffPlex.dll</HintPath>
       <Private>True</Private>
@@ -124,6 +142,10 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
+    <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -140,6 +162,7 @@
     </Reference>
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -156,6 +179,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppInstance.cs" />
+    <Compile Include="AutoDoc\AutoDocModel.cs">
+      <DependentUpon>AutoDocModel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AutoDoc\AutoDocModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutoDocModel.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AutoDoc\Frm_AutoDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoDoc\Frm_AutoDoc.Designer.cs">
+      <DependentUpon>Frm_AutoDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Builds\AnalyticsBuildChecker.cs" />
     <Compile Include="Builds\BuildChecker.cs" />
     <Compile Include="Builds\BuildCheckerBase.cs" />
@@ -169,6 +206,12 @@
     <Compile Include="Buttons\InternalBuildsButton.cs" />
     <Compile Include="Buttons\NextBuildButton.cs" />
     <Compile Include="Builds\CheckResult.cs" />
+    <Compile Include="Forms\Frm_CheckDataSources.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_CheckDataSources.Designer.cs">
+      <DependentUpon>Frm_CheckDataSources.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_TxtDiff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,16 +230,30 @@
     <Compile Include="Forms\Frm_FieldsHelper.Designer.cs">
       <DependentUpon>Frm_FieldsHelper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ByteArrayExtensions.cs" />
     <Compile Include="Helpers\CfFile.cs" />
     <Compile Include="Helpers\CfValidator.cs" />
+    <Compile Include="Helpers\CryptographyExtensions.cs" />
+    <Compile Include="Helpers\SqlConnectionHelper.cs" />
+    <Compile Include="Helpers\WebOfficerClientSiteInfo.cs" />
+    <Compile Include="Helpers\WebAPIEnvironmentLogin.cs" />
+    <Compile Include="Helpers\WebAPIEnvironment.cs" />
+    <Compile Include="Helpers\ProcessingInfoCollectedEventArgs.cs" />
+    <Compile Include="Helpers\WebSiteTypeEnum.cs" />
     <Compile Include="Helpers\DBUtils.cs" />
     <Compile Include="Helpers\Error.cs" />
     <Compile Include="Helpers\Errors.cs" />
     <Compile Include="Helpers\ErrorType.cs" />
     <Compile Include="Helpers\DateTimeExtensions.cs" />
+    <Compile Include="Helpers\LegalAppSiteInfo.cs" />
     <Compile Include="Helpers\MultiSqlExecutor.cs" />
+    <Compile Include="Helpers\IdentityServerSiteInfo.cs" />
+    <Compile Include="Helpers\WebAPISiteInfo.cs" />
     <Compile Include="Helpers\ValidationHelper.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Helpers\WebServerHelper.cs" />
+    <Compile Include="Helpers\WebSiteInfo.cs" />
+    <Compile Include="Helpers\WebSiteInfoEventArgs.cs" />
     <Compile Include="Options\EnvCFs.cs" />
     <Compile Include="Plugins\CFsValidator\CfFileValidationEventArgs.cs" />
     <Compile Include="Plugins\CFsValidator\CFsValidator.cs" />
@@ -206,6 +263,20 @@
     </Compile>
     <Compile Include="Plugins\CFsValidator\Frm_CFsValidator.Designer.cs">
       <DependentUpon>Frm_CFsValidator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\TDSHelper\Frm_TDSHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\TDSHelper\Frm_TDSHelper.Designer.cs">
+      <DependentUpon>Frm_TDSHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Plugins\TDSHelper\TDSHelperPlugin.cs" />
+    <Compile Include="Plugins\WebSitesInfo\WebSitesInfoPlugin.cs" />
+    <Compile Include="Plugins\WebSitesInfo\Frm_WebSitesInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Plugins\WebSitesInfo\Frm_WebSitesInfo.Designer.cs">
+      <DependentUpon>Frm_WebSitesInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Plugins\Environments\EnvInfoEventArgs.cs" />
     <Compile Include="Plugins\Environments\EnvironmentsInfoPlugin.cs" />
@@ -368,6 +439,12 @@
     <Compile Include="UserControls\uc_TextDiff.Designer.cs">
       <DependentUpon>uc_TextDiff.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AutoDoc\Frm_AutoDoc.resx">
+      <DependentUpon>Frm_AutoDoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_CheckDataSources.resx">
+      <DependentUpon>Frm_CheckDataSources.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_TxtDiff.resx">
       <DependentUpon>Frm_TxtDiff.cs</DependentUpon>
     </EmbeddedResource>
@@ -379,6 +456,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Plugins\CFsValidator\Frm_CFsValidator.resx">
       <DependentUpon>Frm_CFsValidator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\TDSHelper\Frm_TDSHelper.resx">
+      <DependentUpon>Frm_TDSHelper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Plugins\WebSitesInfo\Frm_WebSitesInfo.resx">
+      <DependentUpon>Frm_WebSitesInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Plugins\Environments\Frm_Environments.resx">
       <DependentUpon>Frm_Environments.cs</DependentUpon>
@@ -439,7 +522,19 @@
     <EmbeddedResource Include="UserControls\uc_TextDiff.resx">
       <DependentUpon>uc_TextDiff.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AutoDoc\AutoDocModel.xsc">
+      <DependentUpon>AutoDocModel.xsd</DependentUpon>
+    </None>
+    <None Include="AutoDoc\AutoDocModel.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AutoDocModel.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AutoDoc\AutoDocModel.xss">
+      <DependentUpon>AutoDocModel.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

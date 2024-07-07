@@ -148,6 +148,10 @@ namespace QToolbar
          return retval;
       }
 
+      public override string ToString()
+      {
+         return $"{Server}.{Database}";
+      }
       #endregion
 
    }

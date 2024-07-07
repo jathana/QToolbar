@@ -24,7 +24,7 @@ namespace QToolbar
 {
    public partial class Frm_Main : DevExpress.XtraEditors.XtraForm
    {
-
+      
       List<Task> tasks = new List<Task>();
 
       #region Fields
@@ -229,5 +229,19 @@ namespace QToolbar
       {
          this.ClientSize = ribbonControl1.Size;
       }
+
+      private void ribbonControl1_CustomizeSearchMenu(object sender, DevExpress.XtraBars.Ribbon.RibbonSearchMenuEventArgs e)
+      {
+         // get not found link
+         var notFoundLink = e.Menu.ItemLinks.FirstOrDefault(x => x.Caption == "No matches found");
+
+         var shellCommandsLinks = (BarSubItem)e.Menu.ItemLinks.Where(i => i.Caption == "Shell Commands").FirstOrDefault().Item;
+         e.Menu.AddItems(shellCommandsLinks.ItemLinks.Where(i => i.Item.Caption.ToLower().Contains(e.SearchString.ToLower())).Select(i => i.Item).ToArray());
+         if (notFoundLink != null)
+         {
+            notFoundLink.Visible = false;
+         }
+      }
+
    }
 }

@@ -18,6 +18,12 @@ using DiffPlex.DiffBuilder;
 using DiffPlex;
 using DiffPlex.DiffBuilder.Model;
 using System.Collections;
+using System.Text.RegularExpressions;
+using System.IO;
+using QToolbar.Helpers;
+using Org.BouncyCastle.Asn1.X509;
+using System.Security.Cryptography;
+using DevExpress.Xpo.DB.Helpers;
 
 namespace QToolbar.Forms
 {
@@ -239,8 +245,8 @@ namespace QToolbar.Forms
             DriWithNoCheck = true,
             DriDefaults = true,
             IncludeIfNotExists = false,
-            Indexes = true,
-            NonClusteredIndexes = true,
+            Indexes = false,
+            NonClusteredIndexes = false,
             ScriptDrops = false,
             AppendToFile = true,
             AllowSystemObjects = false,
@@ -264,9 +270,16 @@ namespace QToolbar.Forms
             StringBuilder b = new StringBuilder();
             StringBuilder tmpBuilder = new StringBuilder();
 
+            // GetAllDevDBNamesFromDatabase
+            List<string> allDevDBNamesFromDatabase = GetAllDevDBNamesFromDatabase();
+
             // dev dbs, including current
             var devdbs = _DBs.Where(d => OptionsInstance.DevSQLInstances.ToLower().Contains(d.Server.ToLower()) &&
-                                      d.Database.ToLower().StartsWith("qbcollection_plus_")).OrderByDescending(d=>d.DatabaseSortName).ToList();
+                                         d.Database.ToLower().StartsWith("qbcollection_plus_") &&
+                                         allDevDBNamesFromDatabase.Contains(d.Database.ToLower()))
+                              .OrderByDescending(d=>d.DatabaseSortName).ToList();
+
+            
 
             Dictionary<string, Tuple<DataTable, string>> data = new Dictionary<string, Tuple<DataTable, string>>();
 
@@ -274,10 +287,16 @@ namespace QToolbar.Forms
             foreach (var info in devdbs)
             {
                workerGenerateSQL.ReportProgress(0, $"Fetching information ({info.Server}.{info.Database})");
+
+               Regex regValidPath = new Regex("[0-9]+[.][0-9]+[.]*[0-9]*");
+
+               // check for invalid paths
+               bool validPath=info.CFPath.Split(Path.DirectorySeparatorChar).Any(x => regValidPath.IsMatch(x));               
+               if (!validPath) continue;
                try
                {
                   using (SqlConnection con = new SqlConnection(Utils.GetConnectionString(info.Server, info.Database)))
-                  {
+                  {                     
                      con.FireInfoMessageEventOnUserErrors = true;
 
                      //con.InfoMessage += Con_InfoMessage;
@@ -288,7 +307,7 @@ namespace QToolbar.Forms
                      adapter.Fill(ds);
 
                      string tableScript = GetTableScript(info, table);
-                     data.Add(info.Database, new Tuple<DataTable, string>(ds.Tables[0], tableScript));
+                        data.Add(info.Database, new Tuple<DataTable, string>(ds.Tables[0], tableScript));
                   }
                }
                catch(Exception ex)
@@ -386,7 +405,7 @@ namespace QToolbar.Forms
 
             }
 
-            e.Result = new Tuple<string,Dictionary<string, Tuple<DataTable, string>>>( b.ToString(),data);
+            e.Result = new Tuple<string, Dictionary<string, Tuple<DataTable, string>>>( b.ToString(),data);
 
          }
          catch (Exception ex)
@@ -455,8 +474,61 @@ namespace QToolbar.Forms
                         order by column_id
                      END";
       }
+      private List<string> GetAllDevDBNamesFromDatabase()
+      {
+         string[] sqlInstances = OptionsInstance.DevSQLInstances.Split(',');
+         List<string> devDBsNames = new List<string>();
+         foreach (string sqlInstance in sqlInstances)
+         {
+            using (SqlConnection conn = new SqlConnection(Utils.GetConnectionString(sqlInstance)))
+            {
+               SqlDataAdapter adapter = new SqlDataAdapter(GetDevDBsSQL(), conn);
 
+               // get information of target database
+               DataSet ds = new DataSet();
+               adapter.Fill(ds);
+               devDBsNames.AddRange(ds.Tables[0].AsEnumerable().Select(n => n.Field<string>("DB_NAME").ToLower()));
+            }
 
+         }
+         return devDBsNames;
+      }
+      private string GetDevDBsSQL()
+      {
+         return
+            @"SELECT [name] as DB_NAME
+               FROM sys.databases AS D
+
+               --[0 - 9]_[0 - 9]_[0 - 9]{0,5}
+               WHERE[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9][0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9][0-9][0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9][0-9][0-9][0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9][0-9][0-9][0-9][0-9]'
+
+               --[0 - 9]{2}_[0 - 9]_[0 - 9]{ 0,5}
+               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9][0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9][0-9][0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9][0-9][0-9][0-9]'
+
+               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9][0-9][0-9][0-9][0-9]'";
+      }
 
 
       #endregion
