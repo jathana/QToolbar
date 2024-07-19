@@ -29,7 +29,7 @@ namespace QToolbar.Helpers
 
       private string GetUrl()
       {
-         return $"{Protocol}://{Host}:{Port}/";
+         return $"{Protocol}://{Host}.qualco.int:{Port}/";
       }
    }
 }
