@@ -32,12 +32,6 @@
     <Setting Name="FieldsExplorerFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">X:\Toolkit Applications\Field Explorer</Value>
     </Setting>
-    <Setting Name="Folders" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;c:\&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
-    </Setting>
     <Setting Name="EnvironmentsConfigurationFolder" Type="System.String" Scope="User">
       <Value Profile="(Default)">X:\Toolkit Applications\Internal Deployment Tool\Configuration</Value>
     </Setting>
@@ -159,6 +153,15 @@
     </Setting>
     <Setting Name="QASQLInstances" Type="System.String" Scope="User">
       <Value Profile="(Default)">Q-SRV-DEVFPS,Q-SRV-DEVFPS\QBC</Value>
+    </Setting>
+    <Setting Name="Folders" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;string&gt;c:\&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="AllowSearch" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -19,12 +19,15 @@ using QToolbar.Tools;
 using QToolbar.Forms;
 using QToolbar.AutoDoc;
 using System.Text.RegularExpressions;
+using QToolbar.Helpers;
+using DevExpress.Internal.WinApi.Windows.UI.Notifications;
+using DevExpress.Utils.StructuredStorage.Reader;
 
 namespace QToolbar
 {
    public partial class Frm_SQLQueries : DevExpress.XtraEditors.XtraForm
    {
-      TreeNode<ConnectionInfo> tree = new TreeNode<ConnectionInfo>();
+      TreeNode<ConnectionInfo> _Tree = new TreeNode<ConnectionInfo>();
       List<ConnectionInfo> _DBs = new List<ConnectionInfo>();
 
       public Frm_SQLQueries()
@@ -87,9 +90,17 @@ namespace QToolbar
             {
                try
                {
-                  
-                  tree = new TreeNode<ConnectionInfo>();
+                  _Tree = new TreeNode<ConnectionInfo>();
                   List<string> dirs = new List<string>(Directory.EnumerateDirectories(folder));
+
+                  // ensure current db is included
+                  DataAccessService dataAccessService = new DataAccessService();
+                  ConnectionInfo currentConnectionInfo = dataAccessService.GetCurrentDBConnectionInfo();
+                  if (!dirs.Contains(currentConnectionInfo.Version))
+                  {                     
+                     dirs.Add(CreateFakeQBCAdminCFForCurrent(currentConnectionInfo));
+                  }
+
                   List<Tuple<string, string>> x = new List<Tuple<string, string>>();
                   dirs.ForEach(item => x.Add(new Tuple<string,string>(GetSortName(item, new Char[] { '\\','.', ' ' }, '_', '0', 5,true), item)));
                   dirs = x.OrderByDescending(item => item.Item1).Select(item => item.Item2).ToList();
@@ -99,10 +110,20 @@ namespace QToolbar
                      TreeNode<ConnectionInfo> verNode = new TreeNode<ConnectionInfo>();
                      verNode.Data.CFPath = dir;
                      verNode.Data.InfoType = InfoType.Version;
-                     verNode.Parent = tree;
-                     tree.AddChild(verNode);
+                     verNode.Parent = _Tree;
+                     _Tree.AddChild(verNode);
+                     
                      // parse cf and get dbs
-                     List<ConnectionInfo> dbs = GetCFDBs(Path.GetFileName(dir));
+                     List<ConnectionInfo> dbs=null;
+                     if (dir.Contains("Current_Fake_QBC_Admin"))
+                     {
+                        dbs = GetFakeCFDBs(dir);
+                     }
+                     else
+                     {
+                        dbs = GetCFDBs(Path.GetFileName(dir));
+                     }
+
                      var servers=dbs.GroupBy(i => i.Server).ToList();
                      foreach (var server in servers)
                      {
@@ -124,7 +145,8 @@ namespace QToolbar
                         }
                      }
                   }
-                  e.Result = tree;
+                                    
+                  e.Result = _Tree;
                }
                catch (Exception ex)
                {
@@ -134,6 +156,42 @@ namespace QToolbar
          }
 
       }
+
+      private string CreateFakeQBCAdminCFForCurrent(ConnectionInfo connectionInfo)
+      {
+         StringBuilder sb = new StringBuilder();
+         sb.AppendLine("[servers]");
+         sb.AppendLine($"{connectionInfo.Version.Replace(".", "_")}={connectionInfo.Server}");
+
+         sb.AppendLine("[databasename]");
+         sb.AppendLine($"{connectionInfo.Version.Replace(".", "_")}={connectionInfo.Database}");
+
+         string path = $@"{AppInstance.CacheDirectory}\{connectionInfo.Version}";
+         string filename = $@"{path}\Current_Fake_QBC_Admin.cf";
+         Utils.EnsureFolder(path);
+
+         File.WriteAllText(filename, sb.ToString());
+         return filename;
+      }
+
+      private void FindConnectionInfo(TreeNode<ConnectionInfo> treeNode, InfoType infoType, string stringToSearch, ref TreeNode<ConnectionInfo> result)
+      {         
+         if (infoType== InfoType.Version && treeNode.Data.Version == stringToSearch)
+         {
+            result= treeNode;
+            return;
+         }
+
+         foreach(var childNode in treeNode.Children) 
+         {
+            FindConnectionInfo(childNode, infoType, stringToSearch, ref result);
+         }
+         
+      }
+
+
+
+
 
       private List<ConnectionInfo> GetCFDBs(string VerDirName)
       {
@@ -198,6 +256,46 @@ namespace QToolbar
          return retVal;
       }
 
+      private List<ConnectionInfo> GetFakeCFDBs(string fakeCFFile)
+      {
+         List<ConnectionInfo> retVal = new List<ConnectionInfo>();
+
+         // find the newest dir
+         if (File.Exists(fakeCFFile))
+         {            
+            IniFile cfFile = new IniFile(fakeCFFile, "#");
+            Dictionary<string, string> servers = cfFile.GetSectionPairs("[servers]");
+            Dictionary<string, string> dbnames = cfFile.GetSectionPairs("[databasename]");
+            if (servers.Count != dbnames.Count)
+            {
+               //throw new Exception($"[Servers] and [DatabaseName] sections of {file} contain different number of items.");
+            }
+            else
+            {
+               foreach (KeyValuePair<string, string> server in servers)
+               {
+
+                  try
+                  {
+                     ConnectionInfo info = new ConnectionInfo()
+                     {
+                        Environment = server.Key,
+                        Server = server.Value,
+                        Database = dbnames[server.Key],
+                        DatabaseSortName = GetSortName(dbnames[server.Key], new Char[] { '.', '_' }, '_', '0', 5),
+                        CFPath = fakeCFFile
+                     };
+                     retVal.Add(info);
+                  }
+                  catch (Exception ex)
+                  {
+                     //throw new Exception($"Not found server key {server.Key} in [Databases] in {file} .");
+                  }
+               }
+            }
+         }
+         return retVal;
+      }
 
       private string GetSortName(string database, char[] delimiters, char joinDelimiter,char padChar,int padLength, bool discardNonNumbers=false)
       {

@@ -45,6 +45,7 @@
          this.numMaxMenuItems = new DevExpress.XtraEditors.SpinEdit();
          this.txtClearValuesFromCFs = new DevExpress.XtraEditors.TextEdit();
          this.txtQASQLInstances = new DevExpress.XtraEditors.TextEdit();
+         this.txtQCWebServers = new DevExpress.XtraEditors.TextEdit();
          this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
          this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
          this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -69,6 +70,7 @@
          this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
          this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
          this.layoutControlItem19 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
          this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
          this.tabOptions = new DevExpress.XtraTab.XtraTabControl();
          this.tabGeneral = new DevExpress.XtraTab.XtraTabPage();
@@ -96,8 +98,8 @@
          this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
          this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
          this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-         this.txtQCWebServers = new DevExpress.XtraEditors.TextEdit();
-         this.layoutControlItem20 = new DevExpress.XtraLayout.LayoutControlItem();
+         this.chkAllowSearch = new DevExpress.XtraEditors.CheckEdit();
+         this.layoutControlItem21 = new DevExpress.XtraLayout.LayoutControlItem();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
          this.layoutControl1.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.txtDevSQLInstances.Properties)).BeginInit();
@@ -115,6 +117,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.numMaxMenuItems.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtClearValuesFromCFs.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtQASQLInstances.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtQCWebServers.Properties)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
@@ -139,6 +142,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
          this.layoutControl2.SuspendLayout();
          ((System.ComponentModel.ISupportInitialize)(this.tabOptions)).BeginInit();
@@ -162,12 +166,13 @@
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtQCWebServers.Properties)).BeginInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.chkAllowSearch.Properties)).BeginInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).BeginInit();
          this.SuspendLayout();
          // 
          // layoutControl1
          // 
+         this.layoutControl1.Controls.Add(this.chkAllowSearch);
          this.layoutControl1.Controls.Add(this.btnOpenSettingsFileLocation);
          this.layoutControl1.Controls.Add(this.txtDevSQLInstances);
          this.layoutControl1.Controls.Add(this.chkClearLegalMetadata);
@@ -207,9 +212,9 @@
          // txtDevSQLInstances
          // 
          this.txtDevSQLInstances.EditValue = "Q-SRV-DEVEL12,Q-SRV-DEVEL12\\MSSQL2K16";
-         this.txtDevSQLInstances.Location = new System.Drawing.Point(159, 296);
+         this.txtDevSQLInstances.Location = new System.Drawing.Point(168, 296);
          this.txtDevSQLInstances.Name = "txtDevSQLInstances";
-         this.txtDevSQLInstances.Size = new System.Drawing.Size(649, 20);
+         this.txtDevSQLInstances.Size = new System.Drawing.Size(640, 20);
          this.txtDevSQLInstances.StyleController = this.layoutControl1;
          this.txtDevSQLInstances.TabIndex = 19;
          // 
@@ -218,113 +223,113 @@
          this.chkClearLegalMetadata.Location = new System.Drawing.Point(12, 12);
          this.chkClearLegalMetadata.Name = "chkClearLegalMetadata";
          this.chkClearLegalMetadata.Properties.Caption = "Clear Legal Metadata";
-         this.chkClearLegalMetadata.Size = new System.Drawing.Size(340, 20);
+         this.chkClearLegalMetadata.Size = new System.Drawing.Size(168, 20);
          this.chkClearLegalMetadata.StyleController = this.layoutControl1;
          this.chkClearLegalMetadata.TabIndex = 18;
          // 
          // txtInternalBuildsFolder
          // 
-         this.txtInternalBuildsFolder.Location = new System.Drawing.Point(159, 272);
+         this.txtInternalBuildsFolder.Location = new System.Drawing.Point(168, 272);
          this.txtInternalBuildsFolder.Name = "txtInternalBuildsFolder";
          this.txtInternalBuildsFolder.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-         this.txtInternalBuildsFolder.Size = new System.Drawing.Size(649, 20);
+         this.txtInternalBuildsFolder.Size = new System.Drawing.Size(640, 20);
          this.txtInternalBuildsFolder.StyleController = this.layoutControl1;
          this.txtInternalBuildsFolder.TabIndex = 17;
          this.txtInternalBuildsFolder.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtInternalBuildsFolder_ButtonClick);
          // 
          // txtEnvironmentsConfiguration
          // 
-         this.txtEnvironmentsConfiguration.Location = new System.Drawing.Point(159, 227);
+         this.txtEnvironmentsConfiguration.Location = new System.Drawing.Point(168, 227);
          this.txtEnvironmentsConfiguration.Name = "txtEnvironmentsConfiguration";
          this.txtEnvironmentsConfiguration.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-         this.txtEnvironmentsConfiguration.Size = new System.Drawing.Size(649, 20);
+         this.txtEnvironmentsConfiguration.Size = new System.Drawing.Size(640, 20);
          this.txtEnvironmentsConfiguration.StyleController = this.layoutControl1;
          this.txtEnvironmentsConfiguration.TabIndex = 16;
          this.txtEnvironmentsConfiguration.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtEnvironmentsConfiguration_ButtonClick);
          // 
          // memFolders
          // 
-         this.memFolders.Location = new System.Drawing.Point(159, 392);
+         this.memFolders.Location = new System.Drawing.Point(168, 392);
          this.memFolders.Name = "memFolders";
-         this.memFolders.Size = new System.Drawing.Size(649, 51);
+         this.memFolders.Size = new System.Drawing.Size(640, 51);
          this.memFolders.StyleController = this.layoutControl1;
          this.memFolders.TabIndex = 15;
          // 
          // txtFieldsExplorerFolder
          // 
-         this.txtFieldsExplorerFolder.Location = new System.Drawing.Point(159, 203);
+         this.txtFieldsExplorerFolder.Location = new System.Drawing.Point(168, 203);
          this.txtFieldsExplorerFolder.Name = "txtFieldsExplorerFolder";
          this.txtFieldsExplorerFolder.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-         this.txtFieldsExplorerFolder.Size = new System.Drawing.Size(649, 20);
+         this.txtFieldsExplorerFolder.Size = new System.Drawing.Size(640, 20);
          this.txtFieldsExplorerFolder.StyleController = this.layoutControl1;
          this.txtFieldsExplorerFolder.TabIndex = 14;
          this.txtFieldsExplorerFolder.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtFieldsExplorerFolder_ButtonClick);
          // 
          // txtDatabaseScripterFolder
          // 
-         this.txtDatabaseScripterFolder.Location = new System.Drawing.Point(159, 179);
+         this.txtDatabaseScripterFolder.Location = new System.Drawing.Point(168, 179);
          this.txtDatabaseScripterFolder.Name = "txtDatabaseScripterFolder";
          this.txtDatabaseScripterFolder.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-         this.txtDatabaseScripterFolder.Size = new System.Drawing.Size(649, 20);
+         this.txtDatabaseScripterFolder.Size = new System.Drawing.Size(640, 20);
          this.txtDatabaseScripterFolder.StyleController = this.layoutControl1;
          this.txtDatabaseScripterFolder.TabIndex = 13;
          this.txtDatabaseScripterFolder.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtDatabaseScripterFolder_ButtonClick);
          // 
          // txtExecutorConfigurationFolder
          // 
-         this.txtExecutorConfigurationFolder.Location = new System.Drawing.Point(159, 155);
+         this.txtExecutorConfigurationFolder.Location = new System.Drawing.Point(168, 155);
          this.txtExecutorConfigurationFolder.Name = "txtExecutorConfigurationFolder";
          this.txtExecutorConfigurationFolder.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-         this.txtExecutorConfigurationFolder.Size = new System.Drawing.Size(649, 20);
+         this.txtExecutorConfigurationFolder.Size = new System.Drawing.Size(640, 20);
          this.txtExecutorConfigurationFolder.StyleController = this.layoutControl1;
          this.txtExecutorConfigurationFolder.TabIndex = 12;
          this.txtExecutorConfigurationFolder.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtExecutorConfigurationFolder_ButtonClick);
          // 
          // txtQCSAgentFolder
          // 
-         this.txtQCSAgentFolder.Location = new System.Drawing.Point(159, 131);
+         this.txtQCSAgentFolder.Location = new System.Drawing.Point(168, 131);
          this.txtQCSAgentFolder.Name = "txtQCSAgentFolder";
          this.txtQCSAgentFolder.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-         this.txtQCSAgentFolder.Size = new System.Drawing.Size(649, 20);
+         this.txtQCSAgentFolder.Size = new System.Drawing.Size(640, 20);
          this.txtQCSAgentFolder.StyleController = this.layoutControl1;
          this.txtQCSAgentFolder.TabIndex = 9;
          this.txtQCSAgentFolder.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtQCSAgentFolder_ButtonClick);
          // 
          // txtQCSAdminFolder
          // 
-         this.txtQCSAdminFolder.Location = new System.Drawing.Point(159, 107);
+         this.txtQCSAdminFolder.Location = new System.Drawing.Point(168, 107);
          this.txtQCSAdminFolder.Name = "txtQCSAdminFolder";
          this.txtQCSAdminFolder.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-         this.txtQCSAdminFolder.Size = new System.Drawing.Size(649, 20);
+         this.txtQCSAdminFolder.Size = new System.Drawing.Size(640, 20);
          this.txtQCSAdminFolder.StyleController = this.layoutControl1;
          this.txtQCSAdminFolder.TabIndex = 8;
          this.txtQCSAdminFolder.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtQCSAdminFolder_ButtonClick);
          // 
          // txtDesignersFolder
          // 
-         this.txtDesignersFolder.Location = new System.Drawing.Point(159, 83);
+         this.txtDesignersFolder.Location = new System.Drawing.Point(168, 83);
          this.txtDesignersFolder.Name = "txtDesignersFolder";
          this.txtDesignersFolder.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-         this.txtDesignersFolder.Size = new System.Drawing.Size(649, 20);
+         this.txtDesignersFolder.Size = new System.Drawing.Size(640, 20);
          this.txtDesignersFolder.StyleController = this.layoutControl1;
          this.txtDesignersFolder.TabIndex = 7;
          this.txtDesignersFolder.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtDesignersFolder_ButtonClick);
          // 
          // txtTestingFolder
          // 
-         this.txtTestingFolder.Location = new System.Drawing.Point(159, 38);
+         this.txtTestingFolder.Location = new System.Drawing.Point(168, 38);
          this.txtTestingFolder.Name = "txtTestingFolder";
          this.txtTestingFolder.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-         this.txtTestingFolder.Size = new System.Drawing.Size(649, 20);
+         this.txtTestingFolder.Size = new System.Drawing.Size(640, 20);
          this.txtTestingFolder.StyleController = this.layoutControl1;
          this.txtTestingFolder.TabIndex = 4;
          this.txtTestingFolder.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.txtTestingFolder_ButtonClick);
@@ -336,7 +341,7 @@
             0,
             0,
             0});
-         this.numMaxMenuItems.Location = new System.Drawing.Point(503, 12);
+         this.numMaxMenuItems.Location = new System.Drawing.Point(491, 12);
          this.numMaxMenuItems.Name = "numMaxMenuItems";
          this.numMaxMenuItems.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -352,25 +357,33 @@
             0,
             0,
             0});
-         this.numMaxMenuItems.Size = new System.Drawing.Size(194, 20);
+         this.numMaxMenuItems.Size = new System.Drawing.Size(206, 20);
          this.numMaxMenuItems.StyleController = this.layoutControl1;
          this.numMaxMenuItems.TabIndex = 22;
          // 
          // txtClearValuesFromCFs
          // 
-         this.txtClearValuesFromCFs.Location = new System.Drawing.Point(159, 368);
+         this.txtClearValuesFromCFs.Location = new System.Drawing.Point(168, 368);
          this.txtClearValuesFromCFs.Name = "txtClearValuesFromCFs";
-         this.txtClearValuesFromCFs.Size = new System.Drawing.Size(649, 20);
+         this.txtClearValuesFromCFs.Size = new System.Drawing.Size(640, 20);
          this.txtClearValuesFromCFs.StyleController = this.layoutControl1;
          this.txtClearValuesFromCFs.TabIndex = 23;
          // 
          // txtQASQLInstances
          // 
-         this.txtQASQLInstances.Location = new System.Drawing.Point(159, 320);
+         this.txtQASQLInstances.Location = new System.Drawing.Point(168, 320);
          this.txtQASQLInstances.Name = "txtQASQLInstances";
-         this.txtQASQLInstances.Size = new System.Drawing.Size(649, 20);
+         this.txtQASQLInstances.Size = new System.Drawing.Size(640, 20);
          this.txtQASQLInstances.StyleController = this.layoutControl1;
          this.txtQASQLInstances.TabIndex = 24;
+         // 
+         // txtQCWebServers
+         // 
+         this.txtQCWebServers.Location = new System.Drawing.Point(168, 344);
+         this.txtQCWebServers.Name = "txtQCWebServers";
+         this.txtQCWebServers.Size = new System.Drawing.Size(640, 20);
+         this.txtQCWebServers.StyleController = this.layoutControl1;
+         this.txtQCWebServers.TabIndex = 24;
          // 
          // layoutControlGroup1
          // 
@@ -400,7 +413,8 @@
             this.layoutControlItem18,
             this.layoutControlItem17,
             this.layoutControlItem19,
-            this.layoutControlItem20});
+            this.layoutControlItem20,
+            this.layoutControlItem21});
          this.layoutControlGroup1.Name = "Root";
          this.layoutControlGroup1.Size = new System.Drawing.Size(820, 456);
          this.layoutControlGroup1.TextVisible = false;
@@ -565,7 +579,7 @@
          this.layoutControlItem15.Control = this.chkClearLegalMetadata;
          this.layoutControlItem15.Location = new System.Drawing.Point(0, 0);
          this.layoutControlItem15.Name = "layoutControlItem15";
-         this.layoutControlItem15.Size = new System.Drawing.Size(344, 26);
+         this.layoutControlItem15.Size = new System.Drawing.Size(172, 26);
          this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem15.TextVisible = false;
          // 
@@ -593,9 +607,9 @@
          // layoutControlItem18
          // 
          this.layoutControlItem18.Control = this.numMaxMenuItems;
-         this.layoutControlItem18.Location = new System.Drawing.Point(344, 0);
+         this.layoutControlItem18.Location = new System.Drawing.Point(323, 0);
          this.layoutControlItem18.Name = "layoutControlItem18";
-         this.layoutControlItem18.Size = new System.Drawing.Size(345, 26);
+         this.layoutControlItem18.Size = new System.Drawing.Size(366, 26);
          this.layoutControlItem18.Text = "Max Menu Items";
          this.layoutControlItem18.TextSize = new System.Drawing.Size(144, 13);
          // 
@@ -616,6 +630,17 @@
          this.layoutControlItem19.Size = new System.Drawing.Size(800, 24);
          this.layoutControlItem19.Text = "QA SQL Instances";
          this.layoutControlItem19.TextSize = new System.Drawing.Size(144, 13);
+         // 
+         // layoutControlItem20
+         // 
+         this.layoutControlItem20.Control = this.txtQCWebServers;
+         this.layoutControlItem20.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+         this.layoutControlItem20.CustomizationFormText = "QA SQL Instances";
+         this.layoutControlItem20.Location = new System.Drawing.Point(0, 332);
+         this.layoutControlItem20.Name = "layoutControlItem20";
+         this.layoutControlItem20.Size = new System.Drawing.Size(800, 24);
+         this.layoutControlItem20.Text = "QC Web Servers";
+         this.layoutControlItem20.TextSize = new System.Drawing.Size(144, 13);
          // 
          // layoutControl2
          // 
@@ -876,24 +901,23 @@
          this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
          this.layoutControlItem3.TextVisible = false;
          // 
-         // txtQCWebServers
+         // chkAllowSearch
          // 
-         this.txtQCWebServers.Location = new System.Drawing.Point(159, 344);
-         this.txtQCWebServers.Name = "txtQCWebServers";
-         this.txtQCWebServers.Size = new System.Drawing.Size(649, 20);
-         this.txtQCWebServers.StyleController = this.layoutControl1;
-         this.txtQCWebServers.TabIndex = 24;
+         this.chkAllowSearch.Location = new System.Drawing.Point(184, 12);
+         this.chkAllowSearch.Name = "chkAllowSearch";
+         this.chkAllowSearch.Properties.Caption = "Allow Search";
+         this.chkAllowSearch.Size = new System.Drawing.Size(147, 20);
+         this.chkAllowSearch.StyleController = this.layoutControl1;
+         this.chkAllowSearch.TabIndex = 25;
          // 
-         // layoutControlItem20
+         // layoutControlItem21
          // 
-         this.layoutControlItem20.Control = this.txtQCWebServers;
-         this.layoutControlItem20.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-         this.layoutControlItem20.CustomizationFormText = "QA SQL Instances";
-         this.layoutControlItem20.Location = new System.Drawing.Point(0, 332);
-         this.layoutControlItem20.Name = "layoutControlItem20";
-         this.layoutControlItem20.Size = new System.Drawing.Size(800, 24);
-         this.layoutControlItem20.Text = "QC Web Servers";
-         this.layoutControlItem20.TextSize = new System.Drawing.Size(144, 13);
+         this.layoutControlItem21.Control = this.chkAllowSearch;
+         this.layoutControlItem21.Location = new System.Drawing.Point(172, 0);
+         this.layoutControlItem21.Name = "layoutControlItem21";
+         this.layoutControlItem21.Size = new System.Drawing.Size(151, 26);
+         this.layoutControlItem21.TextSize = new System.Drawing.Size(0, 0);
+         this.layoutControlItem21.TextVisible = false;
          // 
          // Frm_Options
          // 
@@ -924,6 +948,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.numMaxMenuItems.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtClearValuesFromCFs.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.txtQASQLInstances.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.txtQCWebServers.Properties)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
@@ -948,6 +973,7 @@
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem19)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
          this.layoutControl2.ResumeLayout(false);
          ((System.ComponentModel.ISupportInitialize)(this.tabOptions)).EndInit();
@@ -971,8 +997,8 @@
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
          ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.txtQCWebServers.Properties)).EndInit();
-         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem20)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.chkAllowSearch.Properties)).EndInit();
+         ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem21)).EndInit();
          this.ResumeLayout(false);
 
       }
@@ -1048,5 +1074,7 @@
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem19;
       private DevExpress.XtraEditors.TextEdit txtQCWebServers;
       private DevExpress.XtraLayout.LayoutControlItem layoutControlItem20;
+      private DevExpress.XtraEditors.CheckEdit chkAllowSearch;
+      private DevExpress.XtraLayout.LayoutControlItem layoutControlItem21;
    }
 }

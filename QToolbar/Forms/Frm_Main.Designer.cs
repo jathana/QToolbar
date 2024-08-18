@@ -184,7 +184,7 @@
          this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
          this.ribbonControl1.MaximumSize = new System.Drawing.Size(0, 128);
          this.ribbonControl1.MaxItemId = 8;
-         this.ribbonControl1.MinimumSize = new System.Drawing.Size(0, 128);
+         this.ribbonControl1.MinimumSize = new System.Drawing.Size(0, 100);
          this.ribbonControl1.Name = "ribbonControl1";
          this.ribbonControl1.OptionsSearchMenu.SearchItemPosition = DevExpress.XtraBars.Ribbon.SearchItemPosition.PageHeader;
          this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -194,7 +194,7 @@
          this.ribbonControl1.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
          this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
          this.ribbonControl1.ShowToolbarCustomizeItem = false;
-         this.ribbonControl1.Size = new System.Drawing.Size(1296, 128);
+         this.ribbonControl1.Size = new System.Drawing.Size(1296, 100);
          this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
          this.ribbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
          this.ribbonControl1.CustomizeSearchMenu += new DevExpress.XtraBars.Ribbon.RibbonSearchMenuEventHandler(this.ribbonControl1_CustomizeSearchMenu);
@@ -454,6 +454,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+         this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
          this.ClientSize = new System.Drawing.Size(1296, 128);
          this.Controls.Add(this.ribbonControl1);
          this.Controls.Add(this.barDockControlLeft);
@@ -463,7 +464,7 @@
          this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("Frm_Main.IconOptions.Icon")));
          this.MaximizeBox = false;
          this.MaximumSize = new System.Drawing.Size(1312, 160);
-         this.MinimumSize = new System.Drawing.Size(2, 160);
+         this.MinimumSize = new System.Drawing.Size(2, 130);
          this.Name = "Frm_Main";
          this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
          this.Text = "QToolbar";

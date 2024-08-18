@@ -83,6 +83,8 @@ namespace QToolbar
          _ClearMetadataButton = new ClearMetadataButton();
          _DesignersLocalButton = new DesignersLocalButton(barManager1, mnuDesignersLocal);
          _PluginsButton = new PluginsButton(barManager1, mnuPlugins);
+         
+         ribbonControl1.OptionsSearchMenu.SearchItemPosition = OptionsInstance.AllowSearch ? DevExpress.XtraBars.Ribbon.SearchItemPosition.PageHeader : DevExpress.XtraBars.Ribbon.SearchItemPosition.None;
 
       }
 

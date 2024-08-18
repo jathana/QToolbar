@@ -55,6 +55,7 @@ namespace QToolbar
          Properties.Settings.Default.ClearValuesFromCFs = txtClearValuesFromCFs.Text;
          Properties.Settings.Default.QASQLInstances = txtQASQLInstances.Text;
          Properties.Settings.Default.QCWebServers = txtQCWebServers.Text;
+         Properties.Settings.Default.AllowSearch = chkAllowSearch.Checked;
 
 
          // save folders
@@ -91,6 +92,7 @@ namespace QToolbar
          txtClearValuesFromCFs.Text = Properties.Settings.Default.ClearValuesFromCFs;
          txtQASQLInstances.Text = Properties.Settings.Default.QASQLInstances;
          txtQCWebServers.Text = Properties.Settings.Default.QCWebServers;
+         chkAllowSearch.Checked = Properties.Settings.Default.AllowSearch;
 
          // custom edit form for sql queries
          gviewSQLQueries.OptionsEditForm.CustomEditFormLayout = new uc_SQLQueriesEdit();

@@ -592,6 +592,9 @@ namespace QToolbar.Forms
          b2.Clear();
          b.AppendLine($"--     Database :: {info.Server}.{info.Database}");
          b.AppendLine("--");
+         b.AppendLine("-- CAUTION!! YOU HAVE TO RUN THE SCRIPT TO DATABASE. DO NOT FORGET IT.!!!--");
+         b.AppendLine("--");
+
          b.AppendLine($"-- New Criteria :: ");
          b.AppendLine("--");
          foreach (DataRow row in createTable.Rows)

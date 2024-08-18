@@ -239,7 +239,7 @@
     <Compile Include="Helpers\WebAPIEnvironment.cs" />
     <Compile Include="Helpers\ProcessingInfoCollectedEventArgs.cs" />
     <Compile Include="Helpers\WebSiteTypeEnum.cs" />
-    <Compile Include="Helpers\DBUtils.cs" />
+    <Compile Include="Helpers\DataAccessService.cs" />
     <Compile Include="Helpers\Error.cs" />
     <Compile Include="Helpers\Errors.cs" />
     <Compile Include="Helpers\ErrorType.cs" />

@@ -177,6 +177,12 @@ namespace QToolbar.Options
             return Properties.Settings.Default.QCWebServers;
          }
       }
-
+      public static bool AllowSearch
+      {
+         get
+         {
+            return Properties.Settings.Default.AllowSearch;
+         }
+      }
    }
 }
