@@ -12,6 +12,8 @@ namespace QToolbar.Helpers
 {
    public class IdentityServerSiteInfo : WebSiteInfo
    {
+      public string WellKnownOpenIdConfigurationUrl { get; set; }
+      public string HealthCheckUrl { get; set; }  
 
       /// <summary>
       /// Used by deserialization
@@ -23,6 +25,8 @@ namespace QToolbar.Helpers
       public IdentityServerSiteInfo(string host, Site site): base(host, site)
       {
          Url = GetIdentityUrl();
+         WellKnownOpenIdConfigurationUrl = GetWellKnownOpenIdConfigurationUrl();
+         HealthCheckUrl = GetHealthCheckUrl();
 
          WebSiteType = WebSiteTypeEnum.IdentityServer;
       }
@@ -32,5 +36,17 @@ namespace QToolbar.Helpers
       {
          return $"{Protocol}://{Host}.qualco.int:{Port}";
       }
+
+      private string GetWellKnownOpenIdConfigurationUrl()
+      {
+         return $"{Protocol}://{Host}.qualco.int:{Port}/.well-known/openid-configuration";
+      }
+
+      private string GetHealthCheckUrl()
+      {
+         return $"{Protocol}://{Host}.qualco.int:{Port}/api/healthcheck";
+      }
+
+
    }
 }
