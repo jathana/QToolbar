@@ -22,6 +22,14 @@ using System.Text.RegularExpressions;
 using QToolbar.Helpers;
 using DevExpress.Internal.WinApi.Windows.UI.Notifications;
 using DevExpress.Utils.StructuredStorage.Reader;
+using DevExpress.Xpo.DB.Helpers;
+using DevExpress.XtraPrinting.Native;
+using DevExpress.Utils.Menu;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors.Repository;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using DevExpress.Utils.Extensions;
+using System.Diagnostics;
 
 namespace QToolbar
 {
@@ -43,7 +51,7 @@ namespace QToolbar
 
          //treeDatabases.OptionsView.ShowColumns = false;
          
-         
+
       }
 
 
@@ -77,6 +85,7 @@ namespace QToolbar
       {
                   
          LoadDatabases();
+
          
       }
 
@@ -342,6 +351,9 @@ namespace QToolbar
          btnAdd.Enabled = true;         
          EnableUI(true);
          treeDatabases.Cursor = Cursors.Default;
+
+
+         
       }
 
       private void PopulateDBTree(TreeNode<ConnectionInfo> tree)
@@ -406,6 +418,22 @@ namespace QToolbar
       {
          if (e.Menu is TreeListNodeMenu)
          {
+            BarEditItemLink filter = (BarEditItemLink)popupMenu1.ItemLinks.FirstOrDefault(i => i is BarEditItemLink);
+            if (filter != null)
+            {
+               filter.EditValue = string.Empty;
+            }
+
+            while (true)
+            {
+               var item = popupMenu1.ItemLinks.FirstOrDefault(i => i is BarButtonItemLink);
+               if (item == null)
+               {
+                  break;
+               }
+               popupMenu1.ItemLinks.Remove(item);
+            }
+
 
             treeDatabases.FocusedNode = ((TreeListNodeMenu)e.Menu).Node;
             TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
@@ -413,64 +441,67 @@ namespace QToolbar
             {
                foreach (DataRow query in OptionsInstance.SQLQueries.Data.Rows)
                {
-                  DevExpress.Utils.Menu.DXMenuItem mnuItem = new DevExpress.Utils.Menu.DXMenuItem(query["Name"].ToString(), query_ItemClick);
+                  BarButtonItem mnuItem = new BarButtonItem(barManager1, query["Name"].ToString());
+                  mnuItem.ItemClick += query_ItemClick;
                   mnuItem.Tag = query;
 
-                  e.Menu.Items.Add(mnuItem);
+                  popupMenu1.AddItem(mnuItem);
                }
-
 
                // create criteria if dev current
                var devDBs = GetDevDBsConnectionInfo();
 
-               if (devDBs.Count>0 && devDBs[0].Database.ToLower().Equals(obj.Data.Database.ToLower()))
+               if (devDBs.Count > 0 && devDBs[0].Database.ToLower().Equals(obj.Data.Database.ToLower()))
                {
-                  DevExpress.Utils.Menu.DXMenuItem mnuItemCreateCriteria = new DevExpress.Utils.Menu.DXMenuItem("Create Criteria", createCriteria_ItemClick);
+                  BarButtonItem mnuItemCreateCriteria = new BarButtonItem(barManager1, "Create Criteria");
+                  mnuItemCreateCriteria.ItemClick += createCriteria_ItemClick;
                   mnuItemCreateCriteria.Tag = obj.Data;
-                  e.Menu.Items.Add(mnuItemCreateCriteria);
+                  popupMenu1.AddItem(mnuItemCreateCriteria);
                }
 
                // script criteria only for dev dbs
-               if (devDBs.Count > 0 && devDBs.Count(d=>d.Database==obj.Data.Database)>0)
+               if (devDBs.Count > 0 && devDBs.Count(d => d.Database == obj.Data.Database) > 0)
                {
-                  DevExpress.Utils.Menu.DXMenuItem mnuItemScriptCriteria = new DevExpress.Utils.Menu.DXMenuItem("Script Criteria", scriptCriteria_ItemClick);
+                  BarButtonItem mnuItemScriptCriteria = new BarButtonItem(barManager1, "Script Criteria");
+                  mnuItemScriptCriteria.ItemClick += scriptCriteria_ItemClick;
                   mnuItemScriptCriteria.Tag = obj.Data;
-                  e.Menu.Items.Add(mnuItemScriptCriteria);
+                  popupMenu1.AddItem(mnuItemScriptCriteria);
                }
 
 
                // fields helper only for current
                if (devDBs.Count > 0 && devDBs[0].Database.ToLower().Equals(obj.Data.Database.ToLower()))
                {
-                  DevExpress.Utils.Menu.DXMenuItem mnuItemFieldsHelper = new DevExpress.Utils.Menu.DXMenuItem("Fields Helper", fieldsHelper_ItemClick);
+                  BarButtonItem mnuItemFieldsHelper = new BarButtonItem(barManager1, "Fields Helper");
+                  mnuItemFieldsHelper.ItemClick += fieldsHelper_ItemClick;
                   mnuItemFieldsHelper.Tag = obj.Data;
-                  e.Menu.Items.Add(mnuItemFieldsHelper);
+                  popupMenu1.AddItem(mnuItemFieldsHelper);
                }
 
                // auto doc only for dev dbs
                if (devDBs.Count > 0 && devDBs.Count(d => d.Database == obj.Data.Database) > 0)
                {
-                  DevExpress.Utils.Menu.DXMenuItem mnuItemAutoDoc = new DevExpress.Utils.Menu.DXMenuItem("Auto Doc", autoDoc_ItemClick);
+                  BarButtonItem mnuItemAutoDoc = new BarButtonItem(barManager1, "Auto Doc");
+                  mnuItemAutoDoc.ItemClick += autoDoc_ItemClick;
                   mnuItemAutoDoc.Tag = obj.Data;
-                  e.Menu.Items.Add(mnuItemAutoDoc);
+                  popupMenu1.AddItem(mnuItemAutoDoc);
                }
 
                // check datasources for dev dbs only
                if (devDBs.Count > 0 && devDBs.Count(d => d.Database == obj.Data.Database) > 0)
                {
-                  DevExpress.Utils.Menu.DXMenuItem mnuCheckdatasources = new DevExpress.Utils.Menu.DXMenuItem("Check Datasources", checkDatasources_ItemClick);
+                  BarButtonItem mnuCheckdatasources = new BarButtonItem(barManager1, "Check Datasources");
+                  mnuCheckdatasources.ItemClick += checkDatasources_ItemClick;
                   mnuCheckdatasources.Tag = obj.Data;
-                  e.Menu.Items.Add(mnuCheckdatasources);
+                  popupMenu1.AddItem(mnuCheckdatasources);
                }
-               
+
             }
 
-
+            e.ShowCustomMenu(popupMenu1);
+            filter.Focus();
          }
       }
-
-
-      
 
       private List<ConnectionInfo> GetDevDBsConnectionInfo()
       {
@@ -481,11 +512,11 @@ namespace QToolbar
          return result;
       }
 
-      private void query_ItemClick(object sender, EventArgs e)
+      private void query_ItemClick(object sender, ItemClickEventArgs e)
       {         
           
          StringBuilder builder = new StringBuilder();
-         DevExpress.Utils.Menu.DXMenuItem mnuItem = (DevExpress.Utils.Menu.DXMenuItem)sender;
+         BarButtonItem mnuItem = (BarButtonItem)e.Item;
          uc_SQL ctr = new uc_SQL();
 
          TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
@@ -519,7 +550,7 @@ namespace QToolbar
       }
 
 
-      private void scriptCriteria_ItemClick(object sender, EventArgs e)
+      private void scriptCriteria_ItemClick(object sender, ItemClickEventArgs e)
       {
          TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
          ConnectionInfo data = obj.Data;
@@ -527,7 +558,7 @@ namespace QToolbar
          f.Show(data);
       }
 
-      private void createCriteria_ItemClick(object sender, EventArgs e)
+      private void createCriteria_ItemClick(object sender, ItemClickEventArgs e)
       {
          TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
          ConnectionInfo data = obj.Data;
@@ -535,7 +566,7 @@ namespace QToolbar
          f.Show(data, _DBs);
       }
 
-      private void fieldsHelper_ItemClick(object sender, EventArgs e)
+      private void fieldsHelper_ItemClick(object sender, ItemClickEventArgs e)
       {
          TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
          ConnectionInfo data = obj.Data;
@@ -543,7 +574,7 @@ namespace QToolbar
          f.Show(data, _DBs);
       }
 
-      private void autoDoc_ItemClick(object sender, EventArgs e)
+      private void autoDoc_ItemClick(object sender, ItemClickEventArgs e)
       {
          TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
          ConnectionInfo data = obj.Data;
@@ -551,7 +582,7 @@ namespace QToolbar
          f.Show(data, _DBs);
       }
 
-      private void checkDatasources_ItemClick(object sender, EventArgs e)
+      private void checkDatasources_ItemClick(object sender, ItemClickEventArgs e)
       {
          TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
          ConnectionInfo data = obj.Data;
@@ -590,6 +621,41 @@ namespace QToolbar
       private void txtFilter_EditValueChanged(object sender, EventArgs e)
       {
          treeDatabases.FilterNodes();
+      }
+
+      private void repositoryMenuFilter_EditValueChanged(object sender, EventArgs e)
+      {
+         string editValue = ((TextEdit)sender).EditValue.ToString();
+         Debug.WriteLine(((TextEdit)sender).EditValue);
+
+
+         //popupMenu1.AddItem(new BarSubItem(barManager1,"ssss"));
+         for (int i = 0; i < popupMenu1.ItemLinks.Count; i++)
+         {
+            if (popupMenu1.ItemLinks[i] is BarButtonItemLink)
+            {
+               popupMenu1.ItemLinks[i].Visible = popupMenu1.ItemLinks[i].Caption.ToLower().Contains(editValue.ToLower());
+            }
+
+         }
+         popupMenu1.ItemLinks[0].Focus();
+         popupMenu1.ItemLinks.First(i=>i is BarEditItemLink).Focus();
+
+      }
+      
+      private void repositoryMenuFilter_KeyUp(object sender, KeyEventArgs e)
+      {
+      }
+
+      private void repositoryMenuFilter_KeyDown(object sender, KeyEventArgs e)
+      {
+         // if the escape button was presse while filter had the focus close popup menu. 
+         // This is needed since the popop menu is not hidden on escape button press and the filter had the focus. 
+         if (e.KeyCode == Keys.Escape)
+         {
+            popupMenu1.HidePopup();
+         }
+
       }
    }
 }
