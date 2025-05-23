@@ -24,6 +24,7 @@ using QToolbar.Helpers;
 using Org.BouncyCastle.Asn1.X509;
 using System.Security.Cryptography;
 using DevExpress.Xpo.DB.Helpers;
+using QToolbar.Constants;
 
 namespace QToolbar.Forms
 {
@@ -482,7 +483,7 @@ namespace QToolbar.Forms
          {
             using (SqlConnection conn = new SqlConnection(Utils.GetConnectionString(sqlInstance)))
             {
-               SqlDataAdapter adapter = new SqlDataAdapter(GetDevDBsSQL(), conn);
+               SqlDataAdapter adapter = new SqlDataAdapter(SQLQueriesConstants.GetDevDBsSQL(), conn);
 
                // get information of target database
                DataSet ds = new DataSet();
@@ -492,42 +493,6 @@ namespace QToolbar.Forms
 
          }
          return devDBsNames;
-      }
-      private string GetDevDBsSQL()
-      {
-         return
-            @"SELECT [name] as DB_NAME
-               FROM sys.databases AS D
-
-               --[0 - 9]_[0 - 9]_[0 - 9]{0,5}
-               WHERE[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9][0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9][0-9][0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9][0-9][0-9][0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]_[0-9][0-9][0-9][0-9][0-9][0-9]'
-
-               --[0 - 9]{2}_[0 - 9]_[0 - 9]{ 0,5}
-               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9][0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9][0-9][0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9][0-9][0-9][0-9]'
-
-               OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]_[0-9][0-9][0-9][0-9][0-9][0-9]'";
       }
 
 

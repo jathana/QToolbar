@@ -206,6 +206,7 @@
     <Compile Include="Buttons\InternalBuildsButton.cs" />
     <Compile Include="Buttons\NextBuildButton.cs" />
     <Compile Include="Builds\CheckResult.cs" />
+    <Compile Include="Constants\SQLQueriesConstants.cs" />
     <Compile Include="Forms\Frm_CheckDataSources.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +235,7 @@
     <Compile Include="Helpers\CfFile.cs" />
     <Compile Include="Helpers\CfValidator.cs" />
     <Compile Include="Helpers\CryptographyExtensions.cs" />
+    <Compile Include="Helpers\NamesHelper.cs" />
     <Compile Include="Helpers\WebOfficerClientSiteInfo.cs" />
     <Compile Include="Helpers\WebAPIEnvironmentLogin.cs" />
     <Compile Include="Helpers\WebAPIEnvironment.cs" />
@@ -576,7 +578,6 @@
   <ItemGroup>
     <Folder Include="Common\" />
     <Folder Include="Criteria\" />
-    <Folder Include="Database\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

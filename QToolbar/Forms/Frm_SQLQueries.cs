@@ -2,33 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Text;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
 using QToolbar.Options;
-using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraTreeList.Menu;
-using DevExpress.XtraBars.Docking2010.Views;
 using DevExpress.XtraTreeList;
-using System.Threading;
 using QToolbar.Tools;
 using QToolbar.Forms;
 using QToolbar.AutoDoc;
 using System.Text.RegularExpressions;
 using QToolbar.Helpers;
-using DevExpress.Internal.WinApi.Windows.UI.Notifications;
-using DevExpress.Utils.StructuredStorage.Reader;
-using DevExpress.Xpo.DB.Helpers;
-using DevExpress.XtraPrinting.Native;
-using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
-using DevExpress.XtraEditors.Repository;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using DevExpress.Utils.Extensions;
 using System.Diagnostics;
 
 namespace QToolbar

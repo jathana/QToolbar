@@ -1,7 +1,10 @@
 ﻿using DevExpress.Internal.WinApi.Windows.UI.Notifications;
+using Microsoft.SqlServer.Management.Smo;
+using QToolbar.Constants;
 using QToolbar.Options;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -21,7 +24,7 @@ namespace QToolbar.Helpers
       public ConnectionInfo GetCurrentDBConnectionInfo()
       {
          string[] devSQLInstances = OptionsInstance.DevSQLInstances.Split(',');
-         List<(string Server, string Database)> latestDB = new List<(string Server, string Database)>();
+         List<(string Server, string Database, string DatabaseSortName)> latestDB = new List<(string Server, string Database, string DatabaseSortName)>();
 
          // find latest collection plus db per server
          foreach (string devSQLInstance in devSQLInstances)
@@ -30,28 +33,26 @@ namespace QToolbar.Helpers
             using (SqlConnection connection = new SqlConnection(Utils.GetConnectionString(devSQLInstance)))
             {
 
-               SqlCommand com = new SqlCommand(@"SELECT [name] as DB_NAME
-                                                       FROM sys.databases AS D
-
-                                                       --[0 - 9]_[0 - 9]_[0 - 9]{0,5}
-                                                       WHERE[name] LIKE 'Qbcollection_plus_[0-9]_[0-9]'
-
-                                                       --[0 - 9]{2}_[0 - 9]_[0 - 9]{ 0,5}
-                                                       OR[name] LIKE 'Qbcollection_plus_[0-9][0-9]_[0-9]'
-                                                    ", connection);
+               SqlCommand com = new SqlCommand(SQLQueriesConstants.GetDevDBsSQL(), connection);
                try
                {
                   connection.Open();
-                  string result = (string)com.ExecuteScalar();
-                  latestDB.Add((devSQLInstance, result));
+                  SqlDataAdapter adapter = new SqlDataAdapter(com);
+                  DataTable table = new DataTable();
+                  adapter.Fill(table);
+                  if (table.Rows.Count > 0)
+                  {
+                     
+                     latestDB.AddRange(table.AsEnumerable().Select(x => (devSQLInstance, x.Field<string>("DB_NAME"), NamesHelper.GetDatabaseSortName(x.Field<string>("DB_NAME"), new Char[] { '.', '_' }, '_', '0', 5))).ToArray());
+                  }
                }
                catch (Exception ex)
                {
-                  throw;
+                  
                }
             }
          }
-         var currentDb = latestDB.OrderByDescending(x => x.Database).FirstOrDefault();
+         var currentDb = latestDB.OrderByDescending(x => x.DatabaseSortName).FirstOrDefault();
          ConnectionInfo connectionInfo = new ConnectionInfo();
          connectionInfo.InfoType = InfoType.Database;
          connectionInfo.Server = currentDb.Server;
