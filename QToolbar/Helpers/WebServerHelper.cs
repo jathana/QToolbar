@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace QToolbar.Helpers
    {
       // QCRWebAPI_X_Y_Z
       private const string WEB_API_NAME_PATTERN = "QCRWebAPI[_][0-9]+[_][0-9]+[_]*[0-9]*";
-      private const string IDENTITY_SERVER_PATTERN = "IdentityServer[_][0-9]+[_][0-9]+[_]*[0-9]*";
+      private const string IDENTITY_SERVER_PATTERN = @"IdentityServer(?:_[0-9]+_[0-9]+_?[0-9]*|_net[0-9]+\.[0-9]+)";
       private const string LEGAL_APP_PATTERN = "LegalApp[_][0-9]+[_][0-9]+[_]*[0-9]*";
       private const string WEB_OFFICER_CLIENT_PATTERN = "WebLegalOfficer[_][0-9]+[_][0-9]+[_]*[0-9]*[_]Client";
 
@@ -144,7 +145,7 @@ namespace QToolbar.Helpers
                         //if (!site.Name.Contains("12_3")) continue;
                         if (webAPIReg.IsMatch(site.Name.ToLower()))
                         {
-                           WebAPISiteInfo siteInfo = new WebAPISiteInfo(host, site);                           
+                           WebAPISiteInfo siteInfo = new WebAPISiteInfo(host, site);
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
 
@@ -167,7 +168,7 @@ namespace QToolbar.Helpers
                            WebSites.Add(siteInfo);
                            OnWebSiteInfoCollected(new WebSiteInfoEventArgs(siteInfo));
                         }
-
+                        Debug.WriteLine(site.Name.ToLower());
                      }
                   }
                   catch (Exception ex)
