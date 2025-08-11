@@ -207,6 +207,12 @@
     <Compile Include="Buttons\NextBuildButton.cs" />
     <Compile Include="Builds\CheckResult.cs" />
     <Compile Include="Constants\SQLQueriesConstants.cs" />
+    <Compile Include="Forms\Frm_SelectDatabases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Frm_SelectDatabases.Designer.cs">
+      <DependentUpon>Frm_SelectDatabases.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Frm_CheckDataSources.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -443,6 +449,9 @@
     <EmbeddedResource Include="AutoDoc\Frm_AutoDoc.resx">
       <DependentUpon>Frm_AutoDoc.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Frm_SelectDatabases.resx">
+      <DependentUpon>Frm_SelectDatabases.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Frm_CheckDataSources.resx">
       <DependentUpon>Frm_CheckDataSources.cs</DependentUpon>
     </EmbeddedResource>
@@ -584,42 +593,42 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.SqlServer.Diagnostics.STrace">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.Dmf.Common">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.Management.SqlParser">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.SqlClrProvider">
       <Visible>False</Visible>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

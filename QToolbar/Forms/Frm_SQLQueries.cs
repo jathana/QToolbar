@@ -522,6 +522,7 @@ namespace QToolbar
          ctr.Server = data.Server;
          ctr.Database = data.Database;
          ctr.QueryName = mnuItem.Caption;
+         ctr.Databases = _DBs;
          ctr.Initialize();
 
          if ( query["RunImmediate"] != DBNull.Value && Convert.ToBoolean(query["RunImmediate"])==true)
