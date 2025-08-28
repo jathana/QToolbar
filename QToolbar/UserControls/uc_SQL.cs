@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DevExpress.Xpo.DB.Helpers;
 using DevExpress.XtraEditors;
-using System.Data.SqlClient;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
-using QToolbar.Forms;
-using System.Diagnostics;
 using DevExpress.XtraPrinting.Preview.Native;
+using QToolbar.Forms;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QToolbar
 {
@@ -104,12 +105,17 @@ namespace QToolbar
 
 
             int tableIndex = 0;
+            _Messages.Clear();
             foreach (var database in _SelectedDatabases)
             {
+               _Messages.AppendLine(new string('-', 200));
+               _Messages.AppendLine($"{tableIndex}.{database.Database} ");
+               _Messages.AppendLine(new string('-',200));
+
                string connectionString = Utils.GetConnectionString(database.Server, database.Database);
                using (SqlConnection con = new SqlConnection(connectionString))
                {
-                  _Messages.Clear();
+                  
                   con.FireInfoMessageEventOnUserErrors = true;
                   con.InfoMessage += Con_InfoMessage;
 
@@ -120,26 +126,44 @@ namespace QToolbar
                       .Split(batch, @"^\s*GO\s*$", System.Text.RegularExpressions.RegexOptions.Multiline | System.Text.RegularExpressions.RegexOptions.IgnoreCase)
                       .Where(s => !string.IsNullOrWhiteSpace(s));
 
-                  con.Open();
-                  
-                  foreach (var sql in statements)
+                  string tableName = string.Empty;
+                  try
                   {
-                     using (SqlCommand cmd = new SqlCommand(sql, con))
-                     {
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                           do
-                           {
-                              string tableName = $"{tableIndex}.{database.Database} ";
-                              DataTable dt = new DataTable(tableName);
-                              //DataTable dt = new DataTable("Table" + tableIndex);
 
-                              dt.Load(reader);
-                              dataset.Tables.Add(dt);
-                              tableIndex++;
-                           } while (!reader.IsClosed && reader.NextResult());
+                     con.Open();
+
+                     foreach (var sql in statements)
+                     {
+                        using (SqlCommand cmd = new SqlCommand(sql, con))
+                        {
+
+                           using (SqlDataReader reader = cmd.ExecuteReader())
+                           {
+                              do
+                              {
+                                 // add table
+                                 tableName = $"{tableIndex}.{database.Database} ";
+                                 DataTable dt = new DataTable(tableName);
+
+                                 dt.Load(reader);
+                                 dataset.Tables.Add(dt);
+                                 tableIndex++;
+                              } while (!reader.IsClosed && reader.NextResult());
+                           }
+
                         }
                      }
+                  }
+                  catch (Exception ex)
+                  {
+                     // add table with the error
+                     tableName = $"{tableIndex}.{database.Database} ";
+                     DataTable dt = new DataTable(tableName);
+
+                     dt.Columns.Add("Error", typeof(string));
+                     dt.Rows.Add(ex.Message);
+                     dataset.Tables.Add(dt);
+                     tableIndex++;
                   }
                }
             }

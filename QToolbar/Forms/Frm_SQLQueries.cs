@@ -503,18 +503,24 @@ namespace QToolbar
       {         
           
          StringBuilder builder = new StringBuilder();
+         
          BarButtonItem mnuItem = (BarButtonItem)e.Item;
          uc_SQL ctr = new uc_SQL();
 
          TreeNode<ConnectionInfo> obj = (TreeNode<ConnectionInfo>)treeDatabases.GetDataRecordByNode(treeDatabases.FocusedNode);
          ConnectionInfo data = obj.Data;
          DataRow query = (DataRow)mnuItem.Tag;
+         
+         // run immediate
+         bool runImmediate = query["RunImmediate"] != DBNull.Value && Convert.ToBoolean(query["RunImmediate"]) == true;
+
          // sql text
-         builder.AppendLine($"--       Query : {mnuItem.Caption}");
-         builder.AppendLine($"--      Server : {data.Server}");
-         builder.AppendLine($"--    Database : {data.Database}");
-         builder.AppendLine($"--     Version : {data.Version}");
-         builder.AppendLine($"-- Environment : {data.Environment}");
+         builder.AppendLine($"--        Query : {mnuItem.Caption}");
+         builder.AppendLine($"--       Server : {data.Server}");
+         builder.AppendLine($"--     Database : {data.Database}");
+         builder.AppendLine($"--      Version : {data.Version}");
+         builder.AppendLine($"--  Environment : {data.Environment}");
+         builder.AppendLine($"-- RunImmediate : {runImmediate}");
          builder.AppendLine();
          builder.AppendLine(query["SQL"].ToString());
          // sql control
@@ -525,7 +531,7 @@ namespace QToolbar
          ctr.Databases = _DBs;
          ctr.Initialize();
 
-         if ( query["RunImmediate"] != DBNull.Value && Convert.ToBoolean(query["RunImmediate"])==true)
+         if (runImmediate)
          {
             ctr.Run();
          }
