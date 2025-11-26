@@ -142,13 +142,11 @@ namespace QToolbar
                            adapter.Fill(batchDataset);
 
                            // Rename tables for clarity
-                           int i = 0;
-
                            while (batchDataset.Tables.Count > 0)
                            {
-                              DataTable dt = batchDataset.Tables[i];
+                              DataTable dt = batchDataset.Tables[0];
                               batchDataset.Tables.Remove(dt);
-                              dt.TableName = $"{dataset.Tables.Count+i}.{database.Database}";
+                              dt.TableName = $"{tableIndex}.{database.Database}";
                               dataset.Tables.Add(dt);
                               tableIndex++;
                            }
