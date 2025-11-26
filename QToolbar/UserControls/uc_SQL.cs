@@ -98,24 +98,25 @@ namespace QToolbar
 
       }
 
+
       private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
       {
          try
-         {  DataSet dataset = new DataSet();
-
-
+         {
+            DataSet dataset = new DataSet();
             int tableIndex = 0;
             _Messages.Clear();
+
             foreach (var database in _SelectedDatabases)
             {
                _Messages.AppendLine(new string('-', 200));
-               _Messages.AppendLine($"{tableIndex}.{database.Database} ");
-               _Messages.AppendLine(new string('-',200));
+               _Messages.AppendLine($"{tableIndex}.{database.Database}");
+               _Messages.AppendLine(new string('-', 200));
 
                string connectionString = Utils.GetConnectionString(database.Server, database.Database);
+
                using (SqlConnection con = new SqlConnection(connectionString))
                {
-                  
                   con.FireInfoMessageEventOnUserErrors = true;
                   con.InfoMessage += Con_InfoMessage;
 
@@ -126,38 +127,38 @@ namespace QToolbar
                       .Split(batch, @"^\s*GO\s*$", System.Text.RegularExpressions.RegexOptions.Multiline | System.Text.RegularExpressions.RegexOptions.IgnoreCase)
                       .Where(s => !string.IsNullOrWhiteSpace(s));
 
-                  string tableName = string.Empty;
                   try
                   {
-
                      con.Open();
 
                      foreach (var sql in statements)
                      {
-                        using (SqlCommand cmd = new SqlCommand(sql, con))
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(sql, con))
                         {
 
-                           using (SqlDataReader reader = cmd.ExecuteReader())
+                           DataSet batchDataset = new DataSet();
+
+                           // Fill adds all result sets from this SQL into the DataSet
+                           adapter.Fill(batchDataset);
+
+                           // Rename tables for clarity
+                           int i = 0;
+
+                           while (batchDataset.Tables.Count > 0)
                            {
-                              do
-                              {
-                                 // add table
-                                 tableName = $"{tableIndex}.{database.Database} ";
-                                 DataTable dt = new DataTable(tableName);
-
-                                 dt.Load(reader);
-                                 dataset.Tables.Add(dt);
-                                 tableIndex++;
-                              } while (!reader.IsClosed && reader.NextResult());
+                              DataTable dt = batchDataset.Tables[i];
+                              batchDataset.Tables.Remove(dt);
+                              dt.TableName = $"{dataset.Tables.Count+i}.{database.Database}";
+                              dataset.Tables.Add(dt);
+                              tableIndex++;
                            }
-
                         }
                      }
                   }
                   catch (Exception ex)
                   {
-                     // add table with the error
-                     tableName = $"{tableIndex}.{database.Database} ";
+                     // Add table with the error
+                     string tableName = $"{tableIndex}.{database.Database}";
                      DataTable dt = new DataTable(tableName);
 
                      dt.Columns.Add("Error", typeof(string));
@@ -167,8 +168,8 @@ namespace QToolbar
                   }
                }
             }
+
             e.Result = dataset;
-            
          }
          catch (Exception ex)
          {
@@ -176,6 +177,85 @@ namespace QToolbar
             e.Result = ex;
          }
       }
+
+      //private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+      //{
+      //   try
+      //   {  DataSet dataset = new DataSet();
+
+
+      //      int tableIndex = 0;
+      //      _Messages.Clear();
+      //      foreach (var database in _SelectedDatabases)
+      //      {
+      //         _Messages.AppendLine(new string('-', 200));
+      //         _Messages.AppendLine($"{tableIndex}.{database.Database} ");
+      //         _Messages.AppendLine(new string('-',200));
+
+      //         string connectionString = Utils.GetConnectionString(database.Server, database.Database);
+      //         using (SqlConnection con = new SqlConnection(connectionString))
+      //         {
+                  
+      //            con.FireInfoMessageEventOnUserErrors = true;
+      //            con.InfoMessage += Con_InfoMessage;
+
+      //            string batch = (string)e.Argument;
+
+      //            // Split batch by "GO" (case-insensitive, must be on its own line)
+      //            var statements = System.Text.RegularExpressions.Regex
+      //                .Split(batch, @"^\s*GO\s*$", System.Text.RegularExpressions.RegexOptions.Multiline | System.Text.RegularExpressions.RegexOptions.IgnoreCase)
+      //                .Where(s => !string.IsNullOrWhiteSpace(s));
+
+      //            string tableName = string.Empty;
+      //            try
+      //            {
+
+      //               con.Open();
+
+      //               foreach (var sql in statements)
+      //               {
+      //                  using (SqlCommand cmd = new SqlCommand(sql, con))
+      //                  {
+
+      //                     using (SqlDataReader reader = cmd.ExecuteReader())
+      //                     {
+      //                        do
+      //                        {
+      //                           // add table
+      //                           tableName = $"{tableIndex}.{database.Database} ";
+      //                           DataTable dt = new DataTable(tableName);
+
+      //                           dt.Load(reader);
+      //                           dataset.Tables.Add(dt);
+      //                           tableIndex++;
+      //                        } while (!reader.IsClosed && reader.NextResult());
+      //                     }
+
+      //                  }
+      //               }
+      //            }
+      //            catch (Exception ex)
+      //            {
+      //               // add table with the error
+      //               tableName = $"{tableIndex}.{database.Database} ";
+      //               DataTable dt = new DataTable(tableName);
+
+      //               dt.Columns.Add("Error", typeof(string));
+      //               dt.Rows.Add(ex.Message);
+      //               dataset.Tables.Add(dt);
+      //               tableIndex++;
+      //            }
+      //         }
+      //      }
+      //      e.Result = dataset;
+            
+      //   }
+      //   catch (Exception ex)
+      //   {
+      //      backgroundWorker1.ReportProgress(100, $"Server:{Server}\r\nDatabase:{Database}\r\n{Query}\r\nFailed, {ex.Message}.");
+      //      e.Result = ex;
+      //   }
+      //}
 
       private void Con_InfoMessage(object sender, SqlInfoMessageEventArgs e)
       {
